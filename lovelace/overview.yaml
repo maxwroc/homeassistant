@@ -1,0 +1,91 @@
+- type: vertical-stack
+  cards:
+    - type: custom:weather-card
+      entity: weather.scarbrook
+      current: true
+      details: true
+      forecast: true
+    - type: entities
+      entities:
+        - sensor.power
+        - sensor.energy
+        - device_tracker.maks
+        - device_tracker.magduska
+        - sensor.pc_status
+    - type: history-graph
+      title: 'Power'
+      refresh_interval: 30
+      entities:
+        - sensor.power
+
+- type: vertical-stack
+  cards:
+    - type: history-graph
+      title: 'Temperature'
+      refresh_interval: 30
+      entities:
+        - sensor.living_room_temp
+        - sensor.bedroom_temp
+        - sensor.master_bed_temp
+    - type: picture-entity
+      title: Bedroom
+      entity: camera.bedroom
+      camera_image: camera.bedroom
+      show_info: true
+      show_state: false
+      tap_action: 
+        action: more-info
+    - type: entities
+      title: Kids room
+      show_header_toggle: true
+      entities:
+        - light.bedroom_light
+        - light.black_night_light
+        - sensor.bedroom_temp
+        - sensor.bedroom_humidity
+        - binary_sensor.bedroom_motion
+  
+- type: vertical-stack
+  cards:
+    - type: entities
+      title: Living room
+      show_header_toggle: true
+      entities:
+        - light.living_room_lights
+        - light.kitchen_lights
+        - light.kitchen_worktop_lights
+        - light.living_room_lamp
+        - light.tv_light
+        - sensor.living_room_temp
+        - sensor.living_room_humidity
+        - binary_sensor.living_room_motion
+    - type: entities
+      title: Master bedroom
+      show_header_toggle: true
+      entities:
+        - light.master_bedroom_light
+        - light.master_bedroom_night_light
+        - light.desk_light
+        - sensor.master_bed_temp
+        - sensor.master_bed_humidity
+        - binary_sensor.master_bed_motion
+    - type: entities
+      title: Master bathroom
+      show_header_toggle: true
+      entities:
+        - light.master_bathroom_light
+        - binary_sensor.master_bath_motion
+
+
+- type: entities
+  title: Bathroom
+  show_header_toggle: true
+  entities:
+    - light.bathroom_light
+    - binary_sensor.bathroom_motion
+- type: entities
+  title: Corridor
+  show_header_toggle: true
+  entities:
+    - binary_sensor.main_doors
+    - binary_sensor.corridor_motion

@@ -1,0 +1,158 @@
+- type: vertical-stack
+  cards:
+    - type: entities
+      show_header_toggle: false
+      title: Amazon Echo
+      entities:
+        - type: custom:mini-media-player
+          entity: media_player.living_room_echo
+          group: true
+          replace_mute: stop
+          hide:
+            controls: true
+            power: true
+            source: true
+        - type: custom:mini-media-player
+          entity: media_player.kids_dot
+          group: true
+          replace_mute: stop
+          hide:
+            controls: true
+            power: true
+            source: true
+            info: true
+        - type: custom:mini-media-player
+          entity: media_player.bedroom_dot
+          group: true
+          replace_mute: stop
+          hide:
+            controls: true
+            power: true
+            source: true
+        - type: custom:mini-media-player
+          entity: media_player.living_room_television
+          group: true
+          replace_mute: stop
+          hide:
+            controls: true
+            power: true
+            source: true
+        - type: custom:mini-media-player
+          entity: media_player.home_2
+          group: true
+          replace_mute: stop
+          name: Home group
+          hide:
+            controls: true
+            power: true
+            source: true
+    - type: horizontal-stack
+      cards:
+        - type: custom:mini-media-player
+          entity: media_player.living_room_echo
+          info: short
+          artwork: cover
+          tts:
+            platform: alexa
+            entity_id: media_player.bedroom_dot
+            type: announce
+          hide:
+            mute: true
+            icon: true
+            power: true
+            source: true
+            progress: false
+            volume: true
+        - type: custom:mini-media-player
+          entity: media_player.living_room_television
+          info: short
+          artwork: cover
+          tts:
+            platform: alexa
+            entity_id: media_player.bedroom_dot
+            type: announce
+          hide:
+            mute: true
+            icon: true
+            power: true
+            source: true
+            progress: false
+            volume: true
+    - type: horizontal-stack
+      cards:
+        - type: custom:mini-media-player
+          entity: media_player.kids_dot
+          info: scroll
+          artwork: full-cover
+          tts:
+            platform: alexa
+            entity_id: media_player.bedroom_dot
+            type: announce
+          hide:
+            mute: true
+            icon: true
+            power: true
+            source: true
+            progress: false
+            volume: true
+        - type: custom:mini-media-player
+          entity: media_player.bedroom_dot
+          info: scroll
+          artwork: full-cover
+          tts:
+            platform: alexa
+            entity_id: media_player.bedroom_dot
+            type: announce
+          hide:
+            mute: true
+            icon: true
+            power: true
+            source: true
+            progress: false
+            volume: true
+            
+    - type: custom:mini-media-player
+      entity: media_player.home_2
+      info: short
+      artwork: cover
+      tts:
+        platform: alexa
+        entity_id: media_player.home_2
+        type: announce
+      hide:
+        mute: true
+        icon: true
+        power: true
+        source: true
+        progress: false
+        volume: true
+      shortcuts:
+        columns: 4 # Max buttons per row
+        buttons:
+          # Start predefined playlist
+          - name: Rock
+            type: playlist
+            id: spotify:user:spotify:playlist:6UFW0S4ENOBkQQFhLzn0Dq
+
+
+
+- type: vertical-stack
+  cards:
+    - type: entities
+      show_header_toggle: false
+      title: Google Home
+      entities:
+        - type: custom:mini-media-player
+          entity: media_player.living_room_speaker_3
+          group: true
+          hide:
+            controls: true
+            power: true
+            source: true
+        - type: custom:mini-media-player
+          entity: media_player.living_room_tv_2
+          group: true
+          hide:
+            controls: false
+            power: true
+            source: true

@@ -1,0 +1,20 @@
+resources:
+  - url: /community_plugin/mini-media-player/mini-media-player-bundle.js
+    type: module
+  - url: /community_plugin/weather-card/weather-card.js
+    type: module
+
+title: Home
+views:
+  - title: Home
+    icon: mdi:home
+    cards: !include lovelace/overview.yaml
+  - title: Floor plan
+    panel: true
+    cards: !include lovelace/floorplan.yaml
+  - title: Media
+    cards: !include lovelace/media.yaml
+  - title: Security
+    cards: !include lovelace/security.yaml
+  - title: Admin
+    cards: !include lovelace/admin.yaml

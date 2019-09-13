@@ -1,0 +1,47 @@
+- type: horizontal-stack
+  cards:
+    - type: picture-elements
+      image: /local/scarbrook.png
+      id: "zonk"
+      elements:
+        - type: state-icon
+          tap_action: toggle
+          entity: light.bedroom_light
+          style:
+            top: 30%
+            left: 49%
+        - type: state-icon
+          entity: binary_sensor.main_doors
+          style:
+            top: 89%
+            left: 67%
+        - type: state-icon
+          entity: binary_sensor.master_bath_motion
+          style:
+            top: 88%
+            left: 31%
+        - type: state-icon
+          entity: binary_sensor.bathroom_motion
+          style:
+            top: 88%
+            left: 58%
+        - type: state-icon
+          entity: binary_sensor.corridor_motion
+          style:
+            top: 72%
+            left: 67%
+        - type: state-icon
+          entity: binary_sensor.living_room_motion
+          style:
+            top: 44%
+            left: 82%
+        - type: state-icon
+          entity: binary_sensor.bedroom_motion
+          style:
+            top: 44%
+            left: 49%
+        - type: state-icon
+          entity: binary_sensor.master_bed_motion
+          style:
+            top: 72%
+            left: 17%

@@ -1,0 +1,104 @@
+- type: alarm-panel
+  entity: alarm_control_panel.home_alarm
+
+- type: entities
+  title: Movement sensors
+  show_header_toggle: false
+  entities:
+    - binary_sensor.bathroom_motion
+    - binary_sensor.bedroom_motion
+    - binary_sensor.corridor_motion
+    - binary_sensor.living_room_motion
+    - binary_sensor.master_bath_motion
+    - binary_sensor.master_bed_motion
+- type: entities
+  title: Door sensors
+  show_header_toggle: false
+  entities:
+    - binary_sensor.main_doors
+    - binary_sensor.bedroom_balkony
+    - binary_sensor.living_room_balkony
+- type: picture-entity
+  title: Bedroom
+  entity: camera.bedroom
+  camera_image: camera.bedroom
+  show_info: true
+  show_state: false
+  tap_action: 
+    action: more-info
+- type: picture-elements
+  image: /local/scarbrook.png
+  id: "zonk"
+  elements:
+    - type: state-icon
+      entity: binary_sensor.master_bath_motion
+      tap_action: more-info
+      style:
+        top: 82%
+        left: 35%
+        filter: drop-shadow(2px 2px 3px black)
+        transform: translate(-50%, -50%)scale(1.4)
+    - type: state-icon
+      entity: binary_sensor.bathroom_motion
+      tap_action: more-info
+      style:
+        top: 82%
+        left: 52%
+        filter: drop-shadow(2px 2px 3px black)
+        transform: translate(-50%, -50%)scale(1.4)
+    - type: state-icon
+      entity: binary_sensor.corridor_motion
+      tap_action: more-info
+      style:
+        top: 72%
+        left: 67%
+        filter: drop-shadow(2px 2px 3px black)
+        transform: translate(-50%, -50%)scale(1.4)
+    - type: state-icon
+      entity: binary_sensor.living_room_motion
+      tap_action: more-info
+      style:
+        top: 44%
+        left: 82%
+        filter: drop-shadow(2px 2px 3px black)
+        transform: translate(-50%, -50%)scale(1.4)
+    - type: state-icon
+      entity: binary_sensor.bedroom_motion
+      tap_action: more-info
+      style:
+        top: 36%
+        left: 49%
+        filter: drop-shadow(2px 2px 3px black)
+        transform: translate(-50%, -50%)scale(1.4)
+    - type: state-icon
+      entity: binary_sensor.master_bed_motion
+      tap_action: more-info
+      style:
+        top: 63%
+        left: 17%
+        filter: drop-shadow(2px 2px 3px black)
+        transform: translate(-50%, -50%)scale(1.4)
+    - type: state-icon
+      entity: binary_sensor.main_doors
+      tap_action: more-info
+      style:
+        top: 89%
+        left: 67%
+        filter: drop-shadow(2px 2px 3px black)
+        transform: translate(-50%, -50%)scale(1.4)
+    - type: state-icon
+      entity: binary_sensor.bedroom_balkony
+      tap_action: more-info
+      style:
+        top: 19%
+        left: 46%
+        filter: drop-shadow(2px 2px 3px black)
+        transform: translate(-50%, -50%)scale(1.4)
+    - type: state-icon
+      entity: binary_sensor.living_room_balkony
+      tap_action: more-info
+      style:
+        top: 19%
+        left: 70%
+        filter: drop-shadow(2px 2px 3px black)
+        transform: translate(-50%, -50%)scale(1.4)

@@ -1,0 +1,93 @@
+- type: entities
+  title: Tools
+  show_header_toggle: false
+  entities:
+    - type: weblink
+      name: "IDE"
+      url: http://192.168.2.104:8321/ide.html
+      icon: mdi:file-document-edit-outline
+    - type: weblink
+      name: "Router"
+      url: http://192.168.2.1
+      icon: mdi:router-wireless
+    - type: weblink
+      name: "Node Red"
+      url: http://192.168.2.104:1880
+      icon: mdi:hammer
+    - type: weblink
+      name: "BTSync"
+      url: http://192.168.2.103:45454
+      icon: mdi:sync
+    - type: weblink
+      name: "BTSync - RaspWroc"
+      url: http://raspwroc:45454
+      icon: mdi:sync
+    - type: weblink
+      name: "Deluge"
+      url: http://192.168.2.103:8112
+      icon: mdi:cloud-download
+- type: entities
+  title: Sonoff touch
+  show_header_toggle: false
+  entities:
+    - type: weblink
+      name: "Sonoff Touch: Bedroom"
+      url: http://192.168.4.251
+      icon: mdi:doorbell-video
+    - type: weblink
+      name: "Sonoff Touch: Bathroom"
+      url: http://192.168.4.250
+      icon: mdi:doorbell-video
+    - type: weblink
+      name: "Sonoff Touch: Master bathroom"
+      url: http://192.168.4.252
+      icon: mdi:doorbell-video
+    - type: weblink
+      name: "Sonoff Touch: Master bedroom"
+      url: http://192.168.4.249
+      icon: mdi:doorbell-video
+- type: entities
+  title: Sonoff socket
+  show_header_toggle: false
+  entities:
+    - type: weblink
+      name: "Tv light"
+      url: http://192.168.4.247
+      icon: mdi:power-socket-uk
+    - type: weblink
+      name: "Living room lamp"
+      url: http://192.168.4.246
+      icon: mdi:power-socket-uk
+    - type: weblink
+      name: "Black night light"
+      url: http://192.168.4.248
+      icon: mdi:power-socket-uk
+    - type: weblink
+      name: "Desk light"
+      url: http://192.168.4.240
+      icon: mdi:power-socket-uk
+    - type: weblink
+      name: "Night light"
+      url: http://192.168.4.245
+      icon: mdi:power-socket-uk
+- type: entities
+  title: Shellies
+  show_header_toggle: false
+  entities:
+    - type: weblink
+      name: "Kitchen lights"
+      url: http://192.168.4.243
+      icon: mdi:doorbell-video
+    - type: weblink
+      name: "Kitchen worktop lights"
+      url: http://192.168.4.244
+      icon: mdi:doorbell-video
+    - type: weblink
+      name: "Living room lights"
+      url: http://192.168.4.241
+      icon: mdi:doorbell-vide
+- type: entities
+  title: Stats
+  show_header_toggle: false
+  entities:
+    - sensor.home_assistant_v2_db
