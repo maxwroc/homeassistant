@@ -91,3 +91,4 @@
   show_header_toggle: false
   entities:
     - sensor.home_assistant_v2_db
+    - sensor.config_last_backup

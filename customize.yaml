@@ -1,0 +1,3 @@
+sensor.pc_status:
+  templates:
+    rgb_color: "if (state === 'On') return [251, 210, 41]; else return [54, 95, 140];"

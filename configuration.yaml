@@ -44,6 +44,10 @@ alexa_media:
     - email: !secret amazon_user
       password: !secret amazon_password
       url: amazon.co.uk
+      
+google:
+  client_id: !secret google_calendar_api_clientid
+  client_secret: !secret gogole_calendar_api_secret
 
 device_tracker:
   - platform: ping
@@ -206,9 +210,9 @@ sensor:
     file_paths:
       - /config/home-assistant_v2.db
   - platform: command_line
-    name: "Config backups"
-    command: git --no-pager log -n 5 --oneline
-    scan_interval: 600
+    name: "Config last backup"
+    command: cd /config && git --no-pager log -n 1 --pretty=%cd --date=local origin/master
+    scan_interval: 60
 
 binary_sensor:
   - platform: mqtt
@@ -315,3 +319,6 @@ history_graph:
       - sensor.living_room_temp
       - sensor.bedroom_temp
       - sensor.master_bed_temp
+      
+shell_command:
+  commit_config_files: cd /config && git add -A && git commit -m "`date`" && git push -u origin master
