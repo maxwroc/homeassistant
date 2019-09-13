@@ -205,6 +205,10 @@ sensor:
   - platform: filesize
     file_paths:
       - /config/home-assistant_v2.db
+  - platform: command_line
+    name: "Config backups"
+    command: git --no-pager log -n 5 --oneline
+    scan_interval: 600
 
 binary_sensor:
   - platform: mqtt
