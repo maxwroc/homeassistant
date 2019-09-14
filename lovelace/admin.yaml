@@ -94,7 +94,7 @@
     - sensor.config_last_backup
     - sensor.changes_not_committed
 - type: entity-button
-  entity: sensor.changes_not_committed
+  entity: sensor.zzz
   tap_action:
     action: call-service
     service: shell_command.commit_config_files

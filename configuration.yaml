@@ -217,6 +217,10 @@ sensor:
     name: "Changes not committed"
     command: cd /config && git status -suno | wc -l
     scan_interval: 60
+  - platform: command_line
+    name: "zzz"
+    command: id
+    scan_interval: 60
 
 binary_sensor:
   - platform: mqtt
