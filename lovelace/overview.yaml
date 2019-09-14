@@ -89,3 +89,22 @@
   entities:
     - binary_sensor.main_doors
     - binary_sensor.corridor_motion
+    
+    
+- type: "custom:atomic-calendar"
+  title: "Calendar"
+  defaultMode: 2
+  enableModeChange: true
+  CalEventIcon2Color: #e19cff
+  entities:
+  - entity: calendar.wydazenia
+    color: red
+    type: holiday
+  - entity: calendar.school
+    color: purple
+    type: icon2
+  - entity: calendar.urodziny_i_imieniny
+    color: green
+    type: icon3
+  showColors: true
+  maxDaysToShow: 14

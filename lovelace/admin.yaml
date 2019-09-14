@@ -92,3 +92,4 @@
   entities:
     - sensor.home_assistant_v2_db
     - sensor.config_last_backup
+    - sensor.changes_not_committed

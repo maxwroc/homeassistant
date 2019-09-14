@@ -3,6 +3,8 @@ resources:
     type: module
   - url: /community_plugin/weather-card/weather-card.js
     type: module
+  - url: /local/atomic_calendar.js
+    type: module
 
 title: Home
 views:

@@ -213,6 +213,10 @@ sensor:
     name: "Config last backup"
     command: cd /config && git --no-pager log -n 1 --pretty=%cd --date=local origin/master
     scan_interval: 60
+  - platform: command_line
+    name: "Changes not committed"
+    command: cd /config && git status -suno | wc -l
+    scan_interval: 60
 
 binary_sensor:
   - platform: mqtt

@@ -5,6 +5,7 @@
     ignore_availability: true
     name: School
     track: true
+    max_results: 15
 
 - cal_id: 5j7i4d54oo0k0ghm1krvet2usc@group.calendar.google.com
   entities:
@@ -12,6 +13,7 @@
     ignore_availability: true
     name: Urodziny i imieniny
     track: true
+    max_results: 15
 
 - cal_id: max.chodorowski@gmail.com
   entities:
@@ -19,13 +21,14 @@
     ignore_availability: true
     name: Wydazenia
     track: true
+    max_results: 15
 
 - cal_id: pl.polish#holiday@group.v.calendar.google.com
   entities:
   - device_id: swieta_w_polsce
     ignore_availability: true
     name: "\u015Awi\u0119ta w Polsce"
-    track: true
+    track: false
 
 - cal_id: addressbook#contacts@group.v.calendar.google.com
   entities:
