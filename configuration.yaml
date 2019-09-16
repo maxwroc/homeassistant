@@ -33,6 +33,15 @@ alarm_control_panel:
 
 lovelace:
   mode: yaml
+
+influxdb:
+  host: a0d7b954-influxdb
+  port: 8086
+  database: homeassistant
+  username: !secret influxdb_user
+  password: !secret influxdb_pass
+  max_retries: 3
+  default_measurement: state
   
 hacs:
   token: !secret hacs_token
@@ -166,7 +175,8 @@ sensor:
     name: "Energy"
     state_topic: "sensor/utility/energy"
     icon: mdi:flash
-    unit_of_measurement: "Wh"
+    unit_of_measurement: "kWh"
+    value_template: "{{ (value_json.value / 1000) | round(1) }}"
   - platform: mqtt
     name: "Living room temp"
     state_topic: "sensor/livingroom/temp"
