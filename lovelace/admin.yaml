@@ -96,9 +96,9 @@
   entities:
     - sensor.home_assistant_v2_db
 - type: vertical-stack
-  title: Config changes
   cards:
   - type: entities
+    title: Config changes
     show_header_toggle: false
     entities:
       - sensor.config_last_backup
