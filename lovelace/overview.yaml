@@ -8,7 +8,7 @@
     - type: entities
       entities:
         - sensor.power
-        - sensor.energy
+        - sensor.energy_daily
         - device_tracker.maks
         - device_tracker.magduska
         - sensor.pc_status

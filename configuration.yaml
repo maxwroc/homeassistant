@@ -175,8 +175,8 @@ sensor:
     name: "Energy"
     state_topic: "sensor/utility/energy"
     icon: mdi:flash
-    unit_of_measurement: "kWh"
-    value_template: "{{ (value_json.value / 1000) | round(1) }}"
+    unit_of_measurement: "Wh"
+    value_template: "{{ value_json.value | round(1) }}"
   - platform: mqtt
     name: "Living room temp"
     state_topic: "sensor/livingroom/temp"
@@ -337,6 +337,14 @@ history_graph:
       - sensor.living_room_temp
       - sensor.bedroom_temp
       - sensor.master_bed_temp
+      
+utility_meter:
+  energy_daily:
+    source: sensor.energy
+    cycle: daily
+  energy_monthly:
+    source: sensor.energy
+    cycle: monthly
       
 shell_command:
   commit_config_files: cd /config && git add -A && git commit -m "`date`" && git push -u origin master
