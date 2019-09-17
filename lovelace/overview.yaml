@@ -27,6 +27,7 @@
         - sensor.living_room_temp
         - sensor.bedroom_temp
         - sensor.master_bed_temp
+        - sensor.outside_temp
     - type: picture-entity
       title: Bedroom
       entity: camera.bedroom
