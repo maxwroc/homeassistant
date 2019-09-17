@@ -17,6 +17,22 @@ default_config:
 # Text to speech
 tts:
   - platform: google_translate
+  
+recorder: 
+  purge_keep_days: 14
+  purge_interval: 1
+  include:
+    domains:
+      - binary_sensor
+      - device_tracker
+      - light
+      - sensor
+  exclude:
+    entities:
+      - binary_sensor.updater
+      - sensor.changes_not_committed
+      - sensor.config_last_backup
+      - sensor.hacs
 
 group: !include groups.yaml
 automation: !include automations.yaml
