@@ -111,4 +111,4 @@
     show_name: true
     tap_action:
       action: call-service
-      service: shell_command.commit_config_files
+      service: script.commit_configs

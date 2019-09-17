@@ -1,0 +1,14 @@
+commit_configs:
+  alias: Commit and push configuration
+  description: 'Commits all config files (including new ones) and pushes them to Git repo'
+  sequence:
+    - alias: Commit and push configs
+      service: shell_command.commit_config_files
+    - alias: Update config_last_backup sensor
+      service: homeassistant.update_entity
+      data:
+        entity_id: sensor.config_last_backup
+    - alias: Update changes_not_committed sensor
+      service: homeassistant.update_entity
+      data:
+        entity_id: sensor.changes_not_committed
