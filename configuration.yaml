@@ -3,6 +3,7 @@ homeassistant:
   name: Scarbrook
   customize: !include customize.yaml
   whitelist_external_dirs:
+    # required to check db size via sensor
     - /config
 
 
@@ -21,15 +22,13 @@ group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml
 
+light: !include configuration_lights.yaml
+sensor: !include configuration_sensors.yaml
+binary_sensor: !include configuration_bsensors.yaml
+
 # Enables the frontend
 frontend:
   themes: !include_dir_merge_named themes/
-
-alarm_control_panel:
-  - platform: manual
-    name: Home Alarm
-    code: !secret alarm_code
-    code_arm_required: false
 
 lovelace:
   mode: yaml
@@ -53,10 +52,17 @@ alexa_media:
     - email: !secret amazon_user
       password: !secret amazon_password
       url: amazon.co.uk
-      
+
 google:
   client_id: !secret google_calendar_api_clientid
   client_secret: !secret gogole_calendar_api_secret
+  
+alarm_control_panel:
+  - platform: manual
+    name: Home Alarm
+    code: !secret alarm_code
+    code_arm_required: false
+
 
 device_tracker:
   - platform: ping
@@ -64,229 +70,6 @@ device_tracker:
       maks: 192.168.2.126
       magduska: 192.168.2.247
       pc: 192.168.2.102
-
-light:
-  - platform: mqtt
-    name: "Living room lamp"
-    command_topic: "lights/livingroom/lamp/cmd/gpio/12"
-    state_topic: "lights/livingroom/lamp/relay/state"
-    payload_on: "1"
-    payload_off: "0"
-    qos: 2
-    retain: true
-  - platform: mqtt
-    name: "Tv light"
-    command_topic: "lights/livingroom/tvlight/cmd/gpio/12"
-    state_topic: "lights/livingroom/tvlight/relay/state"
-    payload_on: "1"
-    payload_off: "0"
-    qos: 2
-    retain: true
-  - platform: mqtt
-    name: "Desk light"
-    command_topic: "lights/bedroom/desk/cmd/gpio/12"
-    state_topic: "lights/bedroom/desk/relay/state"
-    payload_on: "1"
-    payload_off: "0"
-    qos: 2
-    retain: true
-  - platform: mqtt
-    name: "Bedroom light"
-    command_topic: "lights/bedroom/main/cmd/gpio/12"
-    state_topic: "lights/bedroom/main/relay/state"
-    payload_on: "1"
-    payload_off: "0"
-    qos: 2
-    retain: true
-  - platform: mqtt
-    name: "Master bedroom light"
-    command_topic: "lights/mbedroom/main/cmd/gpio/12"
-    state_topic: "lights/mbedroom/main/relay/state"
-    payload_on: "1"
-    payload_off: "0"
-    qos: 2
-    retain: true
-  - platform: mqtt
-    name: "Master bedroom night light"
-    command_topic: "lights/mbedroom/nightlight/cmd/gpio/12"
-    state_topic: "lights/mbedroom/nightlight/relay/state"
-    payload_on: "1"
-    payload_off: "0"
-    qos: 2
-    retain: true
-  - platform: mqtt
-    name: "Black night light"
-    command_topic: "lights/mbedroom/commode/cmd/gpio/12"
-    state_topic: "lights/mbedroom/commode/relay/state"
-    payload_on: "1"
-    payload_off: "0"
-    qos: 2
-    retain: true
-  - platform: mqtt
-    name: "Bathroom light"
-    command_topic: "lights/bathroom/main/cmd/gpio/12"
-    state_topic: "lights/bathroom/main/relay/state"
-    payload_on: "1"
-    payload_off: "0"
-    qos: 2
-    retain: true
-  - platform: mqtt
-    name: "Master bathroom light"
-    command_topic: "lights/mbathroom/main/cmd/gpio/12"
-    state_topic: "lights/mbathroom/main/relay/state"
-    payload_on: "1"
-    payload_off: "0"
-    qos: 2
-    retain: true
-
-  - platform: mqtt
-    name: "Living room lights"
-    command_topic: "shellies/shelly1-5B2D92/relay/0/command"
-    state_topic: "shellies/shelly1-5B2D92/relay/0"
-    payload_on: "on"
-    payload_off: "off"
-    qos: 2
-    retain: true
-  - platform: mqtt
-    name: "Kitchen lights"
-    command_topic: "shellies/shelly1-32A790/relay/0/command"
-    state_topic: "shellies/shelly1-32A790/relay/0"
-    payload_on: "on"
-    payload_off: "off"
-    qos: 2
-    retain: true
-  - platform: mqtt
-    name: "Kitchen worktop lights"
-    command_topic: "shellies/shelly1-5B3144/relay/0/command"
-    state_topic: "shellies/shelly1-5B3144/relay/0"
-    payload_on: "on"
-    payload_off: "off"
-    qos: 2
-    retain: true
-
-sensor:
-  - platform: mqtt
-    name: "Power"
-    icon: mdi:current-ac
-    state_topic: "sensor/utility/power"
-    value_template: "{{ value_json.value }}"
-    unit_of_measurement: "W"
-  - platform: mqtt
-    name: "Energy"
-    state_topic: "sensor/utility/energy"
-    icon: mdi:flash
-    unit_of_measurement: "Wh"
-    value_template: "{{ value_json.value | round(1) }}"
-  - platform: mqtt
-    name: "Living room temp"
-    state_topic: "sensor/livingroom/temp"
-    unit_of_measurement: "°C"
-    value_template: "{{ value_json.temperature.value }}"
-  - platform: mqtt
-    name: "Living room humidity"
-    icon: mdi:water-percent
-    state_topic: "sensor/livingroom/temp"
-    unit_of_measurement: "%"
-    value_template: "{{ value_json.humidity.value }}"
-  - platform: mqtt
-    name: "Bedroom temp"
-    state_topic: "sensor/bedroom/temp"
-    unit_of_measurement: "°C"
-    value_template: "{{ value_json.temperature.value }}"
-  - platform: mqtt
-    name: "Bedroom humidity"
-    icon: mdi:water-percent
-    state_topic: "sensor/bedroom/temp"
-    unit_of_measurement: "%"
-    value_template: "{{ value_json.humidity.value }}"
-  - platform: mqtt
-    name: "Master bed. temp"
-    state_topic: "sensor/mbedroom/temp"
-    unit_of_measurement: "°C"
-    value_template: "{{ value_json.temperature.value }}"
-  - platform: mqtt
-    name: "Master bed. humidity"
-    icon: mdi:water-percent
-    state_topic: "sensor/mbedroom/temp"
-    unit_of_measurement: "%"
-    value_template: "{{ value_json.humidity.value }}"
-  - platform: template
-    sensors:
-      pc_status:
-        icon_template: mdi:desktop-tower-monitor
-        friendly_name: "PC"
-        value_template: "{% if is_state('device_tracker.pc', 'home') %}On{% else %}Off{% endif %}"
-  - platform: filesize
-    file_paths:
-      - /config/home-assistant_v2.db
-  - platform: command_line
-    name: "Config last backup"
-    command: cd /config && git --no-pager log -n 1 --pretty=%cd --date=local origin/master
-    scan_interval: 60
-  - platform: command_line
-    name: "Changes not committed"
-    command: cd /config && git status -suno | wc -l
-    scan_interval: 60
-  - platform: command_line
-    name: "zzz"
-    command: id
-    scan_interval: 60
-
-binary_sensor:
-  - platform: mqtt
-    name: "Bathroom motion"
-    state_topic: "sensor/bathroom/motion"
-    payload_on: "On"
-    payload_off: "Off"
-    device_class: motion
-  - platform: mqtt
-    name: "Master bath. motion"
-    state_topic: "sensor/mbathroom/motion"
-    payload_on: "On"
-    payload_off: "Off"
-    device_class: motion
-  - platform: mqtt
-    name: "Corridor motion"
-    state_topic: "sensor/corridor/motion"
-    payload_on: "On"
-    payload_off: "Off"
-    device_class: motion
-  - platform: mqtt
-    name: "Bedroom motion"
-    state_topic: "sensor/bedroom/motion"
-    payload_on: "On"
-    payload_off: "Off"
-    device_class: motion
-  - platform: mqtt
-    name: "Master bed. motion"
-    state_topic: "sensor/mbedroom/motion"
-    payload_on: "On"
-    payload_off: "Off"
-    device_class: motion
-  - platform: mqtt
-    name: "Living room motion"
-    state_topic: "sensor/livingroom/motion"
-    payload_on: "On"
-    payload_off: "Off"
-    device_class: motion
-  - platform: mqtt
-    name: "Main doors"
-    state_topic: "sensor/corridor/door"
-    payload_on: "Opened"
-    payload_off: "Closed"
-    device_class: door
-  - platform: mqtt
-    name: "Bedroom balkony"
-    state_topic: "sensor/bedroom/balkony"
-    payload_on: "Opened"
-    payload_off: "Closed"
-    device_class: door
-  - platform: mqtt
-    name: "Living room balkony"
-    state_topic: "sensor/livingroom/balkony"
-    payload_on: "Opened"
-    payload_off: "Closed"
-    device_class: door
 
 camera:
   - platform: mjpeg
@@ -345,6 +128,9 @@ utility_meter:
   energy_monthly:
     source: sensor.energy
     cycle: monthly
+  energy_yearly:
+    source: sensor.energy
+    cycle: yearly
       
 shell_command:
   commit_config_files: cd /config && git add -A && git commit -m "`date`" && git push -u origin master

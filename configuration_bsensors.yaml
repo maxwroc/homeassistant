@@ -1,0 +1,54 @@
+- platform: mqtt
+  name: "Bathroom motion"
+  state_topic: "sensor/bathroom/motion"
+  payload_on: "On"
+  payload_off: "Off"
+  device_class: motion
+- platform: mqtt
+  name: "Master bath. motion"
+  state_topic: "sensor/mbathroom/motion"
+  payload_on: "On"
+  payload_off: "Off"
+  device_class: motion
+- platform: mqtt
+  name: "Corridor motion"
+  state_topic: "sensor/corridor/motion"
+  payload_on: "On"
+  payload_off: "Off"
+  device_class: motion
+- platform: mqtt
+  name: "Bedroom motion"
+  state_topic: "sensor/bedroom/motion"
+  payload_on: "On"
+  payload_off: "Off"
+  device_class: motion
+- platform: mqtt
+  name: "Master bed. motion"
+  state_topic: "sensor/mbedroom/motion"
+  payload_on: "On"
+  payload_off: "Off"
+  device_class: motion
+- platform: mqtt
+  name: "Living room motion"
+  state_topic: "sensor/livingroom/motion"
+  payload_on: "On"
+  payload_off: "Off"
+  device_class: motion
+- platform: mqtt
+  name: "Main doors"
+  state_topic: "sensor/corridor/door"
+  payload_on: "Opened"
+  payload_off: "Closed"
+  device_class: door
+- platform: mqtt
+  name: "Bedroom balkony"
+  state_topic: "sensor/bedroom/balkony"
+  payload_on: "Opened"
+  payload_off: "Closed"
+  device_class: door
+- platform: mqtt
+  name: "Living room balkony"
+  state_topic: "sensor/livingroom/balkony"
+  payload_on: "Opened"
+  payload_off: "Closed"
+  device_class: door

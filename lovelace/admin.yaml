@@ -15,6 +15,10 @@
       url: http://192.168.2.104:1880
       icon: mdi:hammer
     - type: weblink
+      name: "Grafana"
+      url: http://192.168.2.104:3000/d/R1BSsRkgk/scarbrook?orgId=1
+      icon: mdi:gauge
+    - type: weblink
       name: "BTSync"
       url: http://192.168.2.103:45454
       icon: mdi:sync
@@ -91,10 +95,20 @@
   show_header_toggle: false
   entities:
     - sensor.home_assistant_v2_db
-    - sensor.config_last_backup
-    - sensor.changes_not_committed
-- type: entity-button
-  entity: sensor.zzz
-  tap_action:
-    action: call-service
-    service: shell_command.commit_config_files
+- type: vertical-stack
+  title: Config changes
+  cards:
+  - type: entities
+    show_header_toggle: false
+    entities:
+      - sensor.config_last_backup
+      - sensor.changes_not_committed
+  - type: entity-button
+    entity: sensor.changes_not_committed
+    name: Commit config changes
+    icon: mdi:file-upload-outline
+    show_icon: false
+    show_name: true
+    tap_action:
+      action: call-service
+      service: shell_command.commit_config_files

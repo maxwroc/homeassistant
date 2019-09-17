@@ -1,0 +1,62 @@
+- platform: mqtt
+  name: "Power"
+  icon: mdi:current-ac
+  state_topic: "sensor/utility/power"
+  value_template: "{{ value_json.value }}"
+  unit_of_measurement: "W"
+- platform: mqtt
+  name: "Energy"
+  state_topic: "sensor/utility/energy"
+  icon: mdi:flash
+  unit_of_measurement: "Wh"
+  value_template: "{{ value_json.value | round(1) }}"
+- platform: mqtt
+  name: "Living room temp"
+  state_topic: "sensor/livingroom/temp"
+  unit_of_measurement: "°C"
+  value_template: "{{ value_json.temperature.value }}"
+- platform: mqtt
+  name: "Living room humidity"
+  icon: mdi:water-percent
+  state_topic: "sensor/livingroom/temp"
+  unit_of_measurement: "%"
+  value_template: "{{ value_json.humidity.value }}"
+- platform: mqtt
+  name: "Bedroom temp"
+  state_topic: "sensor/bedroom/temp"
+  unit_of_measurement: "°C"
+  value_template: "{{ value_json.temperature.value }}"
+- platform: mqtt
+  name: "Bedroom humidity"
+  icon: mdi:water-percent
+  state_topic: "sensor/bedroom/temp"
+  unit_of_measurement: "%"
+  value_template: "{{ value_json.humidity.value }}"
+- platform: mqtt
+  name: "Master bed. temp"
+  state_topic: "sensor/mbedroom/temp"
+  unit_of_measurement: "°C"
+  value_template: "{{ value_json.temperature.value }}"
+- platform: mqtt
+  name: "Master bed. humidity"
+  icon: mdi:water-percent
+  state_topic: "sensor/mbedroom/temp"
+  unit_of_measurement: "%"
+  value_template: "{{ value_json.humidity.value }}"
+- platform: template
+  sensors:
+    pc_status:
+      icon_template: mdi:desktop-tower-monitor
+      friendly_name: "PC"
+      value_template: "{% if is_state('device_tracker.pc', 'home') %}On{% else %}Off{% endif %}"
+- platform: filesize
+  file_paths:
+    - /config/home-assistant_v2.db
+- platform: command_line
+  name: "Config last backup"
+  command: cd /config && git --no-pager log -n 1 --pretty=%cd --date=local origin/master
+  scan_interval: 60
+- platform: command_line
+  name: "Changes not committed"
+  command: cd /config && git status -suno | wc -l
+  scan_interval: 60
