@@ -33,6 +33,20 @@ recorder:
       - sensor.changes_not_committed
       - sensor.config_last_backup
       - sensor.hacs
+      
+history:
+  include:
+    domains:
+      - binary_sensor
+      - device_tracker
+      - light
+      - sensor
+  exclude:
+    entities:
+      - binary_sensor.updater
+      - sensor.changes_not_committed
+      - sensor.config_last_backup
+      - sensor.hacs
 
 group: !include groups.yaml
 automation: !include automations.yaml
