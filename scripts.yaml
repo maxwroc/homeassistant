@@ -8,7 +8,7 @@ commit_configs:
       service: homeassistant.update_entity
       data:
         entity_id: sensor.config_last_backup
-    - alias: Update changes_not_committed sensor
+    - alias: Update files_changed_locally sensor
       service: homeassistant.update_entity
       data:
-        entity_id: sensor.changes_not_committed
+        entity_id: sensor.files_changed_locally
