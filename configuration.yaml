@@ -22,7 +22,7 @@ logbook:
 #person
 #script: # enabled later
 ssdp:
-#sun
+sun:
 system_health:
 updater:
 zeroconf:

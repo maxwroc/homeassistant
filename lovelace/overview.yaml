@@ -116,10 +116,10 @@
     - entity: sensor.energy_daily
   name: Energy consumption
   hours_to_show: 168
-  points_per_hour: 0.25
+  points_per_hour: 0.0417
   show:
     graph: bar
 
 - type: iframe
   url: http://192.168.2.104:3000/d-solo/R1BSsRkgk/scarbrook?orgId=1&panelId=2&refresh=1m
-  aspect_ratio: 44%
+  aspect_ratio: 60%
