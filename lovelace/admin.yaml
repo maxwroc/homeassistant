@@ -102,9 +102,9 @@
     show_header_toggle: false
     entities:
       - sensor.config_last_backup
-      - sensor.changes_not_committed
+      - sensor.files_changed_locally
   - type: entity-button
-    entity: sensor.changes_not_committed
+    entity: sensor.files_changed_locally
     name: Commit config changes
     icon: mdi:file-upload-outline
     show_icon: false
