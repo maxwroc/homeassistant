@@ -1,6 +1,6 @@
 commit_configs:
   alias: Commit and push configuration
-  description: 'Commits all config files (including new ones) and pushes them to Git repo.'
+  description: 'Commits all config files (including new ones) and pushes them to Git repo'
   sequence:
     - alias: Commit and push configs
       service: shell_command.commit_config_files
