@@ -8,6 +8,7 @@
     - type: entities
       entities:
         - sensor.power
+        - sensor.energy
         - sensor.energy_daily
         - device_tracker.maks
         - device_tracker.magduska
@@ -116,7 +117,8 @@
     - entity: sensor.energy_daily
   name: Energy consumption
   hours_to_show: 168
-  points_per_hour: 0.0417
+  points_per_hour: 0.0416666667
+  lower_bound: 0
   show:
     graph: bar
 

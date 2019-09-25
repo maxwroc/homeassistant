@@ -5,7 +5,7 @@ resources:
     type: module
   - url: /local/atomic_calendar.js
     type: module
-  - url: /local/mini-graph-card-bundle.js
+  - url: /local/mini-graph/dist/mini-graph-card-bundle.js
     type: module
 
 title: Home

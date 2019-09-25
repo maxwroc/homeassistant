@@ -46,38 +46,36 @@
             controls: true
             power: true
             source: true
-    - type: horizontal-stack
-      cards:
-        - type: custom:mini-media-player
-          entity: media_player.living_room_echo
-          info: short
-          artwork: cover
-          tts:
-            platform: alexa
-            entity_id: media_player.bedroom_dot
-            type: announce
-          hide:
-            mute: true
-            icon: true
-            power: true
-            source: true
-            progress: false
-            volume: true
-        - type: custom:mini-media-player
-          entity: media_player.living_room_television
-          info: short
-          artwork: cover
-          tts:
-            platform: alexa
-            entity_id: media_player.bedroom_dot
-            type: announce
-          hide:
-            mute: true
-            icon: true
-            power: true
-            source: true
-            progress: false
-            volume: true
+    - type: custom:mini-media-player
+      entity: media_player.living_room_echo
+      info: short
+      artwork: cover
+      tts:
+        platform: alexa
+        entity_id: media_player.living_room_echo
+        type: announce
+      hide:
+        mute: true
+        icon: true
+        power: true
+        source: true
+        progress: false
+        volume: true
+    - type: custom:mini-media-player
+      entity: media_player.living_room_television
+      info: short
+      artwork: cover
+      tts:
+        platform: alexa
+        entity_id: media_player.living_room_television
+        type: announce
+      hide:
+        mute: true
+        icon: true
+        power: true
+        source: true
+        progress: false
+        volume: true
     - type: horizontal-stack
       cards:
         - type: custom:mini-media-player
@@ -86,7 +84,7 @@
           artwork: full-cover
           tts:
             platform: alexa
-            entity_id: media_player.bedroom_dot
+            entity_id: media_player.kids_dot
             type: announce
           hide:
             mute: true
@@ -110,7 +108,7 @@
             source: true
             progress: false
             volume: true
-            
+
     - type: custom:mini-media-player
       entity: media_player.home_2
       info: short
