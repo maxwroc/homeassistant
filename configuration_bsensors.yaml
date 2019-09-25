@@ -43,7 +43,7 @@
   payload_off: "Off"
   device_class: motion
 
-#### Door/window sensors ####
+#### Door/window sensors #####
 
 - platform: mqtt
   name: "Main doors"
