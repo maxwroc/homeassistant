@@ -112,3 +112,12 @@
     tap_action:
       action: call-service
       service: script.commit_configs
+  - type: entity-button
+    entity: sensor.files_changed_locally
+    name: Store credentials
+    icon: mdi:file-upload-outline
+    show_icon: false
+    show_name: true
+    tap_action:
+      action: call-service
+      service: shell_command.store_creds
