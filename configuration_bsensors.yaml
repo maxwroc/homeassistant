@@ -4,43 +4,55 @@
 - platform: mqtt
   name: "Bathroom motion"
   state_topic: "sensor/bathroom/motion"
-  payload_on: "On"
-  payload_off: "Off"
+  json_attributes_topic: "sensor/bathroom/motion"
+  value_template: "{{ value_json.movement }}"
+  payload_on: true
+  payload_off: false
   device_class: motion
 
 - platform: mqtt
   name: "Master bath. motion"
   state_topic: "sensor/mbathroom/motion"
-  payload_on: "On"
-  payload_off: "Off"
+  json_attributes_topic: "sensor/mbathroom/motion"
+  value_template: "{{ value_json.movement }}"
+  payload_on: true
+  payload_off: false
   device_class: motion
 
 - platform: mqtt
   name: "Corridor motion"
   state_topic: "sensor/corridor/motion"
-  payload_on: "On"
-  payload_off: "Off"
+  json_attributes_topic: "sensor/corridor/motion"
+  value_template: "{{ value_json.movement }}"
+  payload_on: true
+  payload_off: false
   device_class: motion
 
 - platform: mqtt
   name: "Bedroom motion"
   state_topic: "sensor/bedroom/motion"
-  payload_on: "On"
-  payload_off: "Off"
+  json_attributes_topic: "sensor/bedroom/motion"
+  value_template: "{{ value_json.movement }}"
+  payload_on: true
+  payload_off: false
   device_class: motion
 
 - platform: mqtt
   name: "Master bed. motion"
   state_topic: "sensor/mbedroom/motion"
-  payload_on: "On"
-  payload_off: "Off"
+  json_attributes_topic: "sensor/mbedroom/motion"
+  value_template: "{{ value_json.movement }}"
+  payload_on: true
+  payload_off: false
   device_class: motion
 
 - platform: mqtt
   name: "Living room motion"
   state_topic: "sensor/livingroom/motion"
-  payload_on: "On"
-  payload_off: "Off"
+  json_attributes_topic: "sensor/livingroom/motion"
+  value_template: "{{ value_json.movement }}"
+  payload_on: true
+  payload_off: false
   device_class: motion
 
 #### Door/window sensors ####

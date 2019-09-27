@@ -80,20 +80,29 @@
   title: Movement sensors
   show_header_toggle: false
   entities:
-    - binary_sensor.bathroom_motion
-    - binary_sensor.bedroom_motion
-    - binary_sensor.corridor_motion
-    - binary_sensor.living_room_motion
-    - binary_sensor.master_bath_motion
-    - binary_sensor.master_bed_motion
-    
+    - entity: binary_sensor.bathroom_motion
+      secondary_info: last-changed
+    - entity: binary_sensor.bedroom_motion
+      secondary_info: last-changed
+    - entity: binary_sensor.corridor_motion
+      secondary_info: last-changed
+    - entity: binary_sensor.living_room_motion
+      secondary_info: last-changed
+    - entity: binary_sensor.master_bath_motion
+      secondary_info: last-changed
+    - entity: binary_sensor.master_bed_motion
+      secondary_info: last-changed
+
 - type: entities
   title: Door sensors
   show_header_toggle: false
   entities:
-    - binary_sensor.main_doors
-    - binary_sensor.bedroom_balkony
-    - binary_sensor.living_room_balkony
+    - entity: binary_sensor.main_doors
+      secondary_info: last-changed
+    - entity: binary_sensor.bedroom_balkony
+      secondary_info: last-changed
+    - entity: binary_sensor.living_room_balkony
+      secondary_info: last-changed
 - type: picture-entity
   title: Bedroom
   entity: camera.bedroom
@@ -102,6 +111,6 @@
   show_state: false
   tap_action:
     action: more-info
-  
+
 - type: alarm-panel
   entity: alarm_control_panel.home_alarm
