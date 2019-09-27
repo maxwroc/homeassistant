@@ -4,12 +4,14 @@
   state_topic: "sensor/utility/power"
   value_template: "{{ value_json.value }}"
   unit_of_measurement: "W"
+  
 - platform: mqtt
   name: "Energy"
   state_topic: "sensor/utility/energy"
+  json_attributes_topic: "sensor/utility/energy"
   icon: mdi:flash
   unit_of_measurement: "Wh"
-  value_template: "{{ value_json.value | round(1) }}"
+  value_template: "{{ value_json.energy.value | round(1) }}"
 
 - platform: mqtt
   name: "Living room temp"
