@@ -1,97 +1,116 @@
+
+#### Living room and kitchen
+
 - platform: mqtt
   name: "Living room lamp"
   command_topic: "lights/livingroom/lamp/cmd/gpio/12"
   state_topic: "lights/livingroom/lamp/relay/state"
+  json_attributes_topic: "lights/livingroom/lamp/attr"
   payload_on: "1"
   payload_off: "0"
-  qos: 2
   retain: true
+
 - platform: mqtt
   name: "Tv light"
   command_topic: "lights/livingroom/tvlight/cmd/gpio/12"
   state_topic: "lights/livingroom/tvlight/relay/state"
+  json_attributes_topic: "lights/livingroom/tvlight/attr"
   payload_on: "1"
   payload_off: "0"
-  qos: 2
-  retain: true
-- platform: mqtt
-  name: "Desk light"
-  command_topic: "lights/bedroom/desk/cmd/gpio/12"
-  state_topic: "lights/bedroom/desk/relay/state"
-  payload_on: "1"
-  payload_off: "0"
-  qos: 2
-  retain: true
-- platform: mqtt
-  name: "Bedroom light"
-  command_topic: "lights/bedroom/main/cmd/gpio/12"
-  state_topic: "lights/bedroom/main/relay/state"
-  payload_on: "1"
-  payload_off: "0"
-  qos: 2
-  retain: true
-- platform: mqtt
-  name: "Master bedroom light"
-  command_topic: "lights/mbedroom/main/cmd/gpio/12"
-  state_topic: "lights/mbedroom/main/relay/state"
-  payload_on: "1"
-  payload_off: "0"
-  qos: 2
-  retain: true
-- platform: mqtt
-  name: "Master bedroom night light"
-  command_topic: "lights/mbedroom/nightlight/cmd/gpio/12"
-  state_topic: "lights/mbedroom/nightlight/relay/state"
-  payload_on: "1"
-  payload_off: "0"
-  qos: 2
-  retain: true
-- platform: mqtt
-  name: "Black night light"
-  command_topic: "lights/mbedroom/commode/cmd/gpio/12"
-  state_topic: "lights/mbedroom/commode/relay/state"
-  payload_on: "1"
-  payload_off: "0"
-  qos: 2
-  retain: true
-- platform: mqtt
-  name: "Bathroom light"
-  command_topic: "lights/bathroom/main/cmd/gpio/12"
-  state_topic: "lights/bathroom/main/relay/state"
-  payload_on: "1"
-  payload_off: "0"
-  qos: 2
-  retain: true
-- platform: mqtt
-  name: "Master bathroom light"
-  command_topic: "lights/mbathroom/main/cmd/gpio/12"
-  state_topic: "lights/mbathroom/main/relay/state"
-  payload_on: "1"
-  payload_off: "0"
-  qos: 2
   retain: true
 
 - platform: mqtt
   name: "Living room lights"
   command_topic: "shellies/shelly1-5B2D92/relay/0/command"
   state_topic: "shellies/shelly1-5B2D92/relay/0"
+  json_attributes_topic: "lights/livingroom/main/attr"
   payload_on: "on"
   payload_off: "off"
-  qos: 2
   retain: true
+
 - platform: mqtt
   name: "Kitchen lights"
   command_topic: "shellies/shelly1-32A790/relay/0/command"
   state_topic: "shellies/shelly1-32A790/relay/0"
+  json_attributes_topic: "lights/kitchen/main/attr"
   payload_on: "on"
   payload_off: "off"
-  qos: 2
   retain: true
+
 - platform: mqtt
   name: "Kitchen worktop lights"
   command_topic: "shellies/shelly1-5B3144/relay/0/command"
   state_topic: "shellies/shelly1-5B3144/relay/0"
+  json_attributes_topic: "lights/kitchen/worktop/attr"
   payload_on: "on"
   payload_off: "off"
-  qos: 2
+  retain: true
+
+#### Master bedroom ####
+
+- platform: mqtt
+  name: "Master bedroom light"
+  command_topic: "lights/mbedroom/main/cmd/gpio/12"
+  state_topic: "lights/mbedroom/main/relay/state"
+  json_attributes_topic: "lights/mbedroom/main/attr"
+  payload_on: "1"
+  payload_off: "0"
+  retain: true
+
+- platform: mqtt
+  name: "Desk light"
+  command_topic: "lights/mbedroom/desk/cmd/gpio/12"
+  state_topic: "lights/mbedroom/desk/relay/state"
+  json_attributes_topic: "lights/mbedroom/desk/attr"
+  payload_on: "1"
+  payload_off: "0"
+  retain: true
+
+- platform: mqtt
+  name: "Master bedroom night light"
+  command_topic: "lights/mbedroom/nightlight/cmd/gpio/12"
+  state_topic: "lights/mbedroom/nightlight/relay/state"
+  json_attributes_topic: "lights/mbedroom/nightlight/attr"
+  payload_on: "1"
+  payload_off: "0"
+  retain: true
+
+#### Bedroom (kids) ####
+
+- platform: mqtt
+  name: "Bedroom light"
+  command_topic: "lights/bedroom/main/cmd/gpio/12"
+  state_topic: "lights/bedroom/main/relay/state"
+  json_attributes_topic: "lights/bedroom/main/attr"
+  payload_on: "1"
+  payload_off: "0"
+  retain: true
+
+- platform: mqtt
+  name: "Black night light"
+  command_topic: "lights/bedroom/commode/cmd/gpio/12"
+  state_topic: "lights/bedroom/commode/relay/state"
+  json_attributes_topic: "lights/bedroom/commode/attr"
+  payload_on: "1"
+  payload_off: "0"
+  retain: true
+
+#### Bathrooms ####
+
+- platform: mqtt
+  name: "Bathroom light"
+  command_topic: "lights/bathroom/main/cmd/gpio/12"
+  state_topic: "lights/bathroom/main/relay/state"
+  json_attributes_topic: "lights/bathroom/main/attr"
+  payload_on: "1"
+  payload_off: "0"
+  retain: true
+
+- platform: mqtt
+  name: "Master bathroom light"
+  command_topic: "lights/mbathroom/main/cmd/gpio/12"
+  state_topic: "lights/mbathroom/main/relay/state"
+  json_attributes_topic: "lights/mbathroom/main/attr"
+  payload_on: "1"
+  payload_off: "0"
   retain: true
