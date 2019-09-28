@@ -76,38 +76,36 @@
         source: true
         progress: false
         volume: true
-    - type: horizontal-stack
-      cards:
-        - type: custom:mini-media-player
-          entity: media_player.kids_dot
-          info: scroll
-          artwork: full-cover
-          tts:
-            platform: alexa
-            entity_id: media_player.kids_dot
-            type: announce
-          hide:
-            mute: true
-            icon: true
-            power: true
-            source: true
-            progress: false
-            volume: true
-        - type: custom:mini-media-player
-          entity: media_player.bedroom_dot
-          info: scroll
-          artwork: full-cover
-          tts:
-            platform: alexa
-            entity_id: media_player.bedroom_dot
-            type: announce
-          hide:
-            mute: true
-            icon: true
-            power: true
-            source: true
-            progress: false
-            volume: true
+    - type: custom:mini-media-player
+      entity: media_player.kids_dot
+      info: scroll
+      artwork: full-cover
+      tts:
+        platform: alexa
+        entity_id: media_player.kids_dot
+        type: announce
+      hide:
+        mute: true
+        icon: true
+        power: true
+        source: true
+        progress: false
+        volume: true
+    - type: custom:mini-media-player
+      entity: media_player.bedroom_dot
+      info: scroll
+      artwork: full-cover
+      tts:
+        platform: alexa
+        entity_id: media_player.bedroom_dot
+        type: announce
+      hide:
+        mute: true
+        icon: true
+        power: true
+        source: true
+        progress: false
+        volume: true
 
     - type: custom:mini-media-player
       entity: media_player.home_2
