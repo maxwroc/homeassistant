@@ -4,7 +4,7 @@
   state_topic: "sensor/utility/power"
   value_template: "{{ value_json.value }}"
   unit_of_measurement: "W"
-  
+
 - platform: mqtt
   name: "Energy"
   state_topic: "sensor/utility/energy"
@@ -16,8 +16,10 @@
 - platform: mqtt
   name: "Living room temp"
   state_topic: "sensor/livingroom/temp"
-  unit_of_measurement: "°C"
   value_template: "{{ value_json.temperature.value }}"
+  json_attributes_topic: "sensor/livingroom/temp"
+  json_attributes_template: "{{ value_json.status | tojson }}"
+  unit_of_measurement: "°C"
 - platform: mqtt
   name: "Living room humidity"
   icon: mdi:water-percent
@@ -28,8 +30,10 @@
 - platform: mqtt
   name: "Bedroom temp"
   state_topic: "sensor/bedroom/temp"
-  unit_of_measurement: "°C"
   value_template: "{{ value_json.temperature.value }}"
+  json_attributes_topic: "sensor/bedroom/temp"
+  json_attributes_template: "{{ value_json.status | tojson }}"
+  unit_of_measurement: "°C"
 - platform: mqtt
   name: "Bedroom humidity"
   icon: mdi:water-percent
@@ -40,8 +44,10 @@
 - platform: mqtt
   name: "Master bed. temp"
   state_topic: "sensor/mbedroom/temp"
-  unit_of_measurement: "°C"
   value_template: "{{ value_json.temperature.value }}"
+  json_attributes_topic: "sensor/mbedroom/temp"
+  json_attributes_template: "{{ value_json.status | tojson }}"
+  unit_of_measurement: "°C"
 - platform: mqtt
   name: "Master bed. humidity"
   icon: mdi:water-percent
@@ -52,8 +58,10 @@
 - platform: mqtt
   name: "Outside temp"
   state_topic: "sensor/outside/temp"
-  unit_of_measurement: "°C"
   value_template: "{{ value_json.temperature.value }}"
+  json_attributes_topic: "sensor/outside/temp"
+  json_attributes_template: "{{ value_json.status | tojson }}"
+  unit_of_measurement: "°C"
 - platform: mqtt
   name: "Outside humidity"
   icon: mdi:water-percent
