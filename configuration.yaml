@@ -48,8 +48,10 @@ recorder:
   exclude:
     entities:
       - binary_sensor.updater
-      - sensor.changes_not_committed
+      - sensor.files_changed_locally
+      - sensor.files_changed_locally_template
       - sensor.config_last_backup
+      - sensor.config_last_backup_template
       - sensor.hacs
 
 history:
@@ -62,8 +64,10 @@ history:
   exclude:
     entities:
       - binary_sensor.updater
-      - sensor.changes_not_committed
+      - sensor.files_changed_locally
+      - sensor.files_changed_locally_template
       - sensor.config_last_backup
+      - sensor.config_last_backup_template
       - sensor.hacs
 
 group: !include groups.yaml
