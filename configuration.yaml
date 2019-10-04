@@ -44,15 +44,26 @@ recorder:
       - binary_sensor
       - device_tracker
       - light
-      - sensor
+    entities:
+      - alarm_control_panel.home_alarm
+      - sensor.bedroom_humidity
+      - sensor.bedroom_temp
+      - sensor.cpu_temperature
+      - sensor.energy_daily
+      - sensor.energy_monthly
+      - sensor.energy_yearly
+      - sensor.home_assistant_v2_db
+      - sensor.living_room_humidity
+      - sensor.living_room_temp
+      - sensor.master_bed_humidity
+      - sensor.master_bed_temp
+      - sensor.outside_humidity
+      - sensor.outside_temp
+      - sensor.pc_status
+      - sensor.power
   exclude:
     entities:
       - binary_sensor.updater
-      - sensor.files_changed_locally
-      - sensor.files_changed_locally_template
-      - sensor.config_last_backup
-      - sensor.config_last_backup_template
-      - sensor.hacs
 
 history:
   include:
@@ -60,15 +71,26 @@ history:
       - binary_sensor
       - device_tracker
       - light
-      - sensor
+    entities:
+      - alarm_control_panel.home_alarm
+      - sensor.bedroom_humidity
+      - sensor.bedroom_temp
+      - sensor.cpu_temperature
+      - sensor.energy_daily
+      - sensor.energy_monthly
+      - sensor.energy_yearly
+      - sensor.home_assistant_v2_db
+      - sensor.living_room_humidity
+      - sensor.living_room_temp
+      - sensor.master_bed_humidity
+      - sensor.master_bed_temp
+      - sensor.outside_humidity
+      - sensor.outside_temp
+      - sensor.pc_status
+      - sensor.power
   exclude:
     entities:
       - binary_sensor.updater
-      - sensor.files_changed_locally
-      - sensor.files_changed_locally_template
-      - sensor.config_last_backup
-      - sensor.config_last_backup_template
-      - sensor.hacs
 
 group: !include groups.yaml
 automation: !include automations.yaml
