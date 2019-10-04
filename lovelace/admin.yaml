@@ -96,6 +96,7 @@
   entities:
     - sensor.home_assistant_v2_db
     - sensor.cpu_temperature
+    - sensor.time_online
 - type: vertical-stack
   cards:
   - type: entities
