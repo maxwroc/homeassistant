@@ -1,11 +1,11 @@
 resources:
+  - url: /community_plugin/mini-graph-card/mini-graph-card-bundle.js
+    type: module
   - url: /community_plugin/mini-media-player/mini-media-player-bundle.js
     type: module
   - url: /community_plugin/weather-card/weather-card.js
     type: module
   - url: /local/atomic_calendar.js
-    type: module
-  - url: /local/mini-graph/dist/mini-graph-card-bundle.js
     type: module
 
 title: Home

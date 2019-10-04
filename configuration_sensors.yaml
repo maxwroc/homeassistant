@@ -84,7 +84,14 @@
   name: "Config last backup"
   command: cd /config && git --no-pager log -n 1 --pretty=%cd --date=local origin/master
   scan_interval: 60
+  
 - platform: command_line
   name: "Files changed locally"
   command: cd /config && git status -suno | wc -l
   scan_interval: 60
+
+- platform: command_line
+  name: CPU Temperature
+  command: "cat /sys/class/thermal/thermal_zone0/temp"
+  unit_of_measurement: "°C"
+  value_template: '{{ value | multiply(0.001) | round(1) }}'

@@ -95,6 +95,7 @@
   show_header_toggle: false
   entities:
     - sensor.home_assistant_v2_db
+    - sensor.cpu_temperature
 - type: vertical-stack
   cards:
   - type: entities
@@ -103,21 +104,23 @@
     entities:
       - sensor.config_last_backup
       - sensor.files_changed_locally
-  - type: entity-button
-    entity: sensor.files_changed_locally
-    name: Commit config changes
-    icon: mdi:file-upload-outline
-    show_icon: false
-    show_name: true
-    tap_action:
-      action: call-service
-      service: script.commit_configs
-  - type: entity-button
-    entity: sensor.files_changed_locally
-    name: Store credentials
-    icon: mdi:file-upload-outline
-    show_icon: false
-    show_name: true
-    tap_action:
-      action: call-service
-      service: shell_command.store_creds
+  - type: horizontal-stack
+    cards:
+    - type: entity-button
+      entity: sensor.files_changed_locally
+      name: Store credentials
+      icon: mdi:file-upload-outline
+      show_icon: false
+      show_name: true
+      tap_action:
+        action: call-service
+        service: shell_command.store_creds
+    - type: entity-button
+      entity: sensor.files_changed_locally
+      name: Commit config changes
+      icon: mdi:file-upload-outline
+      show_icon: false
+      show_name: true
+      tap_action:
+        action: call-service
+        service: script.commit_configs
