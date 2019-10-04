@@ -125,3 +125,7 @@
       tap_action:
         action: call-service
         service: script.commit_configs
+
+- type: iframe
+  url: http://192.168.2.104:8085/sources/0/dashboards/1?lower=now%28%29%20-%2024h&present=true
+  aspect_ratio: 136%
