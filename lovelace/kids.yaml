@@ -1,0 +1,48 @@
+
+- type: vertical-stack
+  cards:
+
+    - type: picture-entity
+      title: Bedroom
+      entity: camera.bedroom
+      camera_image: camera.bedroom
+      show_info: true
+      show_state: false
+      tap_action:
+        action: more-info
+
+    - type: custom:mini-media-player
+      entity: media_player.kids_dot
+      info: scroll
+      artwork: cover
+      tts:
+        platform: alexa
+        entity_id: media_player.kids_dot
+        type: announce
+      hide:
+        mute: true
+        icon: true
+        power: true
+        source: true
+        progress: false
+        volume: false
+
+- type: vertical-stack
+  cards:
+
+    - type: entities
+      title: Kids room
+      show_header_toggle: true
+      entities:
+        - light.bedroom_light
+        - light.black_night_light
+        - sensor.bedroom_temp
+        - sensor.bedroom_humidity
+        - binary_sensor.bedroom_motion
+        - binary_sensor.bedroom_balkony
+
+    - type: history-graph
+      title: 'Temperature'
+      refresh_interval: 30
+      entities:
+        - sensor.bedroom_temp

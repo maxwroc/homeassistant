@@ -1,26 +1,41 @@
 - type: vertical-stack
   cards:
+
     - type: custom:weather-card
       entity: weather.scarbrook
       current: true
       details: true
       forecast: true
+
+    - type: "custom:atomic-calendar"
+      title: "Calendar"
+      defaultMode: 2
+      enableModeChange: true
+      CalEventIcon2Color: #e19cff
+      entities:
+      - entity: calendar.wydazenia
+        color: red
+        type: holiday
+      - entity: calendar.school
+        color: purple
+        type: icon2
+      - entity: calendar.urodziny_i_imieniny
+        color: green
+        type: icon3
+      showColors: true
+      maxDaysToShow: 14
+
     - type: entities
       entities:
         - sensor.power
-        - sensor.energy
         - sensor.energy_daily
         - device_tracker.maks
         - device_tracker.magduska
         - sensor.pc_status
-    - type: history-graph
-      title: 'Power'
-      refresh_interval: 30
-      entities:
-        - sensor.power
 
 - type: vertical-stack
   cards:
+
     - type: history-graph
       title: 'Temperature'
       refresh_interval: 30
@@ -29,26 +44,20 @@
         - sensor.bedroom_temp
         - sensor.master_bed_temp
         - sensor.outside_temp
-    - type: picture-entity
-      title: Bedroom
-      entity: camera.bedroom
-      camera_image: camera.bedroom
-      show_info: true
-      show_state: false
-      tap_action:
-        action: more-info
-    - type: entities
-      title: Kids room
-      show_header_toggle: true
+
+    - type: history-graph
+      title: 'Power'
+      refresh_interval: 30
       entities:
-        - light.bedroom_light
-        - light.black_night_light
-        - sensor.bedroom_temp
-        - sensor.bedroom_humidity
-        - binary_sensor.bedroom_motion
+        - sensor.power
+
+    - type: iframe
+      url: http://192.168.2.104:8085/sources/0/dashboards/2?lower=now%28%29%20-%2015m&present=true
+      aspect_ratio: 56%
 
 - type: vertical-stack
   cards:
+
     - type: entities
       title: Living room
       show_header_toggle: true
@@ -61,6 +70,17 @@
         - sensor.living_room_temp
         - sensor.living_room_humidity
         - binary_sensor.living_room_motion
+
+    - type: entities
+      title: Kids room
+      show_header_toggle: true
+      entities:
+        - light.bedroom_light
+        - light.black_night_light
+        - sensor.bedroom_temp
+        - sensor.bedroom_humidity
+        - binary_sensor.bedroom_motion
+
     - type: entities
       title: Master bedroom
       show_header_toggle: true
@@ -71,6 +91,7 @@
         - sensor.master_bed_temp
         - sensor.master_bed_humidity
         - binary_sensor.master_bed_motion
+
     - type: entities
       title: Master bathroom
       show_header_toggle: true
@@ -78,38 +99,21 @@
         - light.master_bathroom_light
         - binary_sensor.master_bath_motion
 
+    - type: entities
+      title: Bathroom
+      show_header_toggle: true
+      entities:
+        - light.bathroom_light
+        - binary_sensor.bathroom_motion
 
 - type: entities
-  title: Bathroom
-  show_header_toggle: true
-  entities:
-    - light.bathroom_light
-    - binary_sensor.bathroom_motion
-- type: entities
   title: Corridor
-  show_header_toggle: true
+  show_header_toggle: false
   entities:
     - binary_sensor.main_doors
     - binary_sensor.corridor_motion
 
 
-- type: "custom:atomic-calendar"
-  title: "Calendar"
-  defaultMode: 2
-  enableModeChange: true
-  CalEventIcon2Color: #e19cff
-  entities:
-  - entity: calendar.wydazenia
-    color: red
-    type: holiday
-  - entity: calendar.school
-    color: purple
-    type: icon2
-  - entity: calendar.urodziny_i_imieniny
-    color: green
-    type: icon3
-  showColors: true
-  maxDaysToShow: 14
 
 
 - type: custom:mini-graph-card
@@ -121,7 +125,3 @@
   lower_bound: 0
   show:
     graph: bar
-
-- type: iframe
-  url: http://192.168.2.104:8085/sources/0/dashboards/2?lower=now%28%29%20-%2015m&present=true
-  aspect_ratio: 56%

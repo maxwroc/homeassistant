@@ -13,9 +13,11 @@ views:
   - title: Home
     icon: mdi:home
     cards: !include lovelace/overview.yaml
-  - title: Floor plan
-    panel: true
-    cards: !include lovelace/floorplan.yaml
+  - title: Kids
+    cards: !include lovelace/kids.yaml
+#  - title: Floor plan
+#    panel: true
+#    cards: !include lovelace/floorplan.yaml
   - title: Media
     cards: !include lovelace/media.yaml
   - title: Security
