@@ -123,5 +123,5 @@
     graph: bar
 
 - type: iframe
-  url: http://192.168.2.104:3000/d-solo/R1BSsRkgk/scarbrook?orgId=1&panelId=2&refresh=1m
-  aspect_ratio: 60%
+  url: http://192.168.2.104:8085/sources/0/dashboards/2?lower=now%28%29%20-%2015m&present=true
+  aspect_ratio: 56%
