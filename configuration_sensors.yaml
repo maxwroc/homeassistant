@@ -107,5 +107,6 @@
       friendly_name: "Files changed locally"
       value_template: "{{states('sensor.files_changed_locally')}}"
     energy_daily_template:
+      icon_template: mdi:counter
       friendly_name: "Energy consumption today"
       value_template: "{{states('sensor.energy_daily')}}"
