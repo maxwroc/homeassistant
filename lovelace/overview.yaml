@@ -28,7 +28,7 @@
     - type: entities
       entities:
         - sensor.power
-        - sensor.energy_daily
+        - sensor.energy_daily_template
         - device_tracker.maks
         - device_tracker.magduska
         - sensor.pc_status

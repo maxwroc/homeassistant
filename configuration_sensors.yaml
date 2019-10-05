@@ -72,7 +72,7 @@
 - platform: filesize
   file_paths:
     - /config/home-assistant_v2.db
-    
+
 - platform: uptime
   name: Time online
 
@@ -80,7 +80,7 @@
   name: "Config last backup"
   command: cd /config && git --no-pager log -n 1 --pretty=%cd --date=local origin/master
   scan_interval: 60
-  
+
 - platform: command_line
   name: "Files changed locally"
   command: cd /config && git status -suno | wc -l
@@ -106,3 +106,6 @@
       icon_template: mdi:file-star
       friendly_name: "Files changed locally"
       value_template: "{{states('sensor.files_changed_locally')}}"
+    energy_daily_template:
+      friendly_name: "Energy consumption today"
+      value_template: "{{states('sensor.energy_daily')}}"
