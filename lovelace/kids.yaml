@@ -26,6 +26,7 @@
         source: true
         progress: false
         volume: false
+        runtime: false
 
 - type: vertical-stack
   cards:
