@@ -108,5 +108,6 @@
       value_template: "{{states('sensor.files_changed_locally')}}"
     energy_daily_template:
       icon_template: mdi:counter
-      friendly_name: "Energy consumption today"
-      value_template: "{{states('sensor.energy_daily')}}"
+      friendly_name: "Energy today"
+      value_template: "{{ states('sensor.energy_daily') | multiply(0.001) | round(2) }}"
+      unit_of_measurement: "kWh"
