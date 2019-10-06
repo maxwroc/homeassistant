@@ -130,18 +130,38 @@
   title: Battery levels
   show_header_toggle: false
   entities:
-    - sensor.livingroom_thsensor_battery
-    - sensor.bedroom_thsensor_battery
-    - sensor.mbedroom_thsensor_battery
-    - sensor.outside_thsensor_battery
-    - sensor.main_doorsensor_battery
-    - sensor.livingroom_doorsensor_battery
-    - sensor.bedroom_doorsensor_battery
-    - sensor.livingroom_motion_battery
-    - sensor.bedroom_motion_battery
-    - sensor.corridor_motion_battery
-    - sensor.bathroom_motion_battery
-    - sensor.energy_sensor_battery
+    # Temp sensors
+    - entity: sensor.living_room_temp
+      type: custom:battery-entity
+    - entity: sensor.bedroom_temp
+      type: custom:battery-entity
+    - entity: sensor.master_bed_temp
+      type: custom:battery-entity
+    - entity: sensor.outside_temp
+      type: custom:battery-entity
+    # Door sensors
+    - entity: binary_sensor.main_doors
+      type: custom:battery-entity
+    - entity: binary_sensor.living_room_balkony
+      type: custom:battery-entity
+    - entity: binary_sensor.bedroom_balkony
+      type: custom:battery-entity
+    # Motion sensors
+    - entity: binary_sensor.living_room_motion
+      type: custom:battery-entity
+    - entity: binary_sensor.bedroom_motion
+      type: custom:battery-entity
+    - entity: binary_sensor.bathroom_motion
+      type: custom:battery-entity
+    - entity: binary_sensor.master_bed_motion
+      type: custom:battery-entity
+    - entity: binary_sensor.master_bath_motion
+      type: custom:battery-entity
+    - entity: binary_sensor.corridor_motion
+      type: custom:battery-entity
+    # Other sensors
+    - entity: sensor.energy
+      type: custom:battery-entity
 
 - type: iframe
   url: http://192.168.2.104:8085/sources/0/dashboards/1?lower=now%28%29%20-%2024h&present=true
