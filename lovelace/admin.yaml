@@ -126,6 +126,13 @@
         action: call-service
         service: script.commit_configs
 
+- type: entities
+  title: Battery levels
+  show_header_toggle: false
+  entities:
+    - sensor.livingroom_thsensor_battery
+    - sensor.bedroom_thsensor_battery
+
 - type: iframe
   url: http://192.168.2.104:8085/sources/0/dashboards/1?lower=now%28%29%20-%2024h&present=true
   aspect_ratio: 136%

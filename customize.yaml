@@ -13,9 +13,3 @@ sensor.config_last_backup:
 sensor.pc_status:
   templates:
     rgb_color: "if (state === 'On') return [251, 210, 41]; else return [54, 95, 140];"
-
-
-
-sensor.changes_not_committed:
-  templates:
-    rgb_color: "if (state === '0') return [0, 255, 0]; else return [255, 0, 0];"
