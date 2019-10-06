@@ -104,9 +104,13 @@
       friendly_name: "PC"
       value_template: "{% if is_state('device_tracker.pc', 'home') %}On{% else %}Off{% endif %}"
 
+#### Battery status - start ####
+
+# T/H sensors
+
     livingroom_thsensor_battery:
       icon_template: >-
-          {% if state_attr('sensor.living_room_temp', 'battery')|int < 20 %}
+          {% if state_attr('sensor.living_room_temp', 'battery') | int < 20 %}
             mdi:battery-alert-variant-outline
           {% else %}
             mdi:battery
@@ -116,7 +120,130 @@
       unit_of_measurement: "%"
 
     bedroom_thsensor_battery:
-      icon_template: "{% if state_attr('sensor.bedroom_temp', 'battery')|int > 20 %}mdi:battery{% else %}mdi:battery-alert-variant-outline{% endif %}"
+      icon_template: >-
+          {% if state_attr('sensor.bedroom_temp', 'battery') | int < 20 %}
+            mdi:battery-alert-variant-outline
+          {% else %}
+            mdi:battery
+          {% endif %}
       friendly_name: "Bedroom T/H sensor"
       value_template: "{{ state_attr('sensor.bedroom_temp', 'battery') }}"
       unit_of_measurement: "%"
+
+    mbedroom_thsensor_battery:
+      icon_template: >-
+          {% if state_attr('sensor.master_bed_temp', 'battery') | int < 20 %}
+            mdi:battery-alert-variant-outline
+          {% else %}
+            mdi:battery
+          {% endif %}
+      friendly_name: "Master bed. T/H sensor"
+      value_template: "{{ state_attr('sensor.master_bed_temp', 'battery') }}"
+      unit_of_measurement: "%"
+
+    outside_thsensor_battery:
+      icon_template: >-
+          {% if state_attr('sensor.outside_temp', 'battery') | int < 20 %}
+            mdi:battery-alert-variant-outline
+          {% else %}
+            mdi:battery
+          {% endif %}
+      friendly_name: "Outside T/H sensor"
+      value_template: "{{ state_attr('sensor.outside_temp', 'battery') }}"
+      unit_of_measurement: "%"
+
+# Door sensors
+
+    main_doorsensor_battery:
+      icon_template: >-
+          {% if state_attr('binary_sensor.main_doors', 'battery') | int < 20 %}
+            mdi:battery-alert-variant-outline
+          {% else %}
+            mdi:battery
+          {% endif %}
+      friendly_name: "Corridor main door sensor"
+      value_template: "{{ state_attr('binary_sensor.main_doors', 'battery') }}"
+      unit_of_measurement: "%"
+
+    bedroom_doorsensor_battery:
+      icon_template: >-
+          {% if state_attr('binary_sensor.bedroom_balkony', 'battery') | int < 20 %}
+            mdi:battery-alert-variant-outline
+          {% else %}
+            mdi:battery
+          {% endif %}
+      friendly_name: "Bedroom balkony door sensor"
+      value_template: "{{ state_attr('binary_sensor.bedroom_balkony', 'battery') }}"
+      unit_of_measurement: "%"
+
+    livingroom_doorsensor_battery:
+      icon_template: >-
+          {% if state_attr('binary_sensor.living_room_balkony', 'battery') | int < 20 %}
+            mdi:battery-alert-variant-outline
+          {% else %}
+            mdi:battery
+          {% endif %}
+      friendly_name: "Living room balkony door sensor"
+      value_template: "{{ state_attr('binary_sensor.living_room_balkony', 'battery') }}"
+      unit_of_measurement: "%"
+
+# Motion sensors
+
+    livingroom_motion_battery:
+      icon_template: >-
+          {% if state_attr('binary_sensor.living_room_motion', 'battery') | int < 20 %}
+            mdi:battery-alert-variant-outline
+          {% else %}
+            mdi:battery
+          {% endif %}
+      friendly_name: "Living room motion sensor"
+      value_template: "{{ state_attr('binary_sensor.living_room_motion', 'battery') }}"
+      unit_of_measurement: "%"
+
+    bedroom_motion_battery:
+      icon_template: >-
+          {% if state_attr('binary_sensor.bedroom_motion', 'battery') | int < 20 %}
+            mdi:battery-alert-variant-outline
+          {% else %}
+            mdi:battery
+          {% endif %}
+      friendly_name: "Bedroom motion sensor"
+      value_template: "{{ state_attr('binary_sensor.bedroom_motion', 'battery') }}"
+      unit_of_measurement: "%"
+
+    corridor_motion_battery:
+      icon_template: >-
+          {% if state_attr('binary_sensor.corridor_motion', 'battery') | int < 20 %}
+            mdi:battery-alert-variant-outline
+          {% else %}
+            mdi:battery
+          {% endif %}
+      friendly_name: "Corridor motion sensor"
+      value_template: "{{ state_attr('binary_sensor.corridor_motion', 'battery') }}"
+      unit_of_measurement: "%"
+
+    bathroom_motion_battery:
+      icon_template: >-
+          {% if state_attr('binary_sensor.bathroom_motion', 'battery') | int < 20 %}
+            mdi:battery-alert-variant-outline
+          {% else %}
+            mdi:battery
+          {% endif %}
+      friendly_name: "Bathroom motion sensor"
+      value_template: "{{ state_attr('binary_sensor.bathroom_motion', 'battery') }}"
+      unit_of_measurement: "%"
+      
+# Other
+
+    energy_sensor_battery:
+      icon_template: >-
+          {% if state_attr('sensor.energy', 'battery') | int < 20 %}
+            mdi:battery-alert-variant-outline
+          {% else %}
+            mdi:battery
+          {% endif %}
+      friendly_name: "Energy sensor"
+      value_template: "{{ state_attr('sensor.energy', 'battery') }}"
+      unit_of_measurement: "%"
+
+#### Battery status - end ####

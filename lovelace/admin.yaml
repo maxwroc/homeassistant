@@ -132,6 +132,16 @@
   entities:
     - sensor.livingroom_thsensor_battery
     - sensor.bedroom_thsensor_battery
+    - sensor.mbedroom_thsensor_battery
+    - sensor.outside_thsensor_battery
+    - sensor.main_doorsensor_battery
+    - sensor.livingroom_doorsensor_battery
+    - sensor.bedroom_doorsensor_battery
+    - sensor.livingroom_motion_battery
+    - sensor.bedroom_motion_battery
+    - sensor.corridor_motion_battery
+    - sensor.bathroom_motion_battery
+    - sensor.energy_sensor_battery
 
 - type: iframe
   url: http://192.168.2.104:8085/sources/0/dashboards/1?lower=now%28%29%20-%2024h&present=true
