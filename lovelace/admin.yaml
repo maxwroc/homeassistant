@@ -164,5 +164,6 @@
       type: custom:battery-entity
 
 - type: iframe
-  url: http://192.168.2.104:8085/sources/0/dashboards/1?lower=now%28%29%20-%2024h&present=true
+  #url: http://192.168.2.104:8085/sources/0/dashboards/1?lower=now%28%29%20-%2024h&present=true
+  url: http://192.168.2.104:8123/api/hassio_ingress/J469DFzDQ4mVGagrfD7Q3MLGSCpwcfVxqhhOO2PY4kI/sources/0/dashboards/1?lower=now%28%29%20-%2024h&present=true
   aspect_ratio: 136%
