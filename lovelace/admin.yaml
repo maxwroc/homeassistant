@@ -94,6 +94,7 @@
   title: Stats
   show_header_toggle: false
   entities:
+    - sensor.energy_rpi_monthly
     - sensor.home_assistant_v2_db
     - sensor.cpu_temperature
     - sensor.time_online

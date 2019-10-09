@@ -54,6 +54,7 @@ recorder:
       - sensor.energy_daily
       - sensor.energy_monthly
       - sensor.energy_yearly
+      - sensor.energy_rpi_monthly
       - sensor.home_assistant_v2_db
       - sensor.living_room_humidity
       - sensor.living_room_temp
@@ -81,6 +82,42 @@ history:
       - sensor.energy_daily
       - sensor.energy_monthly
       - sensor.energy_yearly
+      - sensor.energy_rpi_monthly
+      - sensor.home_assistant_v2_db
+      - sensor.living_room_humidity
+      - sensor.living_room_temp
+      - sensor.master_bed_humidity
+      - sensor.master_bed_temp
+      - sensor.outside_humidity
+      - sensor.outside_temp
+      - sensor.pc_status
+      - sensor.power
+  exclude:
+    entities:
+      - binary_sensor.updater
+
+influxdb:
+  host: a0d7b954-influxdb
+  port: 8086
+  database: homeassistant
+  username: !secret influxdb_user
+  password: !secret influxdb_pass
+  max_retries: 3
+  default_measurement: state
+  include:
+    domains:
+      - binary_sensor
+      - device_tracker
+      - light
+    entities:
+      - alarm_control_panel.home_alarm
+      - sensor.bedroom_humidity
+      - sensor.bedroom_temp
+      - sensor.cpu_temperature
+      - sensor.energy_daily
+      - sensor.energy_monthly
+      - sensor.energy_yearly
+      - sensor.energy_rpi_monthly
       - sensor.home_assistant_v2_db
       - sensor.living_room_humidity
       - sensor.living_room_temp
@@ -108,15 +145,6 @@ frontend:
 
 lovelace:
   mode: yaml
-
-influxdb:
-  host: a0d7b954-influxdb
-  port: 8086
-  database: homeassistant
-  username: !secret influxdb_user
-  password: !secret influxdb_pass
-  max_retries: 3
-  default_measurement: state
 
 hacs:
   token: !secret hacs_token
@@ -207,6 +235,9 @@ utility_meter:
   energy_yearly:
     source: sensor.energy
     cycle: yearly
+  energy_rpi_monthly:
+    source: sensor.rpi_energy
+    cycle: monthly
 
 shell_command:
   commit_config_files: cd /config && git add -A && git commit -m "`date`" && git push -u origin master

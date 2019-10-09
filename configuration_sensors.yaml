@@ -12,6 +12,14 @@
   icon: mdi:flash
   unit_of_measurement: "Wh"
   value_template: "{{ value_json.energy.value | round(1) }}"
+  
+- platform: mqtt
+  name: "RPi energy"
+  state_topic: "sensor/raspberrypi/energy"
+  json_attributes_topic: "sensor/raspberrypi/energy"
+  icon: mdi:flash
+  unit_of_measurement: "Wh"
+  value_template: "{{ value_json.energy.value }}"
 
 - platform: mqtt
   name: "Living room temp"

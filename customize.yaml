@@ -1,7 +1,9 @@
 sensor.energy_daily:
   friendly_name: Energy today
 
-
+sensor.energy_rpi_monthly:
+  friendly_name: RPi energy monthly
+  
 sensor.files_changed_locally:
   icon: mdi:file-star
   friendly_name: "Files changed locally"
