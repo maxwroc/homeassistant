@@ -51,6 +51,9 @@ recorder:
       - sensor.bedroom_humidity
       - sensor.bedroom_temp
       - sensor.cpu_temperature
+      - sensor.processor_use
+      - sensor.memory_use_percent
+      - sensor.disk_use_percent
       - sensor.energy_daily
       - sensor.energy_monthly
       - sensor.energy_yearly
@@ -79,6 +82,9 @@ history:
       - sensor.bedroom_humidity
       - sensor.bedroom_temp
       - sensor.cpu_temperature
+      - sensor.processor_use
+      - sensor.memory_use_percent
+      - sensor.disk_use_percent
       - sensor.energy_daily
       - sensor.energy_monthly
       - sensor.energy_yearly
@@ -136,7 +142,7 @@ automation: !include automations.yaml
 script: !include scripts.yaml
 
 light: !include configuration_lights.yaml
-sensor: !include configuration_sensors.yaml
+sensor: !include_dir_merge_list sensors
 binary_sensor: !include configuration_bsensors.yaml
 
 # Enables the frontend

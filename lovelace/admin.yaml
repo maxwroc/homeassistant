@@ -1,170 +1,215 @@
-- type: entities
-  title: Tools
-  show_header_toggle: false
-  entities:
-    - type: weblink
-      name: "IDE"
-      url: http://192.168.2.104:8321/ide.html
-      icon: mdi:file-document-edit-outline
-    - type: weblink
-      name: "Router"
-      url: http://192.168.2.1
-      icon: mdi:router-wireless
-    - type: weblink
-      name: "Node Red"
-      url: http://192.168.2.104:1880
-      icon: mdi:hammer
-    - type: weblink
-      name: "Grafana"
-      url: http://192.168.2.104:3000/d/R1BSsRkgk/scarbrook?orgId=1
-      icon: mdi:gauge
-    - type: weblink
-      name: "BTSync"
-      url: http://192.168.2.103:45454
-      icon: mdi:sync
-    - type: weblink
-      name: "BTSync - RaspWroc"
-      url: http://raspwroc:45454
-      icon: mdi:sync
-    - type: weblink
-      name: "Deluge"
-      url: http://192.168.2.103:8112
-      icon: mdi:cloud-download
-- type: entities
-  title: Sonoff touch
-  show_header_toggle: false
-  entities:
-    - type: weblink
-      name: "Sonoff Touch: Bedroom"
-      url: http://192.168.4.251
-      icon: mdi:doorbell-video
-    - type: weblink
-      name: "Sonoff Touch: Bathroom"
-      url: http://192.168.4.250
-      icon: mdi:doorbell-video
-    - type: weblink
-      name: "Sonoff Touch: Master bathroom"
-      url: http://192.168.4.252
-      icon: mdi:doorbell-video
-    - type: weblink
-      name: "Sonoff Touch: Master bedroom"
-      url: http://192.168.4.249
-      icon: mdi:doorbell-video
-- type: entities
-  title: Sonoff socket
-  show_header_toggle: false
-  entities:
-    - type: weblink
-      name: "Tv light"
-      url: http://192.168.4.247
-      icon: mdi:power-socket-uk
-    - type: weblink
-      name: "Living room lamp"
-      url: http://192.168.4.246
-      icon: mdi:power-socket-uk
-    - type: weblink
-      name: "Black night light"
-      url: http://192.168.4.248
-      icon: mdi:power-socket-uk
-    - type: weblink
-      name: "Desk light"
-      url: http://192.168.4.240
-      icon: mdi:power-socket-uk
-    - type: weblink
-      name: "Night light"
-      url: http://192.168.4.245
-      icon: mdi:power-socket-uk
-- type: entities
-  title: Shellies
-  show_header_toggle: false
-  entities:
-    - type: weblink
-      name: "Kitchen lights"
-      url: http://192.168.4.243
-      icon: mdi:doorbell-video
-    - type: weblink
-      name: "Kitchen worktop lights"
-      url: http://192.168.4.244
-      icon: mdi:doorbell-video
-    - type: weblink
-      name: "Living room lights"
-      url: http://192.168.4.241
-      icon: mdi:doorbell-vide
-- type: entities
-  title: Stats
-  show_header_toggle: false
-  entities:
-    - sensor.energy_rpi_monthly
-    - sensor.home_assistant_v2_db
-    - sensor.cpu_temperature
-    - sensor.time_online
 - type: vertical-stack
   cards:
-  - type: entities
-    title: Config changes
-    show_header_toggle: false
-    entities:
-      - sensor.config_last_backup
-      - sensor.files_changed_locally
-  - type: horizontal-stack
-    cards:
-    - type: entity-button
-      entity: sensor.files_changed_locally
-      name: Store credentials
-      icon: mdi:file-upload-outline
-      show_icon: false
-      show_name: true
-      tap_action:
-        action: call-service
-        service: shell_command.store_creds
-    - type: entity-button
-      entity: sensor.files_changed_locally
-      name: Commit config changes
-      icon: mdi:file-upload-outline
-      show_icon: false
-      show_name: true
-      tap_action:
-        action: call-service
-        service: script.commit_configs
+    - type: horizontal-stack
+      cards:
+        - type: custom:mini-graph-card
+          entities:
+            - sensor.cpu_temperature
+          points_per_hour: 4
+        - type: custom:mini-graph-card
+          entities:
+            - sensor.processor_use
+          line_color: lightgreen
+          points_per_hour: 2
+    - type: horizontal-stack
+      cards:
+        - type: custom:mini-graph-card
+          entities:
+            - sensor.memory_use_percent
+          line_color: orange
+          points_per_hour: 2
+        - type: custom:mini-graph-card
+          entities:
+            - sensor.disk_use_percent
+          line_color: yellow
+          points_per_hour: 2
+    - type: vertical-stack
+      cards:
+      - type: entities
+        title: Config changes
+        show_header_toggle: false
+        entities:
+          - sensor.config_last_backup
+          - sensor.files_changed_locally
+      - type: horizontal-stack
+        cards:
+        - type: entity-button
+          entity: sensor.files_changed_locally
+          name: Store credentials
+          icon: mdi:file-upload-outline
+          show_icon: false
+          show_name: true
+          tap_action:
+            action: call-service
+            service: shell_command.store_creds
+        - type: entity-button
+          entity: sensor.files_changed_locally
+          name: Commit config changes
+          icon: mdi:file-upload-outline
+          show_icon: false
+          show_name: true
+          tap_action:
+            action: call-service
+            service: script.commit_configs
 
-- type: entities
-  title: Battery levels
-  show_header_toggle: false
-  entities:
-    # Temp sensors
-    - entity: sensor.living_room_temp
-      type: custom:battery-entity
-    - entity: sensor.bedroom_temp
-      type: custom:battery-entity
-    - entity: sensor.master_bed_temp
-      type: custom:battery-entity
-    - entity: sensor.outside_temp
-      type: custom:battery-entity
-    # Door sensors
-    - entity: binary_sensor.main_doors
-      type: custom:battery-entity
-    - entity: binary_sensor.living_room_balkony
-      type: custom:battery-entity
-    - entity: binary_sensor.bedroom_balkony
-      type: custom:battery-entity
-    # Motion sensors
-    - entity: binary_sensor.living_room_motion
-      type: custom:battery-entity
-    - entity: binary_sensor.bedroom_motion
-      type: custom:battery-entity
-    - entity: binary_sensor.bathroom_motion
-      type: custom:battery-entity
-    - entity: binary_sensor.master_bed_motion
-      type: custom:battery-entity
-    - entity: binary_sensor.master_bath_motion
-      type: custom:battery-entity
-    - entity: binary_sensor.corridor_motion
-      type: custom:battery-entity
-    # Other sensors
-    - entity: sensor.energy
-      type: custom:battery-entity
+- type: vertical-stack
+  cards:
+    - type: entities
+      title: Stats
+      show_header_toggle: false
+      entities:
+        - sensor.energy_rpi_monthly
+        - sensor.home_assistant_v2_db
+        - sensor.time_online
+        - sensor.last_boot
+    - type: horizontal-stack
+      cards:
+        - type: entities
+          title: Battery levels
+          show_header_toggle: false
+          entities:
+            # Temp sensors
+            - entity: sensor.living_room_temp
+              type: custom:battery-entity
+              name: L. room temp
+            - entity: sensor.bedroom_temp
+              type: custom:battery-entity
+            - entity: sensor.master_bed_temp
+              type: custom:battery-entity
+            - entity: sensor.outside_temp
+              type: custom:battery-entity
+            # Door sensors
+            - entity: binary_sensor.main_doors
+              type: custom:battery-entity
+            - entity: binary_sensor.living_room_balkony
+              type: custom:battery-entity
+              name: L. room balkony
+            - entity: binary_sensor.bedroom_balkony
+              type: custom:battery-entity
+        - type: entities
+          title: Battery levels
+          show_header_toggle: false
+          entities:
+            # Motion sensors
+            - entity: binary_sensor.living_room_motion
+              type: custom:battery-entity
+              name: L. room motion
+            - entity: binary_sensor.bedroom_motion
+              type: custom:battery-entity
+            - entity: binary_sensor.bathroom_motion
+              type: custom:battery-entity
+            - entity: binary_sensor.master_bed_motion
+              type: custom:battery-entity
+              name: M. bed. motion
+            - entity: binary_sensor.master_bath_motion
+              type: custom:battery-entity
+              name: M. bath. motion
+            - entity: binary_sensor.corridor_motion
+              type: custom:battery-entity
+            # Other sensors
+            - entity: sensor.energy
+              type: custom:battery-entity
 
-- type: iframe
-  #url: http://192.168.2.104:8085/sources/0/dashboards/1?lower=now%28%29%20-%2024h&present=true
-  url: http://192.168.2.104:8123/api/hassio_ingress/J469DFzDQ4mVGagrfD7Q3MLGSCpwcfVxqhhOO2PY4kI/sources/0/dashboards/1?lower=now%28%29%20-%2024h&present=true
-  aspect_ratio: 136%
+- type: horizontal-stack
+  cards:
+    - type: vertical-stack
+      cards:
+        - type: entities
+          title: Sonoff touch
+          show_header_toggle: false
+          entities:
+            - type: weblink
+              name: "Bedroom"
+              url: http://192.168.4.251
+              icon: mdi:doorbell-video
+            - type: weblink
+              name: "Bathroom"
+              url: http://192.168.4.250
+              icon: mdi:doorbell-video
+            - type: weblink
+              name: "Master bathroom"
+              url: http://192.168.4.252
+              icon: mdi:doorbell-video
+            - type: weblink
+              name: "Master bedroom"
+              url: http://192.168.4.249
+              icon: mdi:doorbell-video
+        - type: entities
+          title: Sonoff socket
+          show_header_toggle: false
+          entities:
+            - type: weblink
+              name: "Tv light"
+              url: http://192.168.4.247
+              icon: mdi:power-socket-uk
+            - type: weblink
+              name: "Living room lamp"
+              url: http://192.168.4.246
+              icon: mdi:power-socket-uk
+            - type: weblink
+              name: "Black night light"
+              url: http://192.168.4.248
+              icon: mdi:power-socket-uk
+            - type: weblink
+              name: "Desk light"
+              url: http://192.168.4.240
+              icon: mdi:power-socket-uk
+            - type: weblink
+              name: "Night light"
+              url: http://192.168.4.245
+              icon: mdi:power-socket-uk
+    - type: vertical-stack
+      cards:
+        - type: entities
+          title: Tools
+          show_header_toggle: false
+          entities:
+            - type: weblink
+              name: "IDE"
+              url: http://192.168.2.104:8321/ide.html
+              icon: mdi:file-document-edit-outline
+            - type: weblink
+              name: "Router"
+              url: http://192.168.2.1
+              icon: mdi:router-wireless
+            - type: weblink
+              name: "Grafana"
+              url: http://192.168.2.104:3000/d/R1BSsRkgk/scarbrook?orgId=1
+              icon: mdi:gauge
+            - type: weblink
+              name: "BTSync"
+              url: http://192.168.2.103:45454
+              icon: mdi:sync
+            - type: weblink
+              name: "BTSync - RaspWroc"
+              url: http://raspwroc:45454
+              icon: mdi:sync
+            - type: weblink
+              name: "Deluge"
+              url: http://192.168.2.103:8112
+              icon: mdi:cloud-download
+        - type: entities
+          title: Shellies
+          show_header_toggle: false
+          entities:
+            - type: weblink
+              name: "Kitchen lights"
+              url: http://192.168.4.243
+              icon: mdi:doorbell-video
+            - type: weblink
+              name: "Kitchen worktop lights"
+              url: http://192.168.4.244
+              icon: mdi:doorbell-video
+            - type: weblink
+              name: "Living room lights"
+              url: http://192.168.4.241
+              icon: mdi:doorbell-vide
+
+
+
+#- type: iframe
+#  #url: http://192.168.2.104:8085/sources/0/dashboards/1?lower=now%28%29%20-%2024h&present=true
+#  url: http://192.168.2.104:8123/api/hassio_ingress/J469DFzDQ4mVGagrfD7Q3MLGSCpwcfVxqhhOO2PY4kI/sources/0/dashboards/1?lower=now%28%29%20-%2024h&present=true
+#  aspect_ratio: 136%
+
+

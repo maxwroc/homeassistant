@@ -1,0 +1,37 @@
+
+- platform: filesize
+  file_paths:
+    - /config/home-assistant_v2.db
+
+- platform: uptime
+  name: Time online
+
+- platform: command_line
+  name: "Config last backup"
+  command: cd /config && git --no-pager log -n 1 --pretty=%cd --date=local origin/master
+  scan_interval: 60
+
+- platform: command_line
+  name: "Files changed locally"
+  command: cd /config && git status -suno | wc -l
+  scan_interval: 60
+
+- platform: command_line
+  name: CPU temperature
+  command: "cat /sys/class/thermal/thermal_zone0/temp"
+  unit_of_measurement: "°C"
+  value_template: '{{ value | multiply(0.001) | round(1) }}'
+  
+- platform: systemmonitor
+  resources:
+    - type: disk_use_percent
+      arg: /
+    - type: disk_use
+      arg: /
+    - type: disk_free
+      arg: /
+    - type: memory_use_percent
+    - type: memory_use
+    - type: memory_free
+    - type: processor_use
+    - type: last_boot

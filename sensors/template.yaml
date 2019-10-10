@@ -1,0 +1,20 @@
+
+- platform: template
+  sensors:
+
+    pc_status:
+      icon_template: mdi:desktop-tower-monitor
+      friendly_name: "PC"
+      value_template: "{% if is_state('device_tracker.pc', 'home') %}On{% else %}Off{% endif %}"
+
+
+#    livingroom_thsensor_battery:
+#      icon_template: >-
+#          {% if state_attr('sensor.living_room_temp', 'battery') | int < 20 %}
+#            mdi:battery-alert-variant-outline
+#          {% else %}
+#            mdi:battery
+#          {% endif %}
+#      friendly_name: "Living room T/H sensor"
+#      value_template: "{{ state_attr('sensor.living_room_temp', 'battery') }}"
+#      unit_of_measurement: "%"

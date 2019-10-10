@@ -12,7 +12,7 @@
   icon: mdi:flash
   unit_of_measurement: "Wh"
   value_template: "{{ value_json.energy.value | round(1) }}"
-  
+
 - platform: mqtt
   name: "RPi energy"
   state_topic: "sensor/raspberrypi/energy"
@@ -20,6 +20,8 @@
   icon: mdi:flash
   unit_of_measurement: "Wh"
   value_template: "{{ value_json.energy.value }}"
+
+#### Temerature and humidity ####
 
 - platform: mqtt
   name: "Living room temp"
@@ -76,50 +78,3 @@
   state_topic: "sensor/outside/temp"
   unit_of_measurement: "%"
   value_template: "{{ value_json.humidity.value }}"
-
-- platform: filesize
-  file_paths:
-    - /config/home-assistant_v2.db
-
-- platform: uptime
-  name: Time online
-
-- platform: command_line
-  name: "Config last backup"
-  command: cd /config && git --no-pager log -n 1 --pretty=%cd --date=local origin/master
-  scan_interval: 60
-
-- platform: command_line
-  name: "Files changed locally"
-  command: cd /config && git status -suno | wc -l
-  scan_interval: 60
-
-- platform: command_line
-  name: CPU temperature
-  command: "cat /sys/class/thermal/thermal_zone0/temp"
-  unit_of_measurement: "°C"
-  value_template: '{{ value | multiply(0.001) | round(1) }}'
-
-
-
-
-
-- platform: template
-  sensors:
-
-    pc_status:
-      icon_template: mdi:desktop-tower-monitor
-      friendly_name: "PC"
-      value_template: "{% if is_state('device_tracker.pc', 'home') %}On{% else %}Off{% endif %}"
-
-
-#    livingroom_thsensor_battery:
-#      icon_template: >-
-#          {% if state_attr('sensor.living_room_temp', 'battery') | int < 20 %}
-#            mdi:battery-alert-variant-outline
-#          {% else %}
-#            mdi:battery
-#          {% endif %}
-#      friendly_name: "Living room T/H sensor"
-#      value_template: "{{ state_attr('sensor.living_room_temp', 'battery') }}"
-#      unit_of_measurement: "%"
