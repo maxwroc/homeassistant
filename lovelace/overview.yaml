@@ -51,10 +51,41 @@
       entities:
         - sensor.power
 
-    - type: iframe
-      #url: http://192.168.2.104:8085/sources/0/dashboards/2?lower=now%28%29%20-%2015m&present=true
-      url: http://192.168.2.104:8123/api/hassio_ingress/J469DFzDQ4mVGagrfD7Q3MLGSCpwcfVxqhhOO2PY4kI/sources/0/dashboards/2?lower=now%28%29%20-%2015m&present=true
-      aspect_ratio: 56%
+    - type: custom:mini-graph-card
+      entities:
+        - entity: sensor.energy_daily
+      name: Energy consumption
+      hours_to_show: 168
+      height: 150
+      aggregate_func: max
+      group_by: date
+      hour24: true
+      show:
+        graph: bar
+
+    - type: custom:mini-graph-card
+      entities:
+        - entity: sensor.outside_temp
+          aggregate_func: max
+          name: Max
+          color: #e74c3c
+        - entity: sensor.outside_temp
+          aggregate_func: min
+          name: Min
+        - entity: sensor.outside_temp
+          aggregate_func: avg
+          name: Avg
+          color: green
+      name: Temp outside daily
+      hours_to_show: 168
+      height: 150
+      group_by: date
+      hour24: true
+
+#    - type: iframe
+#      #url: http://192.168.2.104:8085/sources/0/dashboards/2?lower=now%28%29%20-%2015m&present=true
+#      url: http://192.168.2.104:8123/api/hassio_ingress/J469DFzDQ4mVGagrfD7Q3MLGSCpwcfVxqhhOO2PY4kI/sources/0/dashboards/2?lower=now%28%29%20-%2015m&present=true
+#      aspect_ratio: 56%
 
 - type: vertical-stack
   cards:
@@ -116,13 +147,3 @@
 
 
 
-
-- type: custom:mini-graph-card
-  entities:
-    - entity: sensor.energy_daily
-  name: Energy consumption
-  hours_to_show: 168
-  points_per_hour: 0.0416666667
-  lower_bound: 0
-  show:
-    graph: bar

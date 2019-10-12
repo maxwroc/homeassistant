@@ -1,5 +1,7 @@
 resources:
-  - url: /community_plugin/mini-graph-card/mini-graph-card-bundle.js?v=0.7.0
+#  - url: /community_plugin/mini-graph-card/mini-graph-card-bundle.js?v=0.7.0
+#    type: module
+  - url: /local/mini-graph-card/dist/mini-graph-card-bundle.js?v=0.8.7
     type: module
   - url: /community_plugin/mini-media-player/mini-media-player-bundle.js
     type: module
