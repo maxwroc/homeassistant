@@ -35,7 +35,7 @@
       title: Kids room
       show_header_toggle: true
       entities:
-        - light.bedroom_light
+        - light.bedroom_lights
         - light.black_night_light
         - sensor.bedroom_temp
         - sensor.bedroom_humidity

@@ -55,6 +55,7 @@
       entities:
         - entity: sensor.energy_daily
       name: Energy consumption
+      lower_bound: 0
       hours_to_show: 168
       height: 150
       aggregate_func: max
@@ -107,7 +108,7 @@
       title: Kids room
       show_header_toggle: true
       entities:
-        - light.bedroom_light
+        - light.bedroom_lights
         - light.black_night_light
         - sensor.bedroom_temp
         - sensor.bedroom_humidity
@@ -117,7 +118,7 @@
       title: Master bedroom
       show_header_toggle: true
       entities:
-        - light.master_bedroom_light
+        - light.master_bedroom_lights
         - light.master_bedroom_night_light
         - light.desk_light
         - sensor.master_bed_temp
@@ -128,14 +129,14 @@
       title: Master bathroom
       show_header_toggle: true
       entities:
-        - light.master_bathroom_light
+        - light.master_bathroom_lights
         - binary_sensor.master_bath_motion
 
     - type: entities
       title: Bathroom
       show_header_toggle: true
       entities:
-        - light.bathroom_light
+        - light.bathroom_lights
         - binary_sensor.bathroom_motion
 
 - type: entities

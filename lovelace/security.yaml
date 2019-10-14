@@ -114,3 +114,18 @@
 
 - type: alarm-panel
   entity: alarm_control_panel.home_alarm
+
+
+
+- type: custom:mini-graph-card
+  entities:
+    - entity: binary_sensor.master_bed_motion
+  name: Motion
+  hours_to_show: 24
+  points_per_hour: 8
+  aggregate_func: max
+  line_width: 2
+  state_map:
+    - "off"
+    - "on"
+  hour24: true
