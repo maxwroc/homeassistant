@@ -119,13 +119,25 @@
 
 - type: custom:mini-graph-card
   entities:
+    - entity: binary_sensor.living_room_motion
+      name: Living room
+    - entity: binary_sensor.corridor_motion
+      name: Corridor
     - entity: binary_sensor.master_bed_motion
-  name: Motion
-  hours_to_show: 24
-  points_per_hour: 8
+      name: Master bed.
+      color: green
+    - entity: binary_sensor.bedroom_motion
+      name: Bedroom
+  name: Motion last hour
+  hours_to_show: 1
+  points_per_hour: 60
+  update_interval: 30
   aggregate_func: max
   line_width: 2
+  smoothing: false
   state_map:
-    - "off"
-    - "on"
+    - value: "off"
+      label: Clear
+    - value: "on"
+      label: Detected
   hour24: true

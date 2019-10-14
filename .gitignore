@@ -13,9 +13,7 @@
 !/lovelace/**/*.yaml
 !/sensors/*.yaml
 
-!/www/*.js
-!/www/*.png
-/www/mini-graph-card
+!/www/*.*
 
 # Ignore folders.
 .storage
