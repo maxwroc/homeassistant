@@ -108,8 +108,8 @@
 
 - platform: mqtt
   name: "Master bathroom lights"
-  command_topic: "lights/mbathroom/main/cmd/gpio/12"
-  state_topic: "lights/mbathroom/main/relay/state"
+  command_topic: "lights/mbathroom/main/cmd/POWER"
+  state_topic: "lights/mbathroom/main/state/POWER"
   json_attributes_topic: "lights/mbathroom/main/attr"
   payload_on: "1"
   payload_off: "0"

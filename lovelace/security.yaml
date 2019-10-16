@@ -134,7 +134,6 @@
   update_interval: 30
   aggregate_func: max
   line_width: 2
-  smoothing: false
   state_map:
     - value: "off"
       label: Clear
