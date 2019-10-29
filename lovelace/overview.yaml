@@ -80,7 +80,7 @@
       lower_bound: 0
       hours_to_show: 168
       height: 150
-      aggregate_func: max
+      aggregate_func: avg
       group_by: date
       hour24: true
       show:

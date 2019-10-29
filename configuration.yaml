@@ -85,6 +85,7 @@ history:
       - sensor.processor_use
       - sensor.memory_use_percent
       - sensor.disk_use_percent
+      - sensor.energy
       - sensor.energy_daily
       - sensor.energy_monthly
       - sensor.energy_yearly
@@ -120,6 +121,7 @@ influxdb:
       - sensor.bedroom_humidity
       - sensor.bedroom_temp
       - sensor.cpu_temperature
+      - sensor.energy
       - sensor.energy_daily
       - sensor.energy_monthly
       - sensor.energy_yearly
