@@ -67,6 +67,9 @@ recorder:
       - sensor.outside_temp
       - sensor.pc_status
       - sensor.power
+      - sensor.living_room_temp2
+      - sensor.bedroom_temp2
+      - sensor.master_bed_temp2
   exclude:
     entities:
       - binary_sensor.updater
@@ -99,6 +102,9 @@ history:
       - sensor.outside_temp
       - sensor.pc_status
       - sensor.power
+      - sensor.living_room_temp2
+      - sensor.bedroom_temp2
+      - sensor.master_bed_temp2
   exclude:
     entities:
       - binary_sensor.updater
@@ -135,6 +141,9 @@ influxdb:
       - sensor.outside_temp
       - sensor.pc_status
       - sensor.power
+      - sensor.living_room_temp2
+      - sensor.bedroom_temp2
+      - sensor.master_bed_temp2
   exclude:
     entities:
       - binary_sensor.updater

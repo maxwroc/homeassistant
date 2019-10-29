@@ -19,7 +19,7 @@
   json_attributes_topic: "sensor/raspberrypi/energy"
   icon: mdi:flash
   unit_of_measurement: "Wh"
-  value_template: "{{ value_json.energy.value }}"
+  value_template: "{{ value_json.energy.value | round(2) }}"
 
 #### Temerature and humidity ####
 
@@ -78,3 +78,28 @@
   state_topic: "sensor/outside/temp"
   unit_of_measurement: "%"
   value_template: "{{ value_json.humidity.value }}"
+
+
+
+
+
+- platform: mqtt
+  name: "Living room temp2"
+  state_topic: "sensor/livingroom/temp2"
+  value_template: "{{ value_json.temperature | round(1) }}"
+  json_attributes_topic: "sensor/livingroom/temp2"
+  unit_of_measurement: "°C"
+
+- platform: mqtt
+  name: "Bedroom temp2"
+  state_topic: "sensor/bedroom/temp2"
+  value_template: "{{ value_json.temperature | round(1) }}"
+  json_attributes_topic: "sensor/bedroom/temp2"
+  unit_of_measurement: "°C"
+
+- platform: mqtt
+  name: "Master bed. temp2"
+  state_topic: "sensor/mbedroom/temp2"
+  value_template: "{{ value_json.temperature | round(1) }}"
+  json_attributes_topic: "sensor/mbedroom/temp2"
+  unit_of_measurement: "°C"
