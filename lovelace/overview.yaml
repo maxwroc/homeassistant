@@ -43,6 +43,9 @@
         - sensor.living_room_temp
         - sensor.bedroom_temp
         - sensor.master_bed_temp
+        - sensor.living_room_temp2
+        - sensor.bedroom_temp2
+        - sensor.master_bed_temp2
         - sensor.outside_temp
 
     - type: custom:mini-graph-card

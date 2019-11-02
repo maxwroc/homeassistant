@@ -4,7 +4,7 @@
     - /config/home-assistant_v2.db
 
 - platform: uptime
-  name: Time online
+  name: Hassio online
 
 - platform: command_line
   name: "Config last backup"
