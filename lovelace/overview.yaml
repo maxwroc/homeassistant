@@ -106,6 +106,7 @@
         - light.kitchen_worktop_lights
         - light.living_room_lamp
         - light.tv_light
+        - light.christmas_tree
         - sensor.living_room_temp
         - sensor.living_room_humidity
         - binary_sensor.living_room_motion

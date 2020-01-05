@@ -1,1 +1,106 @@
-[]
+- id: '1578224386851'
+  alias: MBedSwitch_LeftButton
+  description: ''
+  trigger:
+  - device_id: 75a7b1408f31448faa7b6f2439a07a64
+    domain: deconz
+    platform: device
+    subtype: left
+    type: remote_button_short_press
+  condition: []
+  action:
+  - entity_id: light.master_bedroom_night_light
+    service: light.toggle
+- id: '1578225296011'
+  alias: LivingRoomSwitch_LeftButton
+  description: ''
+  trigger:
+  - device_id: 18df814cdc6e42219c9b10cdfd24b51d
+    domain: deconz
+    platform: device
+    subtype: left
+    type: remote_button_short_press
+  condition: []
+  action:
+  - entity_id: light.living_room_lamp
+    service: light.toggle
+- id: '1578225366845'
+  alias: LivingRoomSwitch_RightButton
+  description: ''
+  trigger:
+  - device_id: 18df814cdc6e42219c9b10cdfd24b51d
+    domain: deconz
+    platform: device
+    subtype: right
+    type: remote_button_short_press
+  condition: []
+  action:
+  - entity_id: light.tv_light
+    service: light.toggle
+  - entity_id: light.christmas_tree
+    service: light.toggle
+- id: '1578225474666'
+  alias: KidsSwitch_LeftButton
+  description: ''
+  trigger:
+  - device_id: 10dce240078240d1a16ef59c19e9aab8
+    domain: deconz
+    platform: device
+    subtype: left
+    type: remote_button_short_press
+  condition: []
+  action:
+  - entity_id: light.black_night_light
+    service: light.toggle
+- id: '1578225516447'
+  alias: KidsSwitch_RightButton
+  description: ''
+  trigger:
+  - device_id: 10dce240078240d1a16ef59c19e9aab8
+    domain: deconz
+    platform: device
+    subtype: right
+    type: remote_button_short_press
+  condition: []
+  action:
+  - entity_id: light.bedroom_lights
+    service: light.toggle
+- id: '1578225643463'
+  alias: MasterBedSwitch_LeftButton_ContinouslyPressed
+  description: ''
+  trigger:
+  - device_id: 75a7b1408f31448faa7b6f2439a07a64
+    domain: deconz
+    platform: device
+    subtype: left
+    type: remote_button_long_press
+  condition: []
+  action:
+  - entity_id: light.master_bathroom_lights
+    service: light.toggle
+- id: '1578225725316'
+  alias: MasterBedSwitch_RightButton_ContinouslyPressed
+  description: ''
+  trigger:
+  - device_id: 75a7b1408f31448faa7b6f2439a07a64
+    domain: deconz
+    platform: device
+    subtype: right
+    type: remote_button_long_press
+  condition: []
+  action:
+  - entity_id: light.master_bedroom_switch_2
+    service: light.toggle
+- id: '1578225776551'
+  alias: MasterBedSwitch_RightButton
+  description: ''
+  trigger:
+  - device_id: 75a7b1408f31448faa7b6f2439a07a64
+    domain: deconz
+    platform: device
+    subtype: right
+    type: remote_button_short_press
+  condition: []
+  action:
+  - entity_id: light.desk_light
+    service: light.toggle

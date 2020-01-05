@@ -46,6 +46,15 @@
   payload_off: "off"
   retain: true
 
+- platform: mqtt
+  name: "Christmas tree"
+  command_topic: "lights/livingroom/christmastree/cmd/POWER"
+  state_topic: "lights/livingroom/christmastree/state/POWER"
+  json_attributes_topic: "lights/livingroom/christmastree/attr"
+  payload_on: "ON"
+  payload_off: "OFF"
+  retain: true
+
 #### Master bedroom ####
 
 - platform: mqtt
