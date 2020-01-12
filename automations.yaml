@@ -1,5 +1,5 @@
 - id: '1578224386851'
-  alias: MBedSwitch_LeftButton
+  alias: MasterBedSwitch_LeftButton
   description: ''
   trigger:
   - device_id: 75a7b1408f31448faa7b6f2439a07a64
@@ -89,8 +89,8 @@
     type: remote_button_long_press
   condition: []
   action:
-  - entity_id: light.master_bedroom_switch_2
-    service: light.toggle
+  - entity_id: switch.master_bed_wall_switch_main
+    service: switch.toggle
 - id: '1578225776551'
   alias: MasterBedSwitch_RightButton
   description: ''
@@ -103,4 +103,27 @@
   condition: []
   action:
   - entity_id: light.desk_light
+    service: light.toggle
+- id: '1578230646264'
+  alias: LivingRoomSwitch_LeftButton_continouslyPressed
+  description: ''
+  trigger:
+  - device_id: 18df814cdc6e42219c9b10cdfd24b51d
+    domain: deconz
+    platform: device
+    subtype: left
+    type: remote_button_long_press
+  condition: []
+  action:
+  - entity_id: light.living_room_all_lights
+    service: light.turn_off
+- id: '1578870034314'
+  alias: MasterBedWallSwitch_RightButton
+  description: ''
+  trigger:
+  - entity_id: switch.master_bedroom_main_lights
+    platform: state
+  condition: []
+  action:
+  - entity_id: light.master_bedroom_night_light
     service: light.toggle

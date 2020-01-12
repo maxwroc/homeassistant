@@ -1,0 +1,9 @@
+
+- platform: rfxtrx
+  automatic_add: true
+  devices:
+    115a02108982000000043600007d87521279:
+      name: OWL
+      data_type:
+        - Energy usage
+        - Total usage

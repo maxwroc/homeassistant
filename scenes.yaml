@@ -1,0 +1,7 @@
+- id: '1578229407030'
+  name: Living room lights
+  entities:
+    light.living_room_lamp:
+      friendly_name: Living room lamp
+      state: 'off'
+      supported_features: 0

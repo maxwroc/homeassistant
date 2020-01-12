@@ -60,7 +60,7 @@
       entities:
         - sensor.energy_rpi_monthly
         - sensor.home_assistant_v2_db
-        - sensor.time_online
+        - sensor.hassio_online
         - sensor.last_boot
     - type: horizontal-stack
       cards:

@@ -233,6 +233,9 @@ weblink:
         url: http://192.168.2.109
         icon: mdi:power-socket-uk
 
+rfxtrx:
+  device: /dev/ttyUSB0
+
 history_graph:
   gr1:
     name: "Home temperature"
