@@ -13,7 +13,6 @@ homeassistant:
 # default_config:
 
 ########## Start of integrations from default_config ##########
-automation:
 #cloud:
 config:
 #frontend: # enabled later
@@ -28,6 +27,7 @@ sun:
 system_health:
 updater:
 zeroconf:
+stream:
 ########### End of integrations from default config ###########
 
 # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
@@ -193,8 +193,16 @@ device_tracker:
       pc: 192.168.2.102
 
 camera:
+  - platform: generic
+    still_image_url: https://cdn-media.itead.cc/media/catalog/product/1/_/1_7_2.jpg
+    stream_source: !secret kidscam_stream_hd
+    name: "Kids room HD"
+  - platform: generic
+    still_image_url: https://cdn-media.itead.cc/media/catalog/product/1/_/1_7_2.jpg
+    stream_source: !secret kidscam_stream_sd
+    name: "Kids room SD"
   - platform: mjpeg
-    name: "Bedroom"
+    name: "Patologia"
     mjpeg_url: http://192.168.2.125/mjpeg.cgi
 
 weblink:
@@ -244,6 +252,13 @@ history_graph:
       - sensor.living_room_temp
       - sensor.bedroom_temp
       - sensor.master_bed_temp
+
+notify:
+  - name: Pushover
+    platform: pushover
+    api_key: !secret pushover_appkey
+    user_key: !secret pushover_userkey
+
 
 utility_meter:
   energy_daily:

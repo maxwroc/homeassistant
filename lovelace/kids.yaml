@@ -1,15 +1,24 @@
 
 - type: vertical-stack
   cards:
-
-    - type: picture-entity
-      title: Bedroom
-      entity: camera.bedroom
-      camera_image: camera.bedroom
-      show_info: true
-      show_state: false
-      tap_action:
-        action: more-info
+    - type: horizontal-stack
+      cards:
+        - type: picture-entity
+          title: Bedroom
+          entity: camera.kids_room_sd
+          camera_image: camera.kids_room_sd
+          show_info: true
+          show_state: false
+          tap_action:
+            action: more-info
+        - type: picture-entity
+          title: Bedroom
+          entity: camera.kids_room_hd
+          camera_image: camera.kids_room_hd
+          show_info: true
+          show_state: false
+          tap_action:
+            action: more-info
 
     - type: custom:mini-media-player
       entity: media_player.kids_dot

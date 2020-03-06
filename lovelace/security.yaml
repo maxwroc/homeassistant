@@ -4,7 +4,7 @@
   id: "zonk"
   elements:
     - type: state-icon
-      entity: binary_sensor.master_bath_motion
+      entity: binary_sensor.master_bathroom_motion
       tap_action: more-info
       style:
         top: 82%
@@ -12,7 +12,7 @@
         filter: drop-shadow(2px 2px 3px black)
         transform: translate(-50%, -50%)scale(1.4)
     - type: state-icon
-      entity: binary_sensor.bathroom_motion
+      entity: binary_sensor.bathroom_motion_2
       tap_action: more-info
       style:
         top: 82%
@@ -20,7 +20,7 @@
         filter: drop-shadow(2px 2px 3px black)
         transform: translate(-50%, -50%)scale(1.4)
     - type: state-icon
-      entity: binary_sensor.corridor_motion
+      entity: binary_sensor.corridor_motion_2
       tap_action: more-info
       style:
         top: 72%
@@ -28,7 +28,7 @@
         filter: drop-shadow(2px 2px 3px black)
         transform: translate(-50%, -50%)scale(1.4)
     - type: state-icon
-      entity: binary_sensor.living_room_motion
+      entity: binary_sensor.living_room_motion_2
       tap_action: more-info
       style:
         top: 44%
@@ -36,7 +36,7 @@
         filter: drop-shadow(2px 2px 3px black)
         transform: translate(-50%, -50%)scale(1.4)
     - type: state-icon
-      entity: binary_sensor.bedroom_motion
+      entity: binary_sensor.bedroom_motion_2
       tap_action: more-info
       style:
         top: 36%
@@ -44,7 +44,7 @@
         filter: drop-shadow(2px 2px 3px black)
         transform: translate(-50%, -50%)scale(1.4)
     - type: state-icon
-      entity: binary_sensor.master_bed_motion
+      entity: binary_sensor.master_bedroom_motion
       tap_action: more-info
       style:
         top: 63%
@@ -52,7 +52,7 @@
         filter: drop-shadow(2px 2px 3px black)
         transform: translate(-50%, -50%)scale(1.4)
     - type: state-icon
-      entity: binary_sensor.main_doors
+      entity: binary_sensor.main_door
       tap_action: more-info
       style:
         top: 89%
@@ -60,7 +60,7 @@
         filter: drop-shadow(2px 2px 3px black)
         transform: translate(-50%, -50%)scale(1.4)
     - type: state-icon
-      entity: binary_sensor.bedroom_balkony
+      entity: binary_sensor.bedroom_balcony
       tap_action: more-info
       style:
         top: 19%
@@ -68,7 +68,7 @@
         filter: drop-shadow(2px 2px 3px black)
         transform: translate(-50%, -50%)scale(1.4)
     - type: state-icon
-      entity: binary_sensor.living_room_balkony
+      entity: binary_sensor.living_room_balcony
       tap_action: more-info
       style:
         top: 19%
@@ -80,33 +80,33 @@
   title: Movement sensors
   show_header_toggle: false
   entities:
-    - entity: binary_sensor.living_room_motion
+    - entity: binary_sensor.living_room_motion_2
       secondary_info: last-changed
-    - entity: binary_sensor.corridor_motion
+    - entity: binary_sensor.corridor_motion_2
       secondary_info: last-changed
-    - entity: binary_sensor.bedroom_motion
+    - entity: binary_sensor.bedroom_motion_2
       secondary_info: last-changed
-    - entity: binary_sensor.master_bed_motion
+    - entity: binary_sensor.master_bedroom_motion
       secondary_info: last-changed
-    - entity: binary_sensor.bathroom_motion
+    - entity: binary_sensor.bathroom_motion_2
       secondary_info: last-changed
-    - entity: binary_sensor.master_bath_motion
+    - entity: binary_sensor.master_bathroom_motion
       secondary_info: last-changed
 
 - type: entities
   title: Door sensors
   show_header_toggle: false
   entities:
-    - entity: binary_sensor.main_doors
+    - entity: binary_sensor.main_door
       secondary_info: last-changed
-    - entity: binary_sensor.living_room_balkony
+    - entity: binary_sensor.living_room_balcony
       secondary_info: last-changed
-    - entity: binary_sensor.bedroom_balkony
+    - entity: binary_sensor.bedroom_balcony
       secondary_info: last-changed
 - type: picture-entity
   title: Bedroom
-  entity: camera.bedroom
-  camera_image: camera.bedroom
+  entity: camera.patologia
+  camera_image: camera.patologia
   show_info: true
   show_state: false
   tap_action:
@@ -119,14 +119,14 @@
 
 - type: custom:mini-graph-card
   entities:
-    - entity: binary_sensor.living_room_motion
+    - entity: binary_sensor.living_room_motion_2
       name: Living room
-    - entity: binary_sensor.corridor_motion
+    - entity: binary_sensor.corridor_motion_2
       name: Corridor
-    - entity: binary_sensor.master_bed_motion
+    - entity: binary_sensor.master_bedroom_motion
       name: Master bed.
       color: green
-    - entity: binary_sensor.bedroom_motion
+    - entity: binary_sensor.bedroom_motion_2
       name: Bedroom
   name: Motion last hour
   hours_to_show: 1
