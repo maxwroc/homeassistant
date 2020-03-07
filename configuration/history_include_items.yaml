@@ -1,0 +1,20 @@
+domains:
+  - binary_sensor
+  - device_tracker
+  - light
+entities:
+  - alarm_control_panel.home_alarm
+  - sensor.cpu_temperature
+  - sensor.home_assistant_v2_db
+  - sensor.pc_status
+  - sensor.livingroomtemp
+  - sensor.livingroomtemp_2
+  - sensor.livingroomtemp_3
+  - sensor.bedroomtemp
+  - sensor.bedroomtemp_2
+  - sensor.bedroomtemp_3
+  - sensor.masterbedtemp
+  - sensor.masterbedtemp_2
+  - sensor.masterbedtemp_3
+  - sensor.owl_energy_usage
+  - sensor.owl_total_usage

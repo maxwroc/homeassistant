@@ -11,8 +11,7 @@
 !/node-red/flows.json
 !/themes/*.yaml
 !/lovelace/**/*.yaml
-!/sensors/*.yaml
-
+!/configuration/**/*
 !/www/*.*
 
 # Ignore folders.

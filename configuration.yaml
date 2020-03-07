@@ -3,7 +3,7 @@ homeassistant:
   time_zone: Europe/London
   # Name of the location where Home Assistant is running
   name: Scarbrook
-  customize: !include customize.yaml
+  customize: !include configuration/customize.yaml
   whitelist_external_dirs:
     # required to check db size via sensor
     - /config
@@ -41,70 +41,13 @@ tts:
 recorder:
   purge_keep_days: 14
   purge_interval: 1
-  include:
-    domains:
-      - binary_sensor
-      - device_tracker
-      - light
-    entities:
-      - alarm_control_panel.home_alarm
-      - sensor.bedroom_humidity
-      - sensor.bedroom_temp
-      - sensor.cpu_temperature
-      - sensor.processor_use
-      - sensor.memory_use_percent
-      - sensor.disk_use_percent
-      - sensor.energy_daily
-      - sensor.energy_monthly
-      - sensor.energy_yearly
-      - sensor.energy_rpi_monthly
-      - sensor.home_assistant_v2_db
-      - sensor.living_room_humidity
-      - sensor.living_room_temp
-      - sensor.master_bed_humidity
-      - sensor.master_bed_temp
-      - sensor.outside_humidity
-      - sensor.outside_temp
-      - sensor.pc_status
-      - sensor.power
-      - sensor.living_room_temp2
-      - sensor.bedroom_temp2
-      - sensor.master_bed_temp2
+  include: !include configuration/history_include_items.yaml
   exclude:
     entities:
       - binary_sensor.updater
 
 history:
-  include:
-    domains:
-      - binary_sensor
-      - device_tracker
-      - light
-    entities:
-      - alarm_control_panel.home_alarm
-      - sensor.bedroom_humidity
-      - sensor.bedroom_temp
-      - sensor.cpu_temperature
-      - sensor.processor_use
-      - sensor.memory_use_percent
-      - sensor.disk_use_percent
-      - sensor.energy
-      - sensor.energy_daily
-      - sensor.energy_monthly
-      - sensor.energy_yearly
-      - sensor.energy_rpi_monthly
-      - sensor.home_assistant_v2_db
-      - sensor.living_room_humidity
-      - sensor.living_room_temp
-      - sensor.master_bed_humidity
-      - sensor.master_bed_temp
-      - sensor.outside_humidity
-      - sensor.outside_temp
-      - sensor.pc_status
-      - sensor.power
-      - sensor.living_room_temp2
-      - sensor.bedroom_temp2
-      - sensor.master_bed_temp2
+  include: !include configuration/history_include_items.yaml
   exclude:
     entities:
       - binary_sensor.updater
@@ -117,44 +60,18 @@ influxdb:
   password: !secret influxdb_pass
   max_retries: 3
   default_measurement: state
-  include:
-    domains:
-      - binary_sensor
-      - device_tracker
-      - light
-    entities:
-      - alarm_control_panel.home_alarm
-      - sensor.bedroom_humidity
-      - sensor.bedroom_temp
-      - sensor.cpu_temperature
-      - sensor.energy
-      - sensor.energy_daily
-      - sensor.energy_monthly
-      - sensor.energy_yearly
-      - sensor.energy_rpi_monthly
-      - sensor.home_assistant_v2_db
-      - sensor.living_room_humidity
-      - sensor.living_room_temp
-      - sensor.master_bed_humidity
-      - sensor.master_bed_temp
-      - sensor.outside_humidity
-      - sensor.outside_temp
-      - sensor.pc_status
-      - sensor.power
-      - sensor.living_room_temp2
-      - sensor.bedroom_temp2
-      - sensor.master_bed_temp2
+  include: !include configuration/history_include_items.yaml
   exclude:
     entities:
       - binary_sensor.updater
 
-group: !include groups.yaml
-automation: !include automations.yaml
-script: !include scripts.yaml
+group: !include configuration/groups.yaml
+automation: !include configuration/automations.yaml
+script: !include configuration/scripts.yaml
 
-light: !include configuration_lights.yaml
-sensor: !include_dir_merge_list sensors
-binary_sensor: !include configuration_bsensors.yaml
+light: !include configuration/lights.yaml
+sensor: !include_dir_merge_list configuration/sensors
+binary_sensor: !include configuration/binary_sensors.yaml
 
 # Enables the frontend
 frontend:
@@ -262,7 +179,7 @@ notify:
 
 utility_meter:
   energy_daily:
-    source: sensor.energy
+    source: sensor.owl_total_usage
     cycle: daily
   energy_monthly:
     source: sensor.energy

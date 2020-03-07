@@ -7,3 +7,8 @@
       data_type:
         - Energy usage
         - Total usage
+    08500a2d2b01003669:
+      name: Temp outside
+      data_type:
+        - Temperature
+        - Battery numeric

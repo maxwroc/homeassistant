@@ -27,7 +27,7 @@
 
     - type: entities
       entities:
-        - sensor.power
+        - sensor.owl_energy_usage
         - sensor.energy_daily
         - device_tracker.maks
         - device_tracker.magduska
@@ -40,27 +40,22 @@
       title: 'Temperature'
       refresh_interval: 30
       entities:
-        - sensor.living_room_temp
-        - sensor.bedroom_temp
-        - sensor.master_bed_temp
-        - sensor.living_room_temp2
-        - sensor.bedroom_temp2
-        - sensor.master_bed_temp2
+        - sensor.livingroomtemp
+        - sensor.bedroomtemp_2
+        - sensor.masterbedtemp_3
         - sensor.outside_temp
 
     - type: custom:mini-graph-card
       entities:
-        - entity: sensor.living_room_temp
+        - entity: sensor.livingroomtemp
           name: Living room
           show_state: true
-        - entity: sensor.bedroom_temp
+        - entity: sensor.bedroomtemp_2
           name: Bedroom
-        - entity: sensor.master_bed_temp
+        - entity: sensor.masterbedtemp_3
           name: Master bed.
           color: green
-        - entity: sensor.outside_temp
-          name: Outside
-      name: Temp outside daily
+      name: Temperature daily
       hours_to_show: 24
       points_per_hour: 60
       height: 150
@@ -74,7 +69,7 @@
       title: 'Power'
       refresh_interval: 30
       entities:
-        - sensor.power
+        - sensor.owl_energy_usage
 
     - type: custom:mini-graph-card
       entities:
@@ -106,10 +101,10 @@
         - light.kitchen_worktop_lights
         - light.living_room_lamp
         - light.tv_light
-        - light.christmas_tree
-        - sensor.living_room_temp
-        - sensor.living_room_humidity
-        - binary_sensor.living_room_motion
+#        - light.christmas_tree
+        - sensor.livingroomtemp
+        - sensor.livingroomtemp_3
+        - binary_sensor.living_room_motion_2
 
     - type: entities
       title: Kids room
@@ -117,9 +112,9 @@
       entities:
         - light.bedroom_lights
         - light.black_night_light
-        - sensor.bedroom_temp
-        - sensor.bedroom_humidity
-        - binary_sensor.bedroom_motion
+        - sensor.bedroomtemp_2
+        - sensor.bedroomtemp_3
+        - binary_sensor.bedroom_motion_2
 
     - type: entities
       title: Master bedroom
@@ -128,9 +123,9 @@
         - light.master_bedroom_lights
         - light.master_bedroom_night_light
         - light.desk_light
-        - sensor.master_bed_temp
-        - sensor.master_bed_humidity
-        - binary_sensor.master_bed_motion
+        - sensor.masterbedtemp_3
+        - sensor.masterbedtemp
+        - binary_sensor.master_bedroom_motion
 
     - type: entities
       title: Master bathroom
