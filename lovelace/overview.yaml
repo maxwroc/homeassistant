@@ -27,7 +27,7 @@
 
     - type: entities
       entities:
-        - sensor.owl_energy_usage
+        - sensor.energy_usage
         - sensor.energy_daily
         - device_tracker.maks
         - device_tracker.magduska
@@ -69,7 +69,7 @@
       title: 'Power'
       refresh_interval: 30
       entities:
-        - sensor.owl_energy_usage
+        - sensor.energy_usage
 
     - type: custom:mini-graph-card
       entities:

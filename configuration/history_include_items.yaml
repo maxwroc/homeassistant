@@ -18,3 +18,5 @@ entities:
   - sensor.masterbedtemp_3
   - sensor.owl_energy_usage
   - sensor.owl_total_usage
+  - sensor.energy_usage
+  - sensor.energy_total

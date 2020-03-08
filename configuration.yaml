@@ -179,13 +179,13 @@ notify:
 
 utility_meter:
   energy_daily:
-    source: sensor.owl_total_usage
+    source: sensor.energy_total
     cycle: daily
   energy_monthly:
-    source: sensor.energy
+    source: sensor.energy_total
     cycle: monthly
   energy_yearly:
-    source: sensor.energy
+    source: sensor.energy_total
     cycle: yearly
   energy_rpi_monthly:
     source: sensor.rpi_energy

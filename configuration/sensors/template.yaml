@@ -7,6 +7,19 @@
       friendly_name: "PC"
       value_template: "{% if is_state('device_tracker.pc', 'home') %}On{% else %}Off{% endif %}"
 
+    energy_usage:
+      friendly_name: "Power"
+      unit_of_measurement: W
+      value_template: "{{ states('sensor.owl_energy_usage') | int }}"
+    energy_total:
+      friendly_name: "Energy totall"
+      unit_of_measurement: kW
+      value_template: >
+        {% if states('sensor.owl_total_usage') | float == 0 %}
+         {{ states('sensor.energy_total') }}
+        {% else %}
+         {{ states('sensor.owl_total_usage') | float | multiply(0.001) | round(1) }}
+        {% endif %}
 
 #    livingroom_thsensor_battery:
 #      icon_template: >-
