@@ -36,14 +36,14 @@
 - type: vertical-stack
   cards:
 
-    - type: history-graph
-      title: 'Temperature'
-      refresh_interval: 30
-      entities:
-        - sensor.livingroomtemp
-        - sensor.bedroomtemp_2
-        - sensor.masterbedtemp_3
-        - sensor.outside_temp
+#    - type: history-graph
+#      title: 'Temperature'
+#      refresh_interval: 30
+#      entities:
+#        - sensor.livingroomtemp
+#        - sensor.bedroomtemp_2
+#        - sensor.masterbedtemp_3
+#        - sensor.outside_temp
 
     - type: custom:mini-graph-card
       entities:
@@ -65,11 +65,26 @@
         state: true
         labels: true
 
-    - type: history-graph
-      title: 'Power'
-      refresh_interval: 30
+    - type: custom:mini-graph-card
       entities:
-        - sensor.energy_usage
+        - entity: sensor.energy_usage
+          name: Power
+          show_state: true
+      name: Energy usage
+      hours_to_show: 12
+      points_per_hour: 60
+      height: 150
+      line_width: 1
+      hour24: true
+      show:
+        state: true
+        labels: true
+
+#    - type: history-graph
+#      title: 'Power'
+#      refresh_interval: 30
+#      entities:
+#        - sensor.energy_usage
 
     - type: custom:mini-graph-card
       entities:

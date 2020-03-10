@@ -20,3 +20,6 @@ entities:
   - sensor.owl_total_usage
   - sensor.energy_usage
   - sensor.energy_total
+  - sensor.energy_daily
+  - sensor.energy_monthly
+  - sensor.energy_yearly
