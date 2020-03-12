@@ -162,7 +162,9 @@ weblink:
         icon: mdi:power-socket-uk
 
 tplink:
-  discovery: true
+  discovery: false
+  switch:
+    - host: 192.168.4.235
 
 rfxtrx:
   device: /dev/ttyUSB0
@@ -209,7 +211,7 @@ utility_meter:
     source: sensor.energy_total
     cycle: yearly
   energy_rpi_monthly:
-    source: sensor.rpi_energy
+    source: sensor.energy_total_rpi
     cycle: monthly
 
 shell_command:

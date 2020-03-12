@@ -20,6 +20,10 @@
         {% else %}
          {{ states('sensor.owl_total_usage') | float | multiply(0.001) | round(1) }}
         {% endif %}
+    energy_total_rpi:
+      friendly_name: "RPi total energy"
+      unit_of_measurement: Wh
+      value_template: "{{ state_attr('switch.raspberrypi4', 'total_energy_kwh') | float | multiply(1000) | round(0) }}"
 
 #    livingroom_thsensor_battery:
 #      icon_template: >-
