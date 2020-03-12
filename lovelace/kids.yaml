@@ -5,20 +5,20 @@
       cards:
         - type: picture-entity
           title: Bedroom
-          entity: camera.kids_room_sd
-          camera_image: camera.kids_room_sd
+          entity: camera.kids_sd
+          camera_image: camera.kids_sd
           show_info: true
           show_state: false
           tap_action:
             action: more-info
-        - type: picture-entity
-          title: Bedroom
-          entity: camera.kids_room_hd
-          camera_image: camera.kids_room_hd
-          show_info: true
-          show_state: false
-          tap_action:
-            action: more-info
+#        - type: picture-entity
+#          title: Bedroom
+#          entity: camera.kids_room_hd
+#          camera_image: camera.kids_room_hd
+#          show_info: true
+#          show_state: false
+#          tap_action:
+#            action: more-info
 
     - type: custom:mini-media-player
       entity: media_player.kids_dot

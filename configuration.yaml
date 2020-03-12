@@ -121,6 +121,9 @@ camera:
   - platform: mjpeg
     name: "Patologia"
     mjpeg_url: http://192.168.2.125/mjpeg.cgi
+  - platform: ffmpeg
+    name: "Kids SD"
+    input: !secret kidscam_rtsp
 
 weblink:
     entities:
