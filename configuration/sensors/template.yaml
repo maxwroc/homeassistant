@@ -12,8 +12,8 @@
       unit_of_measurement: W
       value_template: "{{ states('sensor.owl_energy_usage') | int }}"
     energy_total:
-      friendly_name: "Energy totall"
-      unit_of_measurement: kW
+      friendly_name: "Energy total"
+      unit_of_measurement: kWh
       value_template: >
         {% if states('sensor.owl_total_usage') | float == 0 %}
          {{ states('sensor.energy_total') }}

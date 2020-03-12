@@ -5,6 +5,9 @@ domains:
 entities:
   - alarm_control_panel.home_alarm
   - sensor.cpu_temperature
+  - sensor.processor_use
+  - sensor.memory_use_percent
+  - sensor.disk_use_percent
   - sensor.home_assistant_v2_db
   - sensor.pc_status
   - sensor.livingroomtemp

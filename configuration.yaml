@@ -158,6 +158,9 @@ weblink:
         url: http://192.168.2.109
         icon: mdi:power-socket-uk
 
+tplink:
+  discovery: true
+
 rfxtrx:
   device: /dev/ttyUSB0
 

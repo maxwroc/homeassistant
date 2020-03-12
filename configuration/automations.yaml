@@ -167,8 +167,7 @@
     platform: event
     event_type: button_pressed
     event_data:
-      entity_id: switch.nexa_mb_left
-#      entity_id: switch.doorbell
+      entity_id: switch.doorbell
   condition: []
   action:
     - service: notify.pushover

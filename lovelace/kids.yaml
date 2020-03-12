@@ -46,13 +46,13 @@
       entities:
         - light.bedroom_lights
         - light.black_night_light
-        - sensor.bedroom_temp
-        - sensor.bedroom_humidity
-        - binary_sensor.bedroom_motion
+        - sensor.bedroomtemp_2
+        - sensor.bedroomtemp_3
+        - binary_sensor.bedroom_motion_2
         - binary_sensor.bedroom_balkony
 
     - type: history-graph
       title: 'Temperature'
       refresh_interval: 30
       entities:
-        - sensor.bedroom_temp
+        - sensor.bedroomtemp_2
