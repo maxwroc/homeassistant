@@ -1,0 +1,9 @@
+audio_notify:
+  sequence: 
+    - service: notify.alexa_media
+      data_template:
+        target:
+          - media_player.bedroom_dot_2
+        data:
+          type: announce
+        message: "{{ message }}"

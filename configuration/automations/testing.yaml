@@ -1,0 +1,61 @@
+
+
+
+- alias: "Night music"
+  description: "NIght music playlist"
+  trigger:
+    platform: event
+    event_type: button_pressed
+    event_data:
+      entity_id: switch.nexa_mb_left
+  condition: []
+  action:
+    - service: media_player.select_source
+      data:
+        entity_id: media_player.spotify
+        source: "Bedroom dot"
+    - delay: 2
+    - service: media_player.volume_set
+      data:
+        entity_id: media_player.spotify
+        volume_level: 0.1
+    - delay: 2
+    - service: media_player.play_media
+      data:
+        entity_id: media_player.spotify
+        media_content_type: "playlist"
+        media_content_id: "spotify:user:spotify:playlist:37i9dQZF1DX3iWJN79KKoY"
+    - service: light.toggle
+      entity_id: light.master_bedroom_night_light
+    # - service: media_player.select_source
+    #   data:
+    #     entity_id: media_player.spotify
+    #     source: "Bedroom dot"
+    # - service: media_player.play_media
+    #   data:
+    #     entity_id: media_player.spotify
+    #     media_content_id: 'spotify:user:spotify:playlist:6UFW0S4ENOBkQQFhLzn0Dq'
+    #     media_content_type: playlist
+
+# - alias: 'Andrews Home notification'
+#   initial_state: false
+#   trigger:
+#     platform: state
+#     entity_id: person.andrew
+#     from: 'not_home'
+#     to: 'home'
+#     for:
+#       seconds: 90
+#   condition:
+#     - condition: template # only notify once every 10 minutes at most
+#       value_template: "{{ ( as_timestamp(now()) - as_timestamp(state_attr('automation.andrews_home_notification', 'last_triggered')) |int(0) ) > 3600 }}"
+#   action:
+#     - service: notify.all
+#       data:
+#         title: "Home Assistant"
+#         data:
+#           type: announce
+#         message: 'Welcome Home Andrew'
+#     - service: script.audio_notify
+#       data_template:
+#         tts_msg: "Welcome Home Andrew"

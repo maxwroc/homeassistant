@@ -38,6 +38,8 @@ stream:
 tts:
   - platform: google_translate
 
+wake_on_lan:
+
 recorder:
   purge_keep_days: 14
   purge_interval: 1
@@ -66,8 +68,8 @@ influxdb:
       - binary_sensor.updater
 
 group: !include configuration/groups.yaml
-automation: !include configuration/automations.yaml
-script: !include configuration/scripts.yaml
+automation: !include_dir_merge_list configuration/automations
+script: !include_dir_merge_named configuration/scripts
 
 light: !include configuration/lights.yaml
 sensor: !include_dir_merge_list configuration/sensors
@@ -90,6 +92,10 @@ alexa_media:
     - email: !secret amazon_user
       password: !secret amazon_password
       url: amazon.co.uk
+
+spotify:
+  client_id: !secret spotify_client_id
+  client_secret: !secret spotify_client_secret
 
 google:
   client_id: !secret google_calendar_api_clientid
@@ -169,19 +175,69 @@ tplink:
 rfxtrx:
   device: /dev/ttyUSB0
 
+emulated_hue:
+  listen_port: 80
+  expose_by_default: false
+  entities:
+    light.living_room_lights:
+      name: "Living room lights"
+      hidden: false
+    light.kitchen_lights:
+      name: "Kitchen lights"
+      hidden: false
+    light.kitchen_worktop_lights:
+      name: "Kitchen worktop lights"
+      hidden: false
+    light.living_room_lamp:
+      name: "Living room lamp"
+      hidden: false
+    light.tv_light:
+      name: "TV light"
+      hidden: false
+    light.bedroom_lights:
+      name: "Bedroom lights"
+      hidden: false
+    light.black_night_light:
+      name: "Black night light"
+      hidden: false
+    switch.master_bed_wall_switch_main:
+      name: "Master bedroom lights"
+      hidden: false
+    light.master_bedroom_night_light:
+      name: "Night light"
+      hidden: false
+    light.desk_light:
+      name: "Desk light"
+      hidden: false
+    light.master_bathroom_lights:
+      name: "Master bathroom lights"
+      hidden: false
+    light.bathroom_lights:
+      name: "Bathroom lights"
+      hidden: false
+    switch.pc:
+      name: "PC"
+      hidden: false
+
 switch:
-  platform: rfxtrx
-  automatic_add: false
-  devices:
-    0b11002f00efde0201040f70:
-      name: Doorbell
-      fire_event: true
-    0b11001b012de8520b000070:
-      name: "Nexa mb left"
-      fire_event: true
-    0b110037012de8520c010f60:
-      name: "Nexa mb right"
-      fire_event: true
+  - platform: rfxtrx
+    automatic_add: false
+    devices:
+      0b11002f00efde0201040f70:
+        name: Doorbell
+        fire_event: true
+      0b11001b012de8520b000070:
+        name: "Nexa mb left"
+        fire_event: true
+      0b110037012de8520c010f60:
+        name: "Nexa mb right"
+        fire_event: true
+
+  - platform: wake_on_lan
+    name: "PC"
+    mac: "90:B1:1C:92:C6:93"
+    host: "192.168.2.102"
+    broadcast_address: "192.168.2.255"
 
 
 history_graph:

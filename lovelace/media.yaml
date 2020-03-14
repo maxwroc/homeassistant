@@ -92,12 +92,12 @@
         progress: false
         volume: true
     - type: custom:mini-media-player
-      entity: media_player.bedroom_dot
+      entity: media_player.bedroom_dot_2
       info: scroll
       artwork: full-cover
       tts:
         platform: alexa
-        entity_id: media_player.bedroom_dot
+        entity_id: media_player.bedroom_dot_2
         type: announce
       hide:
         mute: true
@@ -106,6 +106,17 @@
         source: true
         progress: false
         volume: true
+      shortcuts:
+        columns: 4 # Max buttons per row
+        buttons:
+          # Start predefined playlist spotify:user:spotify:playlist:37i9dQZF1DZ06evO2O09Hg
+          - name: Rock
+            type: playlist
+            id: "spotify:user:spotify:playlist:37i9dQZF1DX3iWJN79KKoY"
+          # Start predefined playlist spotify:user:spotify:playlist:37i9dQZF1DZ06evO2O09Hg
+          - name: Rock333333
+            type: playlist
+            id: "spotify:user:spotify:playlist:37i9dQZF1DX3iWJN79KKoY"
 
     - type: custom:mini-media-player
       entity: media_player.home_2
@@ -128,7 +139,7 @@
           # Start predefined playlist
           - name: Rock
             type: playlist
-            id: spotify:user:spotify:playlist:6UFW0S4ENOBkQQFhLzn0Dq
+            id: "spotify:user:spotify:playlist:6UFW0S4ENOBkQQFhLzn0Dq"
 
 
 

@@ -31,7 +31,7 @@
         - sensor.energy_daily
         - device_tracker.maks
         - device_tracker.magduska
-        - sensor.pc_status
+        - switch.pc
 
 - type: vertical-stack
   cards:
@@ -135,7 +135,7 @@
       title: Master bedroom
       show_header_toggle: true
       entities:
-        - light.master_bedroom_lights
+        - switch.master_bed_wall_switch_main
         - light.master_bedroom_night_light
         - light.desk_light
         - sensor.masterbedtemp_3

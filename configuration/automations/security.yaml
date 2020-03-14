@@ -1,0 +1,52 @@
+
+- alias: "Doorbell notification"
+  description: "Pushover notification"
+  trigger:
+    platform: event
+    event_type: button_pressed
+    event_data:
+      entity_id: switch.doorbell
+  condition: []
+  action:
+    - service: notify.pushover
+      data:
+        message: "Expecting delivery?"
+        title: "Doorbell"
+        data:
+          priority: -1
+
+- alias: "Home alarm"
+  description: "Triggers alarm when person is detected at home"
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.living_room_motion_2
+      to: "on"
+    - platform: state
+      entity_id: binary_sensor.corridor_motion_2
+      to: "on"
+    - platform: state
+      entity_id: binary_sensor.bedroom_motion_2
+      to: "on"
+    - platform: state
+      entity_id: binary_sensor.master_bedroom_motion
+      to: "on"
+    - platform: state
+      entity_id: binary_sensor.bathroom_motion_2
+      to: "on"
+    - platform: state
+      entity_id: binary_sensor.master_bathroom_motion
+      to: "on"
+  condition:
+    - condition: state
+      entity_id: alarm_control_panel.home_alarm
+      state: "armed_away"
+  action:
+    - service: notify.pushover
+      data:
+        message: "Presence detected"
+        title: "Home alarm"
+        data:
+          priority: 1
+    - service: script.audio_notify
+      data_template:
+        message: "Alarm triggered"

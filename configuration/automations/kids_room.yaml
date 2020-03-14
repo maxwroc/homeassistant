@@ -1,0 +1,54 @@
+
+- id: '1578225474666'
+  alias: KidsSwitch_LeftButton
+  description: ''
+  trigger:
+  - device_id: 10dce240078240d1a16ef59c19e9aab8
+    domain: deconz
+    platform: device
+    subtype: left
+    type: remote_button_short_press
+  condition: []
+  action:
+  - entity_id: light.black_night_light
+    service: light.toggle
+
+- alias: KidsSwitch_LeftButton_ContinouslyPressed
+  description: ''
+  trigger:
+  - device_id: 10dce240078240d1a16ef59c19e9aab8
+    domain: deconz
+    platform: device
+    subtype: left
+    type: remote_button_long_press
+  condition: []
+  action:
+    - service: media_player.select_source
+      data:
+        entity_id: media_player.spotify
+        source: "Kids dot"
+    - delay: 1
+    - service: media_player.volume_set
+      data:
+        entity_id: media_player.spotify
+        volume_level: 0.1
+    - delay: 1
+    - service: media_player.play_media
+      data:
+        entity_id: media_player.spotify
+        media_content_type: "playlist"
+        media_content_id: "spotify:user:spotify:playlist:37i9dQZF1DX3iWJN79KKoY"
+
+- id: '1578225516447'
+  alias: KidsSwitch_RightButton
+  description: ''
+  trigger:
+  - device_id: 10dce240078240d1a16ef59c19e9aab8
+    domain: deconz
+    platform: device
+    subtype: right
+    type: remote_button_short_press
+  condition: []
+  action:
+  - entity_id: light.bedroom_lights
+    service: light.toggle
