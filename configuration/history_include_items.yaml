@@ -9,7 +9,8 @@ entities:
   - sensor.memory_use_percent
   - sensor.disk_use_percent
   - sensor.home_assistant_v2_db
-  - sensor.pc_status
+  - sensor.pc
+  - sensor.temp_outside_temperature
   - sensor.livingroomtemp
   - sensor.livingroomtemp_2
   - sensor.livingroomtemp_3
@@ -27,3 +28,6 @@ entities:
   - sensor.energy_monthly
   - sensor.energy_yearly
   - sensor.energy_rpi_monthly
+  - group.family
+  - group.motion_sensors
+  - group.door_sensors

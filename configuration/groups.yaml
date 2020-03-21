@@ -1,0 +1,43 @@
+family:
+  name: "Family"
+  icon: mdi:account-group
+  entities:
+    - device_tracker.maks
+    - device_tracker.magduska
+
+motion_sensors:
+  name: "Motion sensors"
+  icon: mdi:run
+  entities:
+    - binary_sensor.living_room_motion_2
+    - binary_sensor.corridor_motion_2
+    - binary_sensor.bedroom_motion_2
+    - binary_sensor.master_bedroom_motion
+    - binary_sensor.bathroom_motion_2
+    - binary_sensor.master_bathroom_motion
+
+door_sensors:
+  name: "Door sensors"
+  icon: mdi:door-closed
+  entities:
+    - binary_sensor.main_door
+    - binary_sensor.living_room_balcony
+    - binary_sensor.bedroom_balcony
+
+lights:
+  name: "Lights"
+  icon: mdi:lightbulb
+  entities:
+    - light.bathroom_lights
+    - light.bedroom_lights
+    - light.black_night_light
+    - light.christmas_tree
+    - light.desk_light
+    - light.kitchen_lights
+    - light.kitchen_worktop_lights
+    - light.living_room_lamp
+    - light.living_room_lights
+    - light.master_bathroom_lights
+    - light.master_bedroom_night_light
+    - light.tv_light
+    - switch.master_bed_wall_switch_main

@@ -67,15 +67,6 @@
 #### Master bedroom ####
 
 - platform: mqtt
-  name: "Master bedroom lights"
-  command_topic: "lights/mbedroom/main/cmd/POWER"
-  state_topic: "lights/mbedroom/main/state/POWER"
-  json_attributes_topic: "lights/mbedroom/main/attr"
-  payload_on: "1"
-  payload_off: "0"
-  retain: true
-
-- platform: mqtt
   name: "Desk light"
   command_topic: "lights/mbedroom/desk/cmd/POWER"
   state_topic: "lights/mbedroom/desk/state/POWER"

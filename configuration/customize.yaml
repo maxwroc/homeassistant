@@ -3,7 +3,7 @@ sensor.energy_daily:
 
 sensor.energy_rpi_monthly:
   friendly_name: RPi energy monthly
-  
+
 sensor.files_changed_locally:
   icon: mdi:file-star
   friendly_name: "Files changed locally"
@@ -12,6 +12,13 @@ sensor.config_last_backup:
   icon: mdi:cloud-upload
   friendly_name: "Config last backup"
 
-sensor.pc_status:
-  templates:
-    rgb_color: "if (state === 'On') return [251, 210, 41]; else return [54, 95, 140];"
+sensor.energy_daily:
+  friendly_name: "Energy daily"
+  unit_of_measurement: kWh
+
+switch.pc:
+  icon: mdi:desktop-tower-monitor
+
+switch.master_bed_wall_switch_main:
+  icon: mdi:lightbulb
+  friendly_name: "Master bedroom lights"

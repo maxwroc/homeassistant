@@ -16,8 +16,9 @@ midnight:
   primary-background-color: '#383C45'                                             # Settings background
   secondary-background-color: '#383C45'                                           # Main card UI background
   divider-color: 'rgba(0, 0, 0, .12)'                                             # Divider
-  data-table-background-color: "#383C45"
-  
+  data-table-background-color: "#434954"
+  card-background-color: "#434954"
+
   sidebar-icon-color: 'rgba(255, 255, 255, .5)'
 
   # Table rows

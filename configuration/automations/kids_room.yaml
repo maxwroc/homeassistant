@@ -31,7 +31,7 @@
     - service: media_player.volume_set
       data:
         entity_id: media_player.spotify
-        volume_level: 0.1
+        volume_level: 0.03
     - delay: 1
     - service: media_player.play_media
       data:
@@ -52,3 +52,29 @@
   action:
   - entity_id: light.bedroom_lights
     service: light.toggle
+
+- alias: KidsSwitch_RightButton_ContinouslyPressed
+  description: ''
+  trigger:
+  - device_id: 10dce240078240d1a16ef59c19e9aab8
+    domain: deconz
+    platform: device
+    subtype: right
+    type: remote_button_long_press
+  condition: []
+  action:
+    - service: media_player.select_source
+      data:
+        entity_id: media_player.spotify
+        source: "Kids dot"
+    - delay: 1
+    - service: media_player.volume_set
+      data:
+        entity_id: media_player.spotify
+        volume_level: 0.5
+    - delay: 1
+    - service: media_player.play_media
+      data:
+        entity_id: media_player.spotify
+        media_content_type: "music"
+        media_content_id: "spotify:track:23OXdR7YuUBVWh5hSnYJau"

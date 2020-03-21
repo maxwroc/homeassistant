@@ -77,7 +77,7 @@
         transform: translate(-50%, -50%)scale(1.4)
 
 - type: entities
-  title: Movement sensors
+  title: Motion sensors
   show_header_toggle: false
   entities:
     - entity: binary_sensor.living_room_motion_2

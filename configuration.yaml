@@ -1,9 +1,9 @@
 homeassistant:
+  customize: !include configuration/customize.yaml
   unit_system: metric
   time_zone: Europe/London
   # Name of the location where Home Assistant is running
   name: Scarbrook
-  customize: !include configuration/customize.yaml
   whitelist_external_dirs:
     # required to check db size via sensor
     - /config
@@ -238,6 +238,11 @@ switch:
     mac: "90:B1:1C:92:C6:93"
     host: "192.168.2.102"
     broadcast_address: "192.168.2.255"
+    turn_off:
+      service: hassio.addon_stdin
+      data:
+        addon: core_rpc_shutdown
+        input: shockrid
 
 
 history_graph:

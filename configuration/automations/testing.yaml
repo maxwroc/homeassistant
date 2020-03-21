@@ -37,6 +37,16 @@
     #     media_content_id: 'spotify:user:spotify:playlist:6UFW0S4ENOBkQQFhLzn0Dq'
     #     media_content_type: playlist
 
+
+# Playing ring tone on speakers
+    # - service: media_player.play_media
+    #   data:
+    #     entity_id: media_player.spotify
+    #     media_content_type: "music"
+    #     media_content_id: "spotify:track:6jjDlCd8d5qBWTFU6t11g2"
+
+
+
 # - alias: 'Andrews Home notification'
 #   initial_state: false
 #   trigger:
