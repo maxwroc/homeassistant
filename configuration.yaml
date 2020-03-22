@@ -73,7 +73,7 @@ script: !include_dir_merge_named configuration/scripts
 
 light: !include configuration/lights.yaml
 sensor: !include_dir_merge_list configuration/sensors
-binary_sensor: !include configuration/binary_sensors.yaml
+#binary_sensor: !include configuration/binary_sensors.yaml
 
 # Enables the frontend
 frontend:
@@ -130,42 +130,6 @@ camera:
   - platform: ffmpeg
     name: "Kids SD"
     input: !secret kidscam_rtsp
-
-weblink:
-    entities:
-      - name: "Router"
-        url: http://192.168.2.1
-        icon: mdi:router-wireless
-      - name: "Sonoff Touch: Bathroom"
-        url: http://192.168.2.115
-        icon: mdi:doorbell-video
-      - name: "Sonoff Touch: Master bathroom"
-        url: http://192.168.2.119
-        icon: mdi:doorbell-video
-      - name: "Sonoff Touch: Bedroom"
-        url: http://192.168.2.120
-        icon: mdi:doorbell-video
-      - name: "Sonoff Touch: Master bedroom"
-        url: http://192.168.2.121
-        icon: mdi:doorbell-video
-      - name: "Node Red"
-        url: http://192.168.2.103:1880
-        icon: mdi:hammer
-      - name: "Black night light"
-        url: http://192.168.2.110
-        icon: mdi:power-socket-uk
-      - name: "Desk light"
-        url: http://192.168.2.107
-        icon: mdi:power-socket-uk
-      - name: "Night light"
-        url: http://192.168.2.108
-        icon: mdi:power-socket-uk
-      - name: "Living room lamp"
-        url: http://192.168.2.118
-        icon: mdi:power-socket-uk
-      - name: "Tv light"
-        url: http://192.168.2.109
-        icon: mdi:power-socket-uk
 
 tplink:
   discovery: false
@@ -243,16 +207,6 @@ switch:
       data:
         addon: core_rpc_shutdown
         input: shockrid
-
-
-history_graph:
-  gr1:
-    name: "Home temperature"
-    hours_to_show: 48
-    entities:
-      - sensor.living_room_temp
-      - sensor.bedroom_temp
-      - sensor.master_bed_temp
 
 notify:
   - name: Pushover

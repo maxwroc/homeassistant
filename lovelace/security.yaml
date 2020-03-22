@@ -118,6 +118,7 @@
 
 
 - type: custom:mini-graph-card
+  name: Motion last hour
   entities:
     - entity: binary_sensor.living_room_motion_2
       name: Living room
@@ -128,12 +129,12 @@
       color: green
     - entity: binary_sensor.bedroom_motion_2
       name: Bedroom
-  name: Motion last hour
   hours_to_show: 1
   points_per_hour: 60
   update_interval: 30
   aggregate_func: max
   line_width: 2
+  smoothing: false
   state_map:
     - value: "off"
       label: Clear
