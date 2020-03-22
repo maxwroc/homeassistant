@@ -147,21 +147,21 @@
       show_header_toggle: true
       entities:
         - light.master_bathroom_lights
-        - binary_sensor.master_bath_motion
+        - binary_sensor.master_bathroom_motion
 
     - type: entities
       title: Bathroom
       show_header_toggle: true
       entities:
         - light.bathroom_lights
-        - binary_sensor.bathroom_motion
+        - binary_sensor.bathroom_motion_2
 
 - type: entities
   title: Corridor
   show_header_toggle: false
   entities:
-    - binary_sensor.main_doors
-    - binary_sensor.corridor_motion
+    - binary_sensor.main_door
+    - binary_sensor.corridor_motion_2
 
 
 

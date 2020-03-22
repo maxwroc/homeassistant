@@ -49,7 +49,7 @@
         - sensor.bedroomtemp_2
         - sensor.bedroomtemp_3
         - binary_sensor.bedroom_motion_2
-        - binary_sensor.bedroom_balkony
+        - binary_sensor.bedroom_balcony
 
     - type: history-graph
       title: 'Temperature'
