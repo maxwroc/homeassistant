@@ -91,6 +91,75 @@
         source: true
         progress: false
         volume: true
+
+
+
+    - type: custom:mini-media-player
+      entity: media_player.spotify
+      info: scroll
+      artwork: full-cover
+      hide:
+        mute: true
+        icon: true
+        power: true
+        source: true
+        progress: false
+        volume: false
+      shortcuts:
+        columns: 4 # Max buttons per row
+        buttons:
+          # Start predefined playlist spotify:user:spotify:playlist:37i9dQZF1DZ06evO2O09Hg
+          - name: Rock
+            type: playlist
+            id: "spotify:playlist:6UFW0S4ENOBkQQFhLzn0Dq"
+          # Start predefined playlist spotify:user:spotify:playlist:37i9dQZF1DZ06evO2O09Hg
+          - name: Chill
+            type: playlist
+            id: "spotify:playlist:1g9ipRFNdTtJlIvVaxILFl"
+
+    - type: horizontal-stack
+      cards:
+        - type: entity-button
+          name: Home
+          show_icon: false
+          show_name: true
+          tap_action:
+            action: call-service
+            service: media_player.select_source
+            service_data:
+              entity_id: media_player.spotify
+              source: "Home"
+        - type: entity-button
+          name: Kids
+          show_icon: false
+          show_name: true
+          tap_action:
+            action: call-service
+            service: media_player.select_source
+            service_data:
+              entity_id: media_player.spotify
+              source: "Kids dot"
+        - type: entity-button
+          name: Bedroom
+          show_icon: false
+          show_name: true
+          tap_action:
+            action: call-service
+            service: media_player.select_source
+            service_data:
+              entity_id: media_player.spotify
+              source: "Bedroom dot"
+        - type: entity-button
+          name: Kitchen
+          show_icon: false
+          show_name: true
+          tap_action:
+            action: call-service
+            service: media_player.select_source
+            service_data:
+              entity_id: media_player.spotify
+              source: "Kitchen"
+
     - type: custom:mini-media-player
       entity: media_player.bedroom_dot_2
       info: scroll

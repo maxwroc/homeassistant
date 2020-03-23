@@ -28,3 +28,6 @@ binary_sensor.living_room_balcony:
   
 binary_sensor.bedroom_balcony:
   device_class: door
+  
+sensor.temp_outside_temperature:
+  friendly_name: Outside temp

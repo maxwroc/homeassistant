@@ -31,6 +31,7 @@
         - sensor.energy_daily
         - device_tracker.maks
         - device_tracker.magduska
+        - sensor.temp_outside_temperature
         - switch.pc
 
 - type: vertical-stack
@@ -97,7 +98,9 @@
       group_by: date
       hour24: true
       show:
-        graph: bar
+        graph: 
+        
+      
 
 #    - type: iframe
 #      #url: http://192.168.2.104:8085/sources/0/dashboards/2?lower=now%28%29%20-%2015m&present=true
