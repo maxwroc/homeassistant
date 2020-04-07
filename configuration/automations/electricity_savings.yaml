@@ -1,0 +1,46 @@
+
+- alias: "Bathroom lights auto-turn-off"
+  trigger:
+    platform: state
+    entity_id: binary_sensor.bathroom_motion_2
+    from: "on"
+    to: "off"
+    for:
+      hours: 0
+      minutes: 20
+      seconds: 0
+  condition:
+    condition: state
+    entity_id: binary_sensor.bathroom_motion_2
+    state: "off"
+  action:
+    - service: light.turn_off
+      data:
+        entity_id: light.bathroom_lights
+    - service: notify.pushover
+      data:
+        message: "Turned off bathroom lights"
+        title: "Electricity savings"
+
+- alias: "Bathroom lights auto-turn-off (master)"
+  trigger:
+    platform: state
+    entity_id: binary_sensor.master_bathroom_motion
+    from: "on"
+    to: "off"
+    for:
+      hours: 0
+      minutes: 20
+      seconds: 0
+  condition:
+    condition: state
+    entity_id: binary_sensor.master_bathroom_motion
+    state: "off"
+  action:
+    - service: light.turn_off
+      data:
+        entity_id: light.master_bathroom_lights
+    - service: notify.pushover
+      data:
+        message: "Turned off master bathroom lights"
+        title: "Electricity savings"

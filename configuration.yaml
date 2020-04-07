@@ -183,30 +183,7 @@ emulated_hue:
       name: "PC"
       hidden: false
 
-switch:
-  - platform: rfxtrx
-    automatic_add: false
-    devices:
-      0b11002f00efde0201040f70:
-        name: Doorbell
-        fire_event: true
-      0b11001b012de8520b000070:
-        name: "Nexa mb left"
-        fire_event: true
-      0b110037012de8520c010f60:
-        name: "Nexa mb right"
-        fire_event: true
-
-  - platform: wake_on_lan
-    name: "PC"
-    mac: "90:B1:1C:92:C6:93"
-    host: "192.168.2.102"
-    broadcast_address: "192.168.2.255"
-    turn_off:
-      service: hassio.addon_stdin
-      data:
-        addon: core_rpc_shutdown
-        input: shockrid
+switch: !include configuration/switches.yaml
 
 notify:
   - name: Pushover

@@ -1,32 +1,52 @@
 
 
 
-- alias: "Night music"
-  description: "NIght music playlist"
+- alias: "Bathroom lights auto-turn-off"
   trigger:
-    platform: event
-    event_type: button_pressed
-    event_data:
-      entity_id: switch.nexa_mb_left
-  condition: []
+    platform: state
+    entity_id: binary_sensor.bathroom_motion_2
+    from: "on"
+    to: "off"
+    for:
+      hours: 0
+      minutes: 20
+      seconds: 0
+  condition:
+    condition: state
+    entity_id: binary_sensor.bathroom_motion_2
+    state: "off"
   action:
-    - service: media_player.select_source
+    - service: light.turn_off
       data:
-        entity_id: media_player.spotify
-        source: "Bedroom dot"
-    - delay: 2
-    - service: media_player.volume_set
+        entity_id: light.bathroom_lights
+    - service: notify.pushover
       data:
-        entity_id: media_player.spotify
-        volume_level: 0.1
-    - delay: 2
-    - service: media_player.play_media
+        message: "Turned off bathroom lights"
+        title: "Electricity savings"
+
+- alias: "Bathroom lights auto-turn-off (master)"
+  trigger:
+    platform: state
+    entity_id: binary_sensor.master_bathroom_motion
+    from: "on"
+    to: "off"
+    for:
+      hours: 0
+      minutes: 20
+      seconds: 0
+  condition:
+    condition: state
+    entity_id: binary_sensor.master_bathroom_motion
+    state: "off"
+  action:
+    - service: light.turn_off
       data:
-        entity_id: media_player.spotify
-        media_content_type: "playlist"
-        media_content_id: "spotify:user:spotify:playlist:37i9dQZF1DX3iWJN79KKoY"
-    - service: light.toggle
-      entity_id: light.master_bedroom_night_light
+        entity_id: light.master_bathroom_lights
+    - service: notify.pushover
+      data:
+        message: "Turned off master bathroom lights"
+        title: "Electricity savings"
+
     # - service: media_player.select_source
     #   data:
     #     entity_id: media_player.spotify

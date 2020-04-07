@@ -1,0 +1,59 @@
+
+- alias: "Spotify button - vol up"
+  description: "Spotify vol up"
+  trigger:
+    platform: event
+    event_type: button_pressed
+    event_data:
+      entity_id: switch.nexa_lr_left
+      state: "on"
+  condition: []
+  action:
+    - service: media_player.volume_set
+      data_template:
+        entity_id: media_player.spotify
+        volume_level: >
+          {{ ((states.media_player.spotify.attributes.volume_level | float) + 0.1) | round(1) | float }}
+
+- alias: "Spotify button - vol down"
+  description: "Spotify vol down"
+  trigger:
+    platform: event
+    event_type: button_pressed
+    event_data:
+      entity_id: switch.nexa_lr_left
+      state: "off"
+  condition: []
+  action:
+    - service: media_player.volume_set
+      data_template:
+        entity_id: media_player.spotify
+        #volume_level: 0.4
+        volume_level: >
+          {{ ((states.media_player.spotify.attributes.volume_level | float) - 0.1) | round(1) | float }}
+
+- alias: "Spotify button - next track"
+  trigger:
+    platform: event
+    event_type: button_pressed
+    event_data:
+      entity_id: switch.nexa_lr_right
+      state: "on"
+  condition: []
+  action:
+    - service: media_player.media_next_track
+      data:
+        entity_id: media_player.spotify
+
+- alias: "Spotify button - previous track"
+  trigger:
+    platform: event
+    event_type: button_pressed
+    event_data:
+      entity_id: switch.nexa_lr_right
+      state: "off"
+  condition: []
+  action:
+    - service: media_player.media_previous_track
+      data:
+        entity_id: media_player.spotify

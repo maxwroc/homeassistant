@@ -24,10 +24,6 @@
       entity: media_player.kids_dot
       info: scroll
       artwork: cover
-      tts:
-        platform: alexa
-        entity_id: media_player.kids_dot
-        type: announce
       hide:
         mute: true
         icon: true
@@ -36,6 +32,12 @@
         progress: false
         volume: false
         runtime: false
+      shortcuts:
+        columns: 1 # Max buttons per row
+        buttons:
+          - name: "Calm Vibes"
+            type: playlist
+            id: "spotify:playlist:37i9dQZF1DX1s9knjP51Oa"
 
 - type: vertical-stack
   cards:
