@@ -1,6 +1,42 @@
 
 
 
+- alias: "Alarm auto-arm"
+#  initial_state: false
+  trigger:
+    platform: state
+    entity_id: binary_sensor.main_door
+    from: "on"
+    to: "off"
+    for:
+      hours: 0
+      minutes: 10
+      seconds: 0
+  condition:
+    - condition: state
+      entity_id: group.motion_sensors
+      state: "off"
+    - condition: template
+      value_template: >
+        {{ as_timestamp(now()) - as_timestamp(states.group.motion_sensors.last_changed) > 7 * 60 }}
+  action:
+    - service: notify.pushover
+      data:
+        message: "Arming home alarm"
+        title: "Security"
+
+- alias: "Alarm auto-arm 3333"
+  initial_state: false
+  trigger:
+    platform: state
+    entity_id: light.master_bedroom_night_light
+  condition: []
+  action:
+    - service: notify.pushover
+      data:
+        message: "Test {{ state_attr('group.motion_sensors', 'last_changed')  }}"
+        title: "Test"
+
     # - service: media_player.select_source
     #   data:
     #     entity_id: media_player.spotify

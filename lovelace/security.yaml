@@ -92,6 +92,8 @@
       secondary_info: last-changed
     - entity: binary_sensor.master_bathroom_motion
       secondary_info: last-changed
+    - entity: group.motion_sensors
+      secondary_info: last-changed
 
 - type: entities
   title: Door sensors

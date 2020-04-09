@@ -1,4 +1,15 @@
 
+#########################################################################
+# Automatic light switch off
+#
+#   * Wait at least 20min after motion is not detected. This is to prevent
+#     from turning off the lights when someone takes a shower (motion is
+#     not detected through glass)
+#   * Later we check if the light is still on
+#   * Additionally we need to check if motion was not detected meanwhile
+#   * After turning of the light we send notification
+#########################################################################
+
 - alias: "Bathroom lights auto-turn-off"
   trigger:
     platform: state
@@ -33,8 +44,8 @@
     to: "off"
     for:
       hours: 0
-      minutes: 0
-      seconds: 30
+      minutes: 20
+      seconds: 0
   condition:
     - condition: state
       entity_id: light.master_bathroom_lights

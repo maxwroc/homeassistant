@@ -1,7 +1,9 @@
+#########################################################################
+# Aqara wall switch
+#########################################################################
 
-- id: '1578225474666'
-  alias: KidsSwitch_LeftButton
-  description: ''
+- alias: "Aqara kids wall switch - left button"
+  description: "Toggle black night light"
   trigger:
   - device_id: 10dce240078240d1a16ef59c19e9aab8
     domain: deconz
@@ -13,8 +15,8 @@
   - entity_id: light.black_night_light
     service: light.toggle
 
-- alias: KidsSwitch_LeftButton_ContinouslyPressed
-  description: ''
+- alias: "Aqara kids wall switch - left button (long press)"
+  description: "Night time music for kids"
   trigger:
   - device_id: 10dce240078240d1a16ef59c19e9aab8
     domain: deconz
@@ -31,7 +33,7 @@
     - service: media_player.volume_set
       data:
         entity_id: media_player.spotify
-        volume_level: 0.03
+        volume_level: 0.1
     - delay: 1
     - service: media_player.play_media
       data:
@@ -39,9 +41,8 @@
         media_content_type: "playlist"
         media_content_id: "spotify:user:spotify:playlist:37i9dQZF1DX3iWJN79KKoY"
 
-- id: '1578225516447'
-  alias: KidsSwitch_RightButton
-  description: ''
+- alias: "Aqara kids wall switch - right button"
+  description: "Kids room main lights toggle"
   trigger:
   - device_id: 10dce240078240d1a16ef59c19e9aab8
     domain: deconz
@@ -53,8 +54,8 @@
   - entity_id: light.bedroom_lights
     service: light.toggle
 
-- alias: KidsSwitch_RightButton_ContinouslyPressed
-  description: ''
+- alias: "Aqara kids wall switch - right button (long press)"
+  description: "Kids favorite song at the time"
   trigger:
   - device_id: 10dce240078240d1a16ef59c19e9aab8
     domain: deconz

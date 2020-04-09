@@ -1,7 +1,9 @@
+#########################################################################
+# Aqara wall switch
+#########################################################################
 
-- id: '1578225296011'
-  alias: LivingRoomSwitch_LeftButton
-  description: ''
+- alias: "Aqara livingroom wall switch - left button"
+  description: "Toggle livingroom lamp"
   trigger:
   - device_id: 18df814cdc6e42219c9b10cdfd24b51d
     domain: deconz
@@ -12,9 +14,9 @@
   action:
   - entity_id: light.living_room_lamp
     service: light.toggle
-- id: '1578225366845'
-  alias: LivingRoomSwitch_RightButton
-  description: ''
+    
+- alias: "Aqara livingroom wall switch - right button"
+  description: "Toggle TV light"
   trigger:
   - device_id: 18df814cdc6e42219c9b10cdfd24b51d
     domain: deconz
@@ -28,9 +30,8 @@
   - entity_id: light.christmas_tree
     service: light.toggle
     
-- id: '1578230646264'
-  alias: LivingRoomSwitch_LeftButton_ContinouslyPressed
-  description: ''
+- alias: "Aqara livingroom wall switch - left button (long press)"
+  description: "Turn off all livingroom/kitchen lights"
   trigger:
   - device_id: 18df814cdc6e42219c9b10cdfd24b51d
     domain: deconz

@@ -1,5 +1,8 @@
+#########################################################################
+# Controling Spotify via RF switches
+#########################################################################
 
-- alias: "Spotify button - vol up"
+- alias: "Livingroom Nexa switch - Left ON"
   description: "Spotify vol up"
   trigger:
     platform: event
@@ -13,9 +16,9 @@
       data_template:
         entity_id: media_player.spotify
         volume_level: >
-          {{ ((states.media_player.spotify.attributes.volume_level | float) + 0.1) | round(1) | float }}
+          {{ (state_attr("media_player.spotify", "volume_level") | float + 0.1) | round(1) | float }}
 
-- alias: "Spotify button - vol down"
+- alias: "Livingroom Nexa switch - Left OFF"
   description: "Spotify vol down"
   trigger:
     platform: event
@@ -30,9 +33,10 @@
         entity_id: media_player.spotify
         #volume_level: 0.4
         volume_level: >
-          {{ ((states.media_player.spotify.attributes.volume_level | float) - 0.1) | round(1) | float }}
+          {{ (state_attr("media_player.spotify", "volume_level") | float - 0.1) | round(1) | float }}
 
-- alias: "Spotify button - next track"
+- alias: "Livingroom Nexa switch - Right ON"
+  description: "Spotify button - next track"
   trigger:
     platform: event
     event_type: button_pressed
@@ -45,7 +49,8 @@
       data:
         entity_id: media_player.spotify
 
-- alias: "Spotify button - previous track"
+- alias: "Livingroom Nexa switch - Right OFF"
+  description: "Spotify button - previous track"
   trigger:
     platform: event
     event_type: button_pressed

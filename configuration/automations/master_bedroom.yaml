@@ -1,6 +1,9 @@
-- id: '1578224386851'
-  alias: MasterBedSwitch_LeftButton
-  description: ''
+#########################################################################
+# Aqara desk switch
+#########################################################################
+
+- alias: "Aqara master bed. desk switch - left button"
+  description: "Toggle night light"
   trigger:
   - device_id: 75a7b1408f31448faa7b6f2439a07a64
     domain: deconz
@@ -11,10 +14,9 @@
   action:
   - entity_id: light.master_bedroom_night_light
     service: light.toggle
-    
-- id: '1578225643463'
-  alias: MasterBedSwitch_LeftButton_ContinouslyPressed
-  description: ''
+
+- alias: "Aqara master bed. desk switch - left button (long press)"
+  description: "Toggle master bathroom lights"
   trigger:
   - device_id: 75a7b1408f31448faa7b6f2439a07a64
     domain: deconz
@@ -26,9 +28,8 @@
   - entity_id: light.master_bathroom_lights
     service: light.toggle
 
-- id: '1578225776551'
-  alias: MasterBedSwitch_RightButton
-  description: ''
+- alias: "Aqara master bed. desk switch - right button"
+  description: "Toggle desk light"
   trigger:
   - device_id: 75a7b1408f31448faa7b6f2439a07a64
     domain: deconz
@@ -39,10 +40,9 @@
   action:
   - entity_id: light.desk_light
     service: light.toggle
-    
-- id: '1578225725316'
-  alias: MasterBedSwitch_RightButton_ContinouslyPressed
-  description: ''
+
+- alias: "Aqara master bed. desk switch - right button (long press)"
+  description: "Toggle master bed. main lights"
   trigger:
   - device_id: 75a7b1408f31448faa7b6f2439a07a64
     domain: deconz
@@ -54,9 +54,12 @@
   - entity_id: switch.master_bed_wall_switch_main
     service: switch.toggle
     
-- id: '1578870034314'
-  alias: MasterBedWallSwitch_RightButton
-  description: ''
+#########################################################################
+# Aqara wall switch
+#########################################################################
+
+- alias: "Aqara master bed. wall switch - right button"
+  description: "Toggle night light"
   trigger:
   - entity_id: switch.master_bedroom_main_lights
     platform: state
