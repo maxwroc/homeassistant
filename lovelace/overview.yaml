@@ -94,13 +94,13 @@
       lower_bound: 0
       hours_to_show: 168
       height: 150
-      aggregate_func: avg
+      aggregate_func: max
       group_by: date
       hour24: true
       show:
-        graph: 
-        
-      
+        graph: bar
+
+
 
 #    - type: iframe
 #      #url: http://192.168.2.104:8085/sources/0/dashboards/2?lower=now%28%29%20-%2015m&present=true

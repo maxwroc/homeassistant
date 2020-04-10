@@ -1,0 +1,12 @@
+- type: custom:mini-graph-card
+  entities:
+    - entity: sensor.energy_daily
+  name: Energy consumption
+  lower_bound: 0
+  hours_to_show: 168
+  height: 150
+  aggregate_func: max
+  group_by: date
+  hour24: true
+  show:
+    graph: bar

@@ -202,6 +202,9 @@ utility_meter:
   energy_yearly:
     source: sensor.energy_total
     cycle: yearly
+  energy_rpi_daily:
+    source: sensor.energy_total_rpi
+    cycle: daily
   energy_rpi_monthly:
     source: sensor.energy_total_rpi
     cycle: monthly

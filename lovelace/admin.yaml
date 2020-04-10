@@ -62,6 +62,21 @@
         - sensor.home_assistant_v2_db
         - sensor.hassio_online
         - sensor.last_boot
+        
+    - type: custom:mini-graph-card
+      entities:
+        - entity: sensor.energy_rpi_daily
+          name: RPi4 energy usage
+      name: Energy consumption
+      lower_bound: 0
+      hours_to_show: 168
+      height: 150
+      aggregate_func: max
+      group_by: date
+      hour24: true
+      show:
+        graph: bar
+        
     - type: horizontal-stack
       cards:
         - type: entities

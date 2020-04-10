@@ -1,9 +1,9 @@
 resources:
-  - url: /hacsfiles/mini-graph-card/mini-graph-card-bundle.js
-    type: module
-#  - url: /local/mini-graph-card/dist/mini-graph-card-bundle.js?v=0.8.8
+#  - url: /hacsfiles/mini-graph-card/mini-graph-card-bundle.js
 #    type: module
-  - url: /community_plugin/mini-media-player/mini-media-player-bundle.js
+  - url: /local/mini-graph-card/dist/mini-graph-card-bundle.js?v=0.8.8
+    type: module
+  - url: /hacsfiles/mini-media-player/mini-media-player-bundle.js
     type: module
   - url: /community_plugin/weather-card/weather-card.js
     type: module
@@ -28,3 +28,5 @@ views:
     cards: !include lovelace/security.yaml
   - title: Admin
     cards: !include lovelace/admin.yaml
+  - title: Test
+    cards: !include lovelace/test.yaml
