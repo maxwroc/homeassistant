@@ -62,7 +62,7 @@
         - sensor.home_assistant_v2_db
         - sensor.hassio_online
         - sensor.last_boot
-        
+
     - type: custom:mini-graph-card
       entities:
         - entity: sensor.energy_rpi_daily
@@ -76,7 +76,7 @@
       hour24: true
       show:
         graph: bar
-        
+
     - type: horizontal-stack
       cards:
         - type: entities
