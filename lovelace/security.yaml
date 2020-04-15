@@ -143,3 +143,21 @@
     - value: "on"
       label: Detected
   hour24: true
+  
+- type: custom:mini-graph-card
+  name: Motion at home
+  entities:
+    - entity: group.motion_sensors
+      name: Home
+  hours_to_show: 1
+  points_per_hour: 60
+  update_interval: 30
+  aggregate_func: max
+  line_width: 2
+  smoothing: false
+  state_map:
+    - value: "off"
+      label: Clear
+    - value: "on"
+      label: Detected
+  hour24: true

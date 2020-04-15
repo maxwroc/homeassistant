@@ -27,6 +27,7 @@ entities:
   - sensor.energy_daily
   - sensor.energy_monthly
   - sensor.energy_yearly
+  - sensor.energy_rpi_daily
   - sensor.energy_rpi_monthly
   - group.family
   - group.motion_sensors

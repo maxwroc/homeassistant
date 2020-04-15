@@ -67,7 +67,7 @@
       entities:
         - entity: sensor.energy_rpi_daily
           name: RPi4 energy usage
-      name: Energy consumption
+      name: RPi4 energy consumption
       lower_bound: 0
       hours_to_show: 168
       height: 150
