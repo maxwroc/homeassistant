@@ -68,62 +68,13 @@
         - entity: sensor.energy_rpi_daily
           name: RPi4 energy usage
       name: RPi4 energy consumption
-      lower_bound: 0
-      hours_to_show: 168
+      hours_to_show: 336
       height: 150
       aggregate_func: max
       group_by: date
       hour24: true
       show:
         graph: bar
-
-    - type: horizontal-stack
-      cards:
-        - type: entities
-          title: Battery levels
-          show_header_toggle: false
-          entities:
-            # Temp sensors
-            - entity: sensor.living_room_temp
-              type: custom:battery-entity
-              name: L. room temp
-            - entity: sensor.bedroom_temp
-              type: custom:battery-entity
-            - entity: sensor.master_bed_temp
-              type: custom:battery-entity
-            - entity: sensor.outside_temp
-              type: custom:battery-entity
-            # Door sensors
-            - entity: binary_sensor.main_doors
-              type: custom:battery-entity
-            - entity: binary_sensor.living_room_balkony
-              type: custom:battery-entity
-              name: L. room balkony
-            - entity: binary_sensor.bedroom_balkony
-              type: custom:battery-entity
-        - type: entities
-          title: Battery levels
-          show_header_toggle: false
-          entities:
-            # Motion sensors
-            - entity: binary_sensor.living_room_motion
-              type: custom:battery-entity
-              name: L. room motion
-            - entity: binary_sensor.bedroom_motion
-              type: custom:battery-entity
-            - entity: binary_sensor.bathroom_motion
-              type: custom:battery-entity
-            - entity: binary_sensor.master_bed_motion
-              type: custom:battery-entity
-              name: M. bed. motion
-            - entity: binary_sensor.master_bath_motion
-              type: custom:battery-entity
-              name: M. bath. motion
-            - entity: binary_sensor.corridor_motion
-              type: custom:battery-entity
-            # Other sensors
-            - entity: sensor.energy
-              type: custom:battery-entity
 
 - type: horizontal-stack
   cards:
@@ -221,6 +172,46 @@
               icon: mdi:doorbell-vide
 
 
+- type: custom:battery-state-card
+  name: "All real sensors"
+  sort_by_level: "asc"
+  collapse: 2
+  color_gradient:
+    - "#ff0000"
+    - "#ffff00"
+    - "#00ff00"
+  entities:
+    - entity: sensor.bathroom_motion_battery_level
+      name: "Bathroom motion sensor"
+    - entity: sensor.bedroom_balcony_battery_level
+      name: "Bedroom balkony door sensor"
+    - entity: sensor.bedroom_motion_battery_level
+      name: "Bedroom motion sensor"
+    - entity: sensor.bedroom_switch_battery_level
+      name: "Bedroom Aqara switch"
+    - entity: sensor.bedroomtemp_battery_level
+      name: "Bedroom temp. sensor"
+    - entity: sensor.living_room_balcony_battery_level
+      name: "Living room balkony door sensor"
+    - entity: sensor.living_room_switch_battery_level
+      name: "Living room Aqara switch"
+    - entity: sensor.livingroomtemp_battery_level
+      name: "Living room temp. sensor"
+    - entity: sensor.main_door_battery_level
+      name: "Main door sensor"
+    - entity: sensor.master_bathroom_motion_battery_level
+      name: "Master bath. motion sensor"
+    - entity: sensor.master_bedroom_motion_battery_level
+      name: "Master bed. motion sensor"
+    - entity: sensor.masterbedtemp_battery_level
+      name: "Master bed. temp. sensor"
+    - entity: sensor.mbedroom_bed_switch_battery_level
+      name: "Master bed. Aqara switch"
+    - entity: sensor.corridor_motion_battery_level
+      name: "Corridor motion sensor"
+    - entity: sensor.temp_outside_battery_numeric
+      multiplier: 10
+      name: "Outside temp. sensor"
 
 #- type: iframe
 #  #url: http://192.168.2.104:8085/sources/0/dashboards/1?lower=now%28%29%20-%2024h&present=true

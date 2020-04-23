@@ -1,3 +1,21 @@
+sensor.livingroomtemp:
+  friendly_name: "Living room temperature"
+
+sensor.livingroomtemp_3:
+  friendly_name: "Living room humidity"
+  
+sensor.bedroomtemp_2:
+  friendly_name: "Bedroom temperature"
+  
+sensor.bedroomtemp_3:
+  friendly_name: "Bedroom humidity"
+  
+sensor.masterbedtemp_3:
+  friendly_name: "Master bedroom temperature"
+  
+sensor.masterbedtemp:
+  friendly_name: "Master bedroom humidity"
+
 sensor.energy_rpi_monthly:
   friendly_name: RPi energy monthly
 
@@ -22,12 +40,12 @@ switch.master_bed_wall_switch_main:
 
 binary_sensor.main_door:
   device_class: door
-  
+
 binary_sensor.living_room_balcony:
   device_class: door
-  
+
 binary_sensor.bedroom_balcony:
   device_class: door
-  
+
 sensor.temp_outside_temperature:
   friendly_name: Outside temp
