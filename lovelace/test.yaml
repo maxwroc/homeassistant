@@ -1,20 +1,3 @@
-- type: custom:battery-state-card
-  entities:
-    - entity: sensor.bedroom_motion_battery_level
-      name: "Bedroom motion sensor"
-      value_override: 50
-    - entity: sensor.bathroom_motion_battery_level
-      name: "Bathroom motion sensor"
-      value_override: 0
-    - entity: sensor.bedroomtemp_battery_level
-      name: "Bedroom temp. sensor"
-      value_override: 100
-    - entity: sensor.bedroom_balcony_battery_level
-      name: "Bedroom balkony door sensor"
-      value_override: 20
-    - entity: sensor.bedroom_switch_battery_level
-      name: "Bedroom Aqara switch"
-      value_override: 70
 
 - type: custom:battery-state-card
   name: "Sorted list and collapsed view"
@@ -46,6 +29,7 @@
       name: "Master bath. motion sensor"
     - entity: sensor.master_bedroom_motion_battery_level
       name: "Master bed. motion sensor"
+      value_override: "Unknown"
     - entity: sensor.masterbedtemp_battery_level
       name: "Master bed. temp. sensor"
     - entity: sensor.mbedroom_bed_switch_battery_level
@@ -125,28 +109,7 @@
       name: "Master bed. motion sensor"
       value_override: 100
 
-- type: vertical-stack
-  cards:
-    - type: entities
-      title: Other
-      show_header_toggle: false
-      entities:
-        - sensor.energy_rpi_monthly
-        - sensor.home_assistant_v2_db
-        - sensor.hassio_online
-        - sensor.last_boot
-        - type: custom:battery-state-card
-          entity: sensor.temp_outside_battery_numeric
-          multiplier: 10
-          name: "Temp sensor - outside"
-        - type: custom:battery-state-card
-          entity: sensor.temp_outside_battery_numeric
-          multiplier: 10
-          name: "Temp sensor - outside"
-          color_gradient:
-            - "#ff0000" # red
-            - "#ffff00" # yellow
-            - "#00ff00" # green
+
 
 - type: custom:battery-state-card
   name: No color
@@ -192,5 +155,191 @@
       name: "Bedroom Aqara switch"
       value_override: 70
 
+- type: custom:battery-state-card
+  name: String values support - state map
+  entities:
+    - entity: binary_sensor.bedroom_motion_2
+      name: "Binary sensor state"
+      state_map:
+        - from: "on"
+          to: 100
+        - from: "off"
+          to: 25
+    - entity: sensor.bedroom_motion
+      name: "Sensor string attribute"
+      attribute: "dark"
+      state_map:
+        - from: false
+          to: 100
+        - from: true
+          to: 25
+
+- type: entities
+  title: "Charging indicators"
+  show_header_toggle: false
+  entities:
+#    - light.master_bedroom_night_light
+    - type: custom:battery-state-card
+      entity: sensor.temp_outside_battery_numeric
+      name: "Temp sensor outside"
+      value_override: 0
+      charging_state:
+        entity_id: light.master_bedroom_night_light
+        state: "off"
+    - type: custom:battery-state-card
+      entity: sensor.temp_outside_battery_numeric
+      name: "Temp sensor living room"
+      value_override: 20
+      charging_state:
+        entity_id: light.master_bedroom_night_light
+        state: "off"
+    - type: custom:battery-state-card
+      entity: sensor.temp_outside_battery_numeric
+      name: "Temp sensor bedroom"
+      value_override: 70
+      charging_state:
+        entity_id: light.master_bedroom_night_light
+        state: "off"
+    - type: custom:battery-state-card
+      entity: sensor.temp_outside_battery_numeric
+      name: "Temp sensor master bed."
+      value_override: 100
+      charging_state:
+        entity_id: light.master_bedroom_night_light
+        state: "off"
+    - type: custom:battery-state-card
+      entity: sensor.temp_outside_battery_numeric
+      name: "Custom charging icon & color"
+      value_override: "charging"
+      charging_state:
+        state: "Charging"
+        icon: mdi:flash
+        color: yellow
 
 
+
+- type: entities
+  title: Displayed as entity
+  show_header_toggle: false
+  entities:
+    - sensor.energy_rpi_monthly
+    - sensor.home_assistant_v2_db
+    - sensor.hassio_online
+    - sensor.last_boot
+    - type: custom:battery-state-card
+      entity: sensor.temp_outside_battery_numeric
+      multiplier: 10
+      name: "Temp sensor - outside"
+    - type: custom:battery-state-card
+      entity: sensor.temp_outside_battery_numeric
+      multiplier: 10
+      name: "Temp sensor - outside"
+      color_gradient:
+        - "#ff0000" # red
+        - "#ffff00" # yellow
+        - "#00ff00" # green
+
+- type: entity-filter
+  entities:
+    - entity: sensor.bathroom_motion_battery_level
+      name: "Bathroom motion sensor"
+    - entity: sensor.bedroom_balcony_battery_level
+      name: "Bedroom balkony door sensor"
+    - entity: sensor.bedroom_motion_battery_level
+      name: "Bedroom motion sensor"
+    - entity: sensor.bedroom_switch_battery_level
+      name: "Bedroom Aqara switch"
+    - entity: sensor.bedroomtemp_battery_level
+      name: "Bedroom temp. sensor"
+    - entity: sensor.living_room_balcony_battery_level
+      name: "Living room balkony door sensor"
+    - entity: sensor.living_room_switch_battery_level
+      name: "Living room Aqara switch"
+    - entity: sensor.livingroomtemp_battery_level
+      name: "Living room temp. sensor"
+    - entity: sensor.main_door_battery_level
+      name: "Main door sensor"
+    - entity: sensor.master_bathroom_motion_battery_level
+      name: "Master bath. motion sensor"
+    - entity: sensor.master_bedroom_motion_battery_level
+  state_filter:
+    - operator: "<"
+      value: 100
+  card:
+    type: custom:battery-state-card
+    name: Filtering with entity-filter
+    color_gradient:
+      - "#ff0000" # red
+      - "#0000ff" # blue
+      - "#00ff00" # green
+
+
+
+- type: custom:battery-state-card
+  name: Click
+  color_gradient:
+    - "#ff0000" # red
+    - "#0000ff" # blue
+    - "#00ff00" # green
+  entities:
+    - entity: sensor.bedroom_motion_battery_level
+      name: "More info"
+      value_override: 100
+      tap_action:
+        action: "more-info"
+    - entity: sensor.bathroom_motion_battery_level
+      name: "Navigation path"
+      value_override: 0
+      tap_action:
+        action: "navigate"
+        navigation_path: "/lovelace/1"
+    - entity: sensor.bedroomtemp_battery_level
+      name: "Call service - Pushover"
+      value_override: 60
+      tap_action:
+        action: "call-service"
+        service: notify.pushover
+        service_data:
+          message: "Call service works"
+          title: "Battery State Card"
+    - entity: sensor.bedroom_balcony_battery_level
+      name: "Url"
+      value_override: 20
+      tap_action:
+        action: "url"
+        url_path: "http://onet.pl"
+    - entity: sensor.bedroom_switch_battery_level
+      name: "No action"
+      value_override: 80
+
+- type: custom:battery-state-card
+  name: Click - default
+  tap_action:
+    action: "more-info"
+  entities:
+    - entity: sensor.bedroom_motion_battery_level
+      name: "More info"
+      value_override: 100
+    - entity: sensor.bathroom_motion_battery_level
+      name: "None"
+      value_override: 0
+      tap_action:
+        action: "none"
+
+
+- type: custom:battery-state-card
+  name: Secondary info
+  secondary_info: last_updated
+  entities:
+    - entity: sensor.bedroom_motion_battery_level
+      name: "Bedroom motion sensor"
+    - entity: sensor.bathroom_motion_battery_level
+      name: "Mi Robrock"
+      secondary_info: charging
+      value_override: 54
+      charging_state:
+        state: 54
+        secondary_info_text: "Charging in progress"
+    - entity: sensor.bedroomtemp_battery_level
+      name: "Jack's phone"
+      secondary_info: "Motorola"

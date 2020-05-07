@@ -5,6 +5,8 @@ resources:
     type: module
   - url: /hacsfiles/atomic_calendar/atomic_calendar.js
     type: module
+  - url: /hacsfiles/atomic_calendar_revive/atomic-calendar-revive.js
+    type: module
 #  - url: /hacsfiles/battery-state-card/battery-state-card.js
 #    type: module
   - url: /hacsfiles/weather-card/weather-card.js
