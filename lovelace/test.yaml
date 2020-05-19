@@ -41,6 +41,59 @@
       multiplier: 10
       name: "Outside temp. sensor"
 
+
+- type: 'custom:battery-state-card'
+  title: Filters + bulk rename
+  sort_by_level: "asc"
+  bulk_rename:
+    - from: "Battery Level" # simple string replace
+      to: "sensor"
+    - from: "/\\s(temperature|temp)\\s/" # regular expression
+      to: " temp. "
+  entities:
+    - sensor.processor_use
+    - entity: sensor.temp_outside_battery_numeric
+      multiplier: 10
+      name: "Outside temp. sensor"
+  filter:
+    include:
+      - name: entity_id
+        value: '*_battery_leveld'
+        operator: matches
+      - name: attributes.device_class
+        value: battery
+        operator: "="
+    exclude:
+      - name: state
+        value: 60
+        operator: ">"
+      - name: state
+        value: 42
+        operator: "<"
+
+- type: entities
+  title: Displayed as entity
+  show_header_toggle: false
+  entities:
+    - sensor.energy_rpi_monthly
+    - sensor.home_assistant_v2_db
+    - sensor.hassio_online
+    - sensor.last_boot
+    - sensor.processor_use
+    - type: custom:battery-state-card
+      entity: sensor.temp_outside_battery_numeric
+      multiplier: 10
+      name: "Temp sensor - outside"
+    - type: custom:battery-state-card
+      entity: sensor.temp_outside_battery_numeric
+      multiplier: 10
+      name: "Temp sensor - outside"
+      color_gradient:
+        - "#ff0000" # red
+        - "#ffff00" # yellow
+        - "#00ff00" # green
+
+
 - type: custom:battery-state-card
   name: Custom color thresholds
   color_thresholds:
@@ -218,26 +271,6 @@
 
 
 
-- type: entities
-  title: Displayed as entity
-  show_header_toggle: false
-  entities:
-    - sensor.energy_rpi_monthly
-    - sensor.home_assistant_v2_db
-    - sensor.hassio_online
-    - sensor.last_boot
-    - type: custom:battery-state-card
-      entity: sensor.temp_outside_battery_numeric
-      multiplier: 10
-      name: "Temp sensor - outside"
-    - type: custom:battery-state-card
-      entity: sensor.temp_outside_battery_numeric
-      multiplier: 10
-      name: "Temp sensor - outside"
-      color_gradient:
-        - "#ff0000" # red
-        - "#ffff00" # yellow
-        - "#00ff00" # green
 
 - type: entity-filter
   entities:
@@ -343,3 +376,4 @@
     - entity: sensor.bedroomtemp_battery_level
       name: "Jack's phone"
       secondary_info: "Motorola"
+
