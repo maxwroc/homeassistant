@@ -7,8 +7,8 @@ resources:
     type: module
 #  - url: /hacsfiles/battery-state-card/battery-state-card.js
 #    type: module
-  - url: /hacsfiles/weather-card/weather-card.js
-    type: module
+#  - url: /hacsfiles/weather-card/weather-card.js
+#    type: module
 # Dev
   - url: /local/dev/mini-graph-card/dist/mini-graph-card-bundle.js?v=0.8.8
     type: module

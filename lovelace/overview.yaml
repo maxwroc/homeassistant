@@ -1,11 +1,9 @@
 - type: vertical-stack
   cards:
 
-    - type: custom:weather-card
+    - type: weather-forecast
       entity: weather.scarbrook
-      current: true
-      details: true
-      forecast: true
+      show_forecast: true
 
     - type: "custom:atomic-calendar-revive"
       name: "Calendar"
