@@ -376,4 +376,3 @@
     - entity: sensor.bedroomtemp_battery_level
       name: "Jack's phone"
       secondary_info: "Motorola"
-

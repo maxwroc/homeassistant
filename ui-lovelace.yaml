@@ -3,8 +3,6 @@ resources:
 #    type: module
   - url: /hacsfiles/mini-media-player/mini-media-player-bundle.js
     type: module
-  - url: /hacsfiles/atomic_calendar/atomic_calendar.js
-    type: module
   - url: /hacsfiles/atomic-calendar-revive/atomic-calendar-revive.js
     type: module
 #  - url: /hacsfiles/battery-state-card/battery-state-card.js
@@ -15,6 +13,8 @@ resources:
   - url: /local/dev/mini-graph-card/dist/mini-graph-card-bundle.js?v=0.8.8
     type: module
   - url: /local/dev/battery-state-card/dist/battery-state-card.js
+    type: module
+  - url: /local/dev/sublime-floorplan-card/dist/sublime-floorplan-card.js
     type: module
 
 title: Home

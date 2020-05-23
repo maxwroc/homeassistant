@@ -7,26 +7,6 @@
       details: true
       forecast: true
 
-    - type: "custom:atomic-calendar"
-      title: "Calendar"
-      defaultMode: 2
-      enableModeChange: true
-      CalEventIcon2Color: #e19cff
-      entities:
-      - entity: calendar.wydazenia
-        color: red
-        type: holiday
-      - entity: calendar.school
-        color: purple
-        type: icon2
-      - entity: calendar.urodziny_i_imieniny
-        color: green
-        type: icon3
-      showColors: true
-      maxDaysToShow: 14
-      showLastCalendarWeek: false
-
-
     - type: "custom:atomic-calendar-revive"
       name: "Calendar"
       defaultMode: 2
@@ -123,6 +103,13 @@
 
 
 
+- type: entities
+  title: Corridor
+  show_header_toggle: false
+  entities:
+    - binary_sensor.main_door
+    - binary_sensor.corridor_motion_2
+
 #    - type: iframe
 #      #url: http://192.168.2.104:8085/sources/0/dashboards/2?lower=now%28%29%20-%2015m&present=true
 #      url: http://192.168.2.104:8123/api/hassio_ingress/J469DFzDQ4mVGagrfD7Q3MLGSCpwcfVxqhhOO2PY4kI/sources/0/dashboards/2?lower=now%28%29%20-%2015m&present=true
@@ -179,13 +166,6 @@
       entities:
         - light.bathroom_lights
         - binary_sensor.bathroom_motion_2
-
-- type: entities
-  title: Corridor
-  show_header_toggle: false
-  entities:
-    - binary_sensor.main_door
-    - binary_sensor.corridor_motion_2
 
 
 

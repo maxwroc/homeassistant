@@ -12,6 +12,15 @@ homeassistant:
 # Configure a default setup of Home Assistant (frontend, api, etc)
 # default_config:
 
+panel_custom:
+  - name: sublime-floorplan-card
+    sidebar_title: Floorplan
+    sidebar_icon: mdi:floor-plan
+    url_path: floorplan
+    js_url: "http://127.0.0.1:8080/dist/sublime-floorplan-card.js"
+    config:
+      entity: zonk
+
 ########## Start of integrations from default_config ##########
 #cloud:
 config:

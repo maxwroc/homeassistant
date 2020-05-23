@@ -1,32 +1,11 @@
 - type: vertical-stack
   cards:
-    - type: horizontal-stack
-      cards:
-        - type: custom:mini-graph-card
-          entities:
-            - sensor.cpu_temperature
-          points_per_hour: 4
-        - type: custom:mini-graph-card
-          entities:
-            - sensor.processor_use
-          line_color: lightgreen
-          points_per_hour: 2
-    - type: horizontal-stack
-      cards:
-        - type: custom:mini-graph-card
-          entities:
-            - sensor.memory_use_percent
-          line_color: orange
-          points_per_hour: 2
-        - type: custom:mini-graph-card
-          entities:
-            - sensor.disk_use_percent
-          line_color: yellow
-          points_per_hour: 2
-
     - type: 'custom:battery-state-card'
       title: Battery levels
       sort_by_level: "asc"
+      # secondary_info: last_changed
+      tap_action:
+        action: more-info
       color_gradient:
         - "#ff0000"
         - "#ffff00"
@@ -52,8 +31,32 @@
             operator: "="
         exclude:
           - name: "state"
-            value: 1000
-            operator: "<"
+            value: 100
+
+    - type: horizontal-stack
+      cards:
+        - type: custom:mini-graph-card
+          entities:
+            - sensor.cpu_temperature
+          points_per_hour: 4
+        - type: custom:mini-graph-card
+          entities:
+            - sensor.processor_use
+          line_color: lightgreen
+          points_per_hour: 2
+    - type: horizontal-stack
+      cards:
+        - type: custom:mini-graph-card
+          entities:
+            - sensor.memory_use_percent
+          line_color: orange
+          points_per_hour: 2
+        - type: custom:mini-graph-card
+          entities:
+            - sensor.disk_use_percent
+          line_color: yellow
+          points_per_hour: 2
+
 
     - type: vertical-stack
       cards:
