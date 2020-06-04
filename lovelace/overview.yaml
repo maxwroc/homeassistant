@@ -4,6 +4,7 @@
     - type: weather-forecast
       entity: weather.scarbrook
       show_forecast: true
+      secondary_info_attribute: humidity
 
     - type: "custom:atomic-calendar-revive"
       name: "Calendar"

@@ -1,16 +1,18 @@
 
 - type: vertical-stack
   cards:
-    - type: horizontal-stack
-      cards:
-        - type: picture-entity
-          title: Bedroom
-          entity: camera.kids_sd
-          camera_image: camera.kids_sd
-          show_info: true
-          show_state: false
-          tap_action:
-            action: more-info
+    - type: iframe
+      url: http://192.168.2.104:8123/api/hassio_ingress/_VH6BAiwGN6yFerwg2M5Pmxxu31fJIEPnFoHmgKAcaQ/picture/1/frame/
+      aspect_ratio: 60%
+
+    # - type: picture-entity
+    #   title: Bedroom
+    #   entity: camera.kids_sd
+    #   camera_image: camera.kids_sd
+    #   show_info: true
+    #   show_state: false
+    #   tap_action:
+    #     action: more-info
 #        - type: picture-entity
 #          title: Bedroom
 #          entity: camera.kids_room_hd
