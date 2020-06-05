@@ -1,0 +1,19 @@
+
+
+#########################################################################
+# Notify when state changes reporting diff and old/new state
+#########################################################################
+
+- alias: "Raspwroc files count changed notification"
+  initial_state: true
+  trigger:
+    platform: event
+    event_type: state_changed
+    event_data:
+      entity_id: sensor.files_on_raspwroc
+  condition: []
+  action:
+    - service: notify.pushover
+      data_template:
+        message: "Number of files changed: {{ trigger.event.data.new_state.state | int - trigger.event.data.old_state.state | int }} ({{ trigger.event.data.old_state.state }}/{{ trigger.event.data.new_state.state }})"
+        title: "Raspwroc"

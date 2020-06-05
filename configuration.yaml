@@ -192,6 +192,12 @@ emulated_hue:
       name: "PC"
       hidden: false
 
+sonoff:
+  username: !secret ewelink_user
+  password: !secret ewelink_pass
+#  mode: local
+#  reload: always  # update device list every time HA starts
+
 switch: !include configuration/switches.yaml
 
 notify:
@@ -220,5 +226,5 @@ utility_meter:
 
 shell_command:
   commit_config_files: cd /config && git add -A && git commit -m "`date`" && git push -u origin master
-  store_creds: !secret github_store_creds_cmd
+  store_creds: !secret github_store_creds_cmd # git config --global user.name "USERNAME" && git config --global user.email "USER@EMAIL" && git config --global credential.helper store && echo "https://USERNAME:GITTOKEN@github.com" > ~/.git-credentials
 

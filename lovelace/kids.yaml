@@ -5,22 +5,56 @@
       url: http://192.168.2.104:8123/api/hassio_ingress/_VH6BAiwGN6yFerwg2M5Pmxxu31fJIEPnFoHmgKAcaQ/picture/1/frame/
       aspect_ratio: 60%
 
-    # - type: picture-entity
-    #   title: Bedroom
-    #   entity: camera.kids_sd
-    #   camera_image: camera.kids_sd
-    #   show_info: true
-    #   show_state: false
-    #   tap_action:
-    #     action: more-info
-#        - type: picture-entity
-#          title: Bedroom
-#          entity: camera.kids_room_hd
-#          camera_image: camera.kids_room_hd
-#          show_info: true
-#          show_state: false
-#          tap_action:
-#            action: more-info
+    - type: horizontal-stack
+      cards:
+        - type: entity-button
+          name: Left
+          icon: mdi:arrow-left-bold
+          show_icon: true
+          show_name: false
+          icon_height: 75%
+          tap_action:
+            action: "call-service"
+            service: sonoff.send_command
+            service_data:
+              device: !secret ewelink_camera_id
+              cmd: left
+        - type: entity-button
+          name: Up
+          icon: mdi:arrow-up-bold
+          show_icon: true
+          show_name: false
+          icon_height: 75%
+          tap_action:
+            action: "call-service"
+            service: sonoff.send_command
+            service_data:
+              device: !secret ewelink_camera_id
+              cmd: up
+        - type: entity-button
+          name: Down
+          icon: mdi:arrow-down-bold
+          show_icon: true
+          show_name: false
+          icon_height: 75%
+          tap_action:
+            action: "call-service"
+            service: sonoff.send_command
+            service_data:
+              device: !secret ewelink_camera_id
+              cmd: down
+        - type: entity-button
+          name: Right
+          icon: mdi:arrow-right-bold
+          show_icon: true
+          show_name: false
+          icon_height: 75%
+          tap_action:
+            action: "call-service"
+            service: sonoff.send_command
+            service_data:
+              device: !secret ewelink_camera_id
+              cmd: right
 
     - type: custom:mini-media-player
       entity: media_player.kids_dot
@@ -40,6 +74,25 @@
           - name: "Calm Vibes"
             type: playlist
             id: "spotify:playlist:37i9dQZF1DX1s9knjP51Oa"
+
+#- type: vertical-stack
+#  cards:
+    # - type: picture-entity
+    #   title: Bedroom
+    #   entity: camera.kids_sd
+    #   camera_image: camera.kids_sd
+    #   show_info: true
+    #   show_state: false
+    #   tap_action:
+    #     action: more-info
+#        - type: picture-entity
+#          title: Bedroom
+#          entity: camera.kids_room_hd
+#          camera_image: camera.kids_room_hd
+#          show_info: true
+#          show_state: false
+#          tap_action:
+#            action: more-info
 
 - type: vertical-stack
   cards:
