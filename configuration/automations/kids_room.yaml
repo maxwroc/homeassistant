@@ -39,7 +39,7 @@
       data:
         entity_id: media_player.spotify
         media_content_type: "playlist"
-        media_content_id: "spotify:user:spotify:playlist:37i9dQZF1DX3iWJN79KKoY"
+        media_content_id: "spotify:user:spotify:playlist:37i9dQZF1DX0jgyAiPl8Af" # "spotify:user:spotify:playlist:37i9dQZF1DX3iWJN79KKoY" Chillout covers
 
 - alias: "Aqara kids wall switch - right button"
   description: "Kids room main lights toggle"

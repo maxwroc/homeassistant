@@ -21,17 +21,23 @@ title: Home
 views:
   - title: Home
     icon: mdi:home
+    path: home
     cards: !include lovelace/overview.yaml
   - title: Kids
+    path: kids
     cards: !include lovelace/kids.yaml
 #  - title: Floor plan
 #    panel: true
 #    cards: !include lovelace/floorplan.yaml
   - title: Media
+    path: media
     cards: !include lovelace/media.yaml
   - title: Security
+    path: security
     cards: !include lovelace/security.yaml
   - title: Admin
+    path: admin
     cards: !include lovelace/admin.yaml
   - title: Test
+    path: test
     cards: !include lovelace/test.yaml

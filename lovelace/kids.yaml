@@ -74,6 +74,9 @@
           - name: "Calm Vibes"
             type: playlist
             id: "spotify:playlist:37i9dQZF1DX1s9knjP51Oa"
+          - name: "Peaceful Guitar"
+            type: playlist
+            id: "spotify:playlist:37i9dQZF1DX0jgyAiPl8Af"
 
 #- type: vertical-stack
 #  cards:
