@@ -1,0 +1,9 @@
+- platform: alpha_vantage
+  api_key: !secret alpha_vantage_key
+  symbols:
+    - name: Microsoft
+      currency: USD
+      symbol: MSFT
+    - name: CD Projekt
+      currency: PLN
+      symbol: CDR.WA

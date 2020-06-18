@@ -376,3 +376,31 @@
     - entity: sensor.bedroomtemp_battery_level
       name: "Jack's phone"
       secondary_info: "Motorola"
+
+
+- type: 'custom:battery-state-card'
+  title: Battery state card
+  sort_by_level: asc
+  bulk_rename:
+    - from: "Battery Level"
+  collapse:
+    - entities:
+        - sensor.bedroom_balcony_battery_level
+        - sensor.main_door_battery_level
+        - sensor.living_room_balcony_battery_level
+      icon: 'mdi:door'
+      name: 'Door sensors (min: {min}%, count: {count})'
+      secondary_info: 'Battery levels {range}%'
+    - group_id: group.motion_sensors_batteries
+      icon: null
+      min: 95
+      secondary_info: No icon
+    - group_id: group.switches_batteries
+      min: 99
+    - group_id: group.temp_sensors_batteries
+      icon: 'mdi:thermometer'
+      min: 99
+  entities:
+    - entity: sensor.bedroom_balcony_battery_level
+      value_override: 87
+    - group.switches_batteries

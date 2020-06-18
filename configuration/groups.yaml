@@ -41,7 +41,7 @@ lights:
     - light.master_bedroom_night_light
     - light.tv_light
     - switch.master_bed_wall_switch_main
-    
+
 motion_sensors_batteries:
   name: "Motion sensors"
   icon: mdi:run
@@ -51,8 +51,8 @@ motion_sensors_batteries:
     - sensor.master_bathroom_motion_battery_level
     - sensor.master_bedroom_motion_battery_level
     - sensor.corridor_motion_battery_level
-    
-        
+
+
 door_sensors_batteries:
   name: "Door sensors"
   icon: mdi:door
@@ -60,18 +60,17 @@ door_sensors_batteries:
     - sensor.bedroom_balcony_battery_level
     - sensor.main_door_battery_level
     - sensor.living_room_balcony_battery_level
-    
+
 temp_sensors_batteries:
   name: "Temperature sensors"
-  icon: mdi:temp
   entities:
     - sensor.bedroomtemp_battery_level
     - sensor.masterbedtemp_battery_level
     - sensor.livingroomtemp_battery_level
-        
+
 switches_batteries:
   name: "Switches"
-  icon: mdi:switch
+  icon: mdi:toggle-switch
   entities:
     - sensor.bedroom_switch_battery_level
     - sensor.living_room_switch_battery_level
