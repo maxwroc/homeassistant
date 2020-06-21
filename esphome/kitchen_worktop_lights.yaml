@@ -1,0 +1,53 @@
+esphome:
+  name: kitchen_worktop_lights
+  platform: ESP8266
+  board: esp01_1m
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_pass
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Kitchen Worktop Lights"
+    password: "No2Xhx6VTaCg"
+
+  use_address: 192.168.4.244
+  
+captive_portal:
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+  password: !secret esphome_pass
+
+ota:
+  password: !secret esphome_pass
+
+#############################
+# Shelly 1
+#############################
+
+output:
+  - platform: gpio
+    pin: GPIO4
+    id: gpio_4
+
+light:
+  - platform: binary
+    name: "Kitchen worktop lights"
+    output: gpio_4
+    id: lightid
+    
+binary_sensor:
+  - platform: gpio
+    pin:
+      number: GPIO5
+      #mode: INPUT_PULLUP
+      #inverted: True
+    name: "Kitchen worktop lights switch"
+    on_state:
+      - light.toggle: lightid
+    internal: true

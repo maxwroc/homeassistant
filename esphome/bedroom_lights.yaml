@@ -1,0 +1,53 @@
+esphome:
+  name: bedroom_lights
+  platform: ESP8266
+  board: esp01_1m
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_pass
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Bedroom Lights Fallback Hotspot"
+    password: "7ZiLWhT7QozN"
+    
+  use_address: 192.168.4.231
+
+captive_portal:
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+  password: !secret esphome_pass
+
+ota:
+  password: !secret esphome_pass
+
+#############################
+# Shelly 1
+#############################
+
+output:
+  - platform: gpio
+    pin: GPIO4
+    id: gpio_4
+
+light:
+  - platform: binary
+    name: "Bedroom lights"
+    output: gpio_4
+    id: lightid
+    
+binary_sensor:
+  - platform: gpio
+    pin:
+      number: GPIO5
+      #mode: INPUT_PULLUP
+      #inverted: True
+    name: "Bedroom lights switch"
+    on_state:
+      - light.toggle: lightid
+    internal: true

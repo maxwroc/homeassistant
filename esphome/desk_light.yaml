@@ -1,0 +1,58 @@
+esphome:
+  name: desk_light
+  platform: ESP8266
+  board: esp01_1m
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_pass
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Desk Light Fallback Hotspot"
+    password: "GsgvzNtAJu6v"
+
+  use_address: 192.168.4.240
+  
+captive_portal:
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+  password: !secret esphome_pass
+
+ota:
+  password: !secret esphome_pass
+
+#############################
+# Sonoff S20
+#############################
+
+#binary_sensor:
+#  - platform: gpio
+#    internal: true
+#    pin:
+#      number: GPIO0
+#      mode: INPUT_PULLUP
+#      inverted: True
+#    name: "Desk light button"
+#    on_press:
+#      - switch.toggle: relay
+  
+output:
+  - platform: gpio
+    pin: GPIO12
+    id: relay
+    
+light:
+  - platform: binary
+    name: "Desk light"
+    output: relay
+    id: lightid
+    
+#status_led:
+#  pin:
+#    number: GPIO13
+#    inverted: no

@@ -11,6 +11,12 @@
     0b110037012de8520c010f60:
       name: "Nexa lr left"
       fire_event: true
+    0b11001d00a0e54e0b000060:
+      name: "Nexa mb left"
+      fire_event: true
+    0b11001800a0e54e0c010f70:
+      name: "Nexa mb right"
+      fire_event: true
 
 - platform: wake_on_lan
   name: "PC"

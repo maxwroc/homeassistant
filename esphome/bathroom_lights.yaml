@@ -1,0 +1,58 @@
+esphome:
+  name: bathroom_lights
+  platform: ESP8266
+  board: esp01_1m
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_pass
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Bathroom Lights Fallback Hotspot"
+    password: "WPf8BEWVRRln"
+
+  use_address: 192.168.4.252
+  
+captive_portal:
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+  password: !secret esphome_pass
+
+ota:
+  password: !secret esphome_pass
+
+#############################
+# Sonoff Touch
+#############################
+
+binary_sensor:
+  - platform: gpio
+    internal: true
+    pin:
+      number: GPIO0
+      mode: INPUT_PULLUP
+      inverted: True
+    name: "Bathroom lights button"
+    on_press:
+      - light.toggle: lightid
+
+output:
+  - platform: gpio
+    pin: GPIO12
+    id: relay
+    
+light:
+  - platform: binary
+    name: "Bathroom lights"
+    output: relay
+    id: lightid
+    
+status_led:
+  pin:
+    number: GPIO13
+    inverted: no

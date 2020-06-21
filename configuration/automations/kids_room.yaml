@@ -25,15 +25,15 @@
     type: remote_button_long_press
   condition: []
   action:
+    - service: media_player.volume_set
+      data:
+        entity_id: media_player.kids_dot
+        volume_level: 0.1
+    - delay: 1
     - service: media_player.select_source
       data:
         entity_id: media_player.spotify
         source: "Kids dot"
-    - delay: 1
-    - service: media_player.volume_set
-      data:
-        entity_id: media_player.spotify
-        volume_level: 0.1
     - delay: 1
     - service: media_player.play_media
       data:

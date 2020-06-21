@@ -2,9 +2,15 @@
   cards:
 
     - type: weather-forecast
-      entity: weather.scarbrook
+      entity: weather.openweathermap
       show_forecast: true
       secondary_info_attribute: humidity
+
+    - type: custom:weather-card
+      entity: weather.scarbrook
+      current: true
+      details: false
+      forecast: true
 
     - type: "custom:atomic-calendar-revive"
       name: "Calendar"

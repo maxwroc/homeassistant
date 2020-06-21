@@ -7,6 +7,8 @@ homeassistant:
   whitelist_external_dirs:
     # required to check db size via sensor
     - /config
+  latitude: 51.376163
+  longitude: -0.098234
 
 
 # Configure a default setup of Home Assistant (frontend, api, etc)
@@ -90,6 +92,13 @@ frontend:
 
 lovelace:
   mode: yaml
+
+weather:
+  - platform: openweathermap
+    api_key: !secret openweathermap_key
+    mode: freedaily
+    latitude: 51.376163
+    longitude: -0.098234
 
 hacs:
   token: !secret hacs_token

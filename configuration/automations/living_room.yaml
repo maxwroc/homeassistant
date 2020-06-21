@@ -14,7 +14,7 @@
   action:
   - entity_id: light.living_room_lamp
     service: light.toggle
-    
+
 - alias: "Aqara livingroom wall switch - right button"
   description: "Toggle TV light"
   trigger:
@@ -29,7 +29,7 @@
     service: light.toggle
   - entity_id: light.christmas_tree
     service: light.toggle
-    
+
 - alias: "Aqara livingroom wall switch - left button (long press)"
   description: "Turn off all livingroom/kitchen lights"
   trigger:
@@ -40,5 +40,5 @@
     type: remote_button_long_press
   condition: []
   action:
-  - entity_id: light.living_room_all_lights
+  - entity_id: group.lights_living_room
     service: light.turn_off

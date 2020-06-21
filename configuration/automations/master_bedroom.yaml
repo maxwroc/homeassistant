@@ -53,7 +53,7 @@
   action:
   - entity_id: switch.master_bed_wall_switch_main
     service: switch.toggle
-    
+
 #########################################################################
 # Aqara wall switch
 #########################################################################

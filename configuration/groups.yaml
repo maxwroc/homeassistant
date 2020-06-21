@@ -42,6 +42,17 @@ lights:
     - light.tv_light
     - switch.master_bed_wall_switch_main
 
+
+lights_living_room:
+  name: "Living room all lights"
+  icon: mdi:lightbulb
+  entities:
+    - light.living_room_lamp
+    - light.tv_light
+    - light.living_room_lights
+    - light.kitchen_lights
+    - light.kitchen_worktop_lights
+
 motion_sensors_batteries:
   name: "Motion sensors"
   icon: mdi:run
