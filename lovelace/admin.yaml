@@ -97,6 +97,9 @@
         - sensor.home_assistant_v2_db
         - sensor.hassio_online
         - sensor.last_boot
+        - entity: sensor.files_on_raspwroc
+          secondary_info: last-changed
+          icon: mdi:file-multiple
 
     - type: custom:mini-graph-card
       entities:
