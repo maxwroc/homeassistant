@@ -9,6 +9,10 @@
   * Sonoff S20
   * Sonoff Touch
   * Shelly 1
+  * Tp-Link HS110
+  * Broadlink RM mini 3 (not configured yet)
+  * Sonoff GK-200MP2-B IP camera
+  * D-Link DCS-932L IP Camera
 * RF433
   * RfxTrxE
   * OWL Energy
@@ -29,6 +33,8 @@ Used in the past
   * Nexa wall button
   * Nexa remote control
   * Nexa motion sensor
+* WiFi
+  * Tp-Link HS100
   
   
 ## Configuration
