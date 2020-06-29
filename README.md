@@ -23,6 +23,11 @@
 |  | Nexa | LWST-605 | ![image](https://user-images.githubusercontent.com/8268674/86056642-aca98a00-ba55-11ea-9d7d-29d0ad6ea21a.png) | Wall switch
 | ZigBee |  |  |  |  |
 |  | Phoscon | ConBee II | ![image](https://user-images.githubusercontent.com/8268674/86056863-0742e600-ba56-11ea-82e5-594602251075.png) | USB ZigBee transceiver
+|  | Aqara | RTCGQ11LM | ![image](https://user-images.githubusercontent.com/8268674/86057757-aa482f80-ba57-11ea-981b-93240ea72485.png) | Human motion sensor
+|  | Aqara | WSDCGQ11LM | ![image](https://user-images.githubusercontent.com/8268674/86058008-0f038a00-ba58-11ea-95a8-b475cbc66190.png) | Temperature and humidity sensor
+|  | Aqara | QBKG04LM | ![image](https://user-images.githubusercontent.com/8268674/86058351-ac5ebe00-ba58-11ea-84ba-53873a70667a.png) | Smart wall switch (2 gang) connected to mains (no neutral version)
+|  | Aqara | QBKG02LM  | ![image](https://user-images.githubusercontent.com/8268674/86059062-eb414380-ba59-11ea-8871-f4d97840d5b9.png) | Smart wall switch (2 gang) battery powered
+|  | Aqara | MCCGQ11LM | ![image](https://user-images.githubusercontent.com/8268674/86059453-aff34480-ba5a-11ea-84e9-6eceee5e0c45.png) | Door sensor
 
 * WiFi
   * Sonoff S20
