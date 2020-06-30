@@ -1,6 +1,10 @@
 # Home Assistant configuration
 
-![image](https://user-images.githubusercontent.com/8268674/86159451-47f83900-bb02-11ea-9b3f-6bb5451eee77.png)
+![home screen](https://user-images.githubusercontent.com/8268674/86159451-47f83900-bb02-11ea-9b3f-6bb5451eee77.png)
+
+![security](https://user-images.githubusercontent.com/8268674/86175483-56068380-bb1b-11ea-9421-d7bd083613a6.png)
+
+![admin](https://user-images.githubusercontent.com/8268674/86176680-34a69700-bb1d-11ea-850e-d82b3694eb56.png)
 
 ## Add-ons
 ![image](https://user-images.githubusercontent.com/8268674/86160003-12078480-bb03-11ea-88f3-d1482acd2406.png)
