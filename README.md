@@ -54,8 +54,8 @@
 
 ### Alexa
 
-* Used [Alexa](https://www.home-assistant.io/integrations/alexa/) integration for controlling indifvidual Echo devices.
+* Used [Alexa integration](https://www.home-assistant.io/integrations/alexa/) for controlling Echo devices.
 
-* Smart devices controlled via [Emulated Hue](https://www.home-assistant.io/integrations/emulated_hue/) integration. 
+* Home assistant lights and switches exposed via [Emulated Hue integration](https://www.home-assistant.io/integrations/emulated_hue/). 
 
 * Tip: It is easier to manage smart devices via [alexa website](https://alexa.amazon.co.uk/spa/index.html#appliances).
