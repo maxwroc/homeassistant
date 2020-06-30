@@ -1,37 +1,5 @@
 - type: vertical-stack
   cards:
-    - type: 'custom:battery-state-card'
-      title: Battery levels
-      sort_by_level: "asc"
-      # secondary_info: last_changed
-      tap_action:
-        action: more-info
-      color_gradient:
-        - "#ff0000"
-        - "#ffff00"
-        - "#00ff00"
-      bulk_rename:
-        - from: "Battery Level"
-          to: "sensor"
-        - from: "switch sensor"
-          to: "switch"
-        - from: "temperature"
-          to: " temp. "
-      entities:
-        - entity: sensor.temp_outside_battery_numeric
-          multiplier: 10
-          name: "Outside temp. sensor"
-      filter:
-        include:
-          - name: entity_id
-            value: '*_battery_level'
-            operator: matches
-          - name: attributes.device_class
-            value: battery
-            operator: "="
-        exclude:
-          - name: "state"
-            value: 100
 
     - type: horizontal-stack
       cards:
@@ -60,32 +28,32 @@
 
     - type: vertical-stack
       cards:
-      - type: entities
-        title: Config changes
-        show_header_toggle: false
-        entities:
-          - sensor.config_last_backup
-          - sensor.files_changed_locally
-      - type: horizontal-stack
-        cards:
-        - type: entity-button
-          entity: sensor.files_changed_locally
-          name: Store credentials
-          icon: mdi:file-upload-outline
-          show_icon: false
-          show_name: true
-          tap_action:
-            action: call-service
-            service: shell_command.store_creds
-        - type: entity-button
-          entity: sensor.files_changed_locally
-          name: Commit config changes
-          icon: mdi:file-upload-outline
-          show_icon: false
-          show_name: true
-          tap_action:
-            action: call-service
-            service: script.commit_configs
+        - type: entities
+          title: Config changes
+          show_header_toggle: false
+          entities:
+            - sensor.config_last_backup
+            - sensor.files_changed_locally
+        - type: horizontal-stack
+          cards:
+          - type: entity-button
+            entity: sensor.files_changed_locally
+            name: Store credentials
+            icon: mdi:file-upload-outline
+            show_icon: false
+            show_name: true
+            tap_action:
+              action: call-service
+              service: shell_command.store_creds
+          - type: entity-button
+            entity: sensor.files_changed_locally
+            name: Commit config changes
+            icon: mdi:file-upload-outline
+            show_icon: false
+            show_name: true
+            tap_action:
+              action: call-service
+              service: script.commit_configs
 
 - type: vertical-stack
   cards:
@@ -114,102 +82,75 @@
       show:
         graph: bar
 
-- type: horizontal-stack
-  cards:
-    - type: vertical-stack
-      cards:
-        - type: entities
-          title: Sonoff touch
-          show_header_toggle: false
-          entities:
-            - type: weblink
-              name: "Bedroom"
-              url: http://192.168.4.251
-              icon: mdi:doorbell-video
-            - type: weblink
-              name: "Bathroom"
-              url: http://192.168.4.250
-              icon: mdi:doorbell-video
-            - type: weblink
-              name: "Master bathroom"
-              url: http://192.168.4.252
-              icon: mdi:doorbell-video
-            - type: weblink
-              name: "Master bedroom"
-              url: http://192.168.4.249
-              icon: mdi:doorbell-video
-        - type: entities
-          title: Sonoff socket
-          show_header_toggle: false
-          entities:
-            - type: weblink
-              name: "Tv light"
-              url: http://192.168.4.247
-              icon: mdi:power-socket-uk
-            - type: weblink
-              name: "Living room lamp"
-              url: http://192.168.4.246
-              icon: mdi:power-socket-uk
-            - type: weblink
-              name: "Black night light"
-              url: http://192.168.4.248
-              icon: mdi:power-socket-uk
-            - type: weblink
-              name: "Desk light"
-              url: http://192.168.4.240
-              icon: mdi:power-socket-uk
-            - type: weblink
-              name: "Night light"
-              url: http://192.168.4.245
-              icon: mdi:power-socket-uk
-    - type: vertical-stack
-      cards:
-        - type: entities
-          title: Tools
-          show_header_toggle: false
-          entities:
-            - type: weblink
-              name: "IDE"
-              url: http://192.168.2.104:8321/ide.html
-              icon: mdi:file-document-edit-outline
-            - type: weblink
-              name: "Router"
-              url: http://192.168.2.1
-              icon: mdi:router-wireless
-            - type: weblink
-              name: "Grafana"
-              url: http://192.168.2.104:3000/d/R1BSsRkgk/scarbrook?orgId=1
-              icon: mdi:gauge
-            - type: weblink
-              name: "BTSync"
-              url: http://192.168.2.103:45454
-              icon: mdi:sync
-            - type: weblink
-              name: "BTSync - RaspWroc"
-              url: http://raspwroc:45454
-              icon: mdi:sync
-            - type: weblink
-              name: "Deluge"
-              url: http://192.168.2.103:8112
-              icon: mdi:cloud-download
-        - type: entities
-          title: Shellies
-          show_header_toggle: false
-          entities:
-            - type: weblink
-              name: "Kitchen lights"
-              url: http://192.168.4.243
-              icon: mdi:doorbell-video
-            - type: weblink
-              name: "Kitchen worktop lights"
-              url: http://192.168.4.244
-              icon: mdi:doorbell-video
-            - type: weblink
-              name: "Living room lights"
-              url: http://192.168.4.241
-              icon: mdi:doorbell-vide
+- type: entities
+  title: Tools
+  show_header_toggle: false
+  entities:
+    - type: weblink
+      name: "IDE"
+      url: http://192.168.2.104:8321/ide.html
+      icon: mdi:file-document-edit-outline
+    - type: weblink
+      name: "Router"
+      url: http://192.168.2.1
+      icon: mdi:router-wireless
+    - type: weblink
+      name: "Grafana"
+      url: http://192.168.2.104:3000/d/R1BSsRkgk/scarbrook?orgId=1
+      icon: mdi:gauge
+    - type: weblink
+      name: "BTSync"
+      url: http://192.168.2.103:45454
+      icon: mdi:sync
+    - type: weblink
+      name: "BTSync - RaspWroc"
+      url: http://raspwroc:45454
+      icon: mdi:sync
+    - type: weblink
+      name: "Deluge"
+      url: http://192.168.2.103:8112
+      icon: mdi:cloud-download
 
 
+- type: 'custom:battery-state-card'
+  title: Battery levels
+  sort_by_level: "asc"
+  # secondary_info: last_changed
+  tap_action:
+    action: more-info
+  color_gradient:
+    - "#ff0000"
+    - "#ffff00"
+    - "#00ff00"
+  bulk_rename:
+    - from: "Battery Level"
+      to: "sensor"
+    - from: "switch sensor"
+      to: "switch"
+    - from: "temperature"
+      to: " temp. "
+  entities:
+    - entity: sensor.temp_outside_battery_numeric
+      multiplier: 10
+      name: "Outside temp. sensor"
+  collapse:
+    - group_id: group.motion_sensors_batteries
+      min: 99
+    - group_id: group.switches_batteries
+      min: 99
+    - group_id: group.door_sensors_batteries
+      min: 99
+    - group_id: group.temp_sensors_batteries
+      icon: 'mdi:thermometer'
+      min: 99
+  filter:
+    include:
+      - name: entity_id
+        value: '*_battery_level'
+        operator: matches
+      - name: attributes.device_class
+        value: battery
+        operator: "="
 
 
 #- type: iframe

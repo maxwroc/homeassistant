@@ -14,8 +14,8 @@ resources:
     type: module
   - url: /local/dev/battery-state-card/dist/battery-state-card.js
     type: module
-  - url: /local/dev/sublime-floorplan-card/dist/sublime-floorplan-card.js
-    type: module
+#  - url: /local/dev/sublime-floorplan-card/dist/sublime-floorplan-card.js
+#    type: module
 
 title: Home
 views:

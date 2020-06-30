@@ -7,21 +7,21 @@ homeassistant:
   whitelist_external_dirs:
     # required to check db size via sensor
     - /config
-  latitude: 51.376163
-  longitude: -0.098234
+  latitude: !secret location_lat
+  longitude: !secret location_long
 
 
 # Configure a default setup of Home Assistant (frontend, api, etc)
 # default_config:
 
-panel_custom:
-  - name: sublime-floorplan-card
-    sidebar_title: Floorplan
-    sidebar_icon: mdi:floor-plan
-    url_path: floorplan
-    js_url: "http://127.0.0.1:8080/dist/sublime-floorplan-card.js"
-    config:
-      entity: zonk
+#panel_custom:
+#  - name: sublime-floorplan-card
+#    sidebar_title: Floorplan
+#    sidebar_icon: mdi:floor-plan
+#    url_path: floorplan
+#    js_url: "http://127.0.0.1:8080/dist/sublime-floorplan-card.js"
+#    config:
+#      entity: zonk
 
 ########## Start of integrations from default_config ##########
 #cloud:
@@ -97,8 +97,8 @@ weather:
   - platform: openweathermap
     api_key: !secret openweathermap_key
     mode: freedaily
-    latitude: 51.376163
-    longitude: -0.098234
+    latitude: location_lat
+    longitude: location_long
 
 hacs:
   token: !secret hacs_token
@@ -234,6 +234,6 @@ utility_meter:
     cycle: monthly
 
 shell_command:
-  commit_config_files: cd /config && git add -A && git commit -m "`date`" && git push -u origin master
+  commit_config_files: cd /config && git pull && git add -A && git commit -m "`date`" && git push -u origin master
   store_creds: !secret github_store_creds_cmd # git config --global user.name "USERNAME" && git config --global user.email "USER@EMAIL" && git config --global credential.helper store && echo "https://USERNAME:GITTOKEN@github.com" > ~/.git-credentials
 

@@ -105,59 +105,61 @@
       secondary_info: last-changed
     - entity: binary_sensor.bedroom_balcony
       secondary_info: last-changed
-- type: picture-entity
-  title: Bedroom
-  entity: camera.patologia
-  camera_image: camera.patologia
-  show_info: true
-  show_state: false
-  tap_action:
-    action: more-info
+      
+# - type: picture-entity
+#   title: Bedroom
+#   entity: camera.patologia
+#   camera_image: camera.patologia
+#   show_info: true
+#   show_state: false
+#   tap_action:
+#     action: more-info
 
 - type: alarm-panel
   entity: alarm_control_panel.home_alarm
 
+- type: vertical-stack
+  cards:
+    - type: custom:mini-graph-card
+      name: Motion at home
+      entities:
+        - entity: group.motion_sensors
+          name: Home
+      hours_to_show: 1
+      points_per_hour: 60
+      update_interval: 30
+      aggregate_func: max
+      lower_bound: 0
+      line_width: 2
+      smoothing: false
+      state_map:
+        - value: "off"
+          label: Clear
+        - value: "on"
+          label: Detected
+      hour24: true
 
-
-- type: custom:mini-graph-card
-  name: Motion last hour
-  entities:
-    - entity: binary_sensor.living_room_motion_2
-      name: Living room
-    - entity: binary_sensor.corridor_motion_2
-      name: Corridor
-    - entity: binary_sensor.master_bedroom_motion
-      name: Master bed.
-      color: green
-    - entity: binary_sensor.bedroom_motion_2
-      name: Bedroom
-  hours_to_show: 1
-  points_per_hour: 60
-  update_interval: 30
-  aggregate_func: max
-  line_width: 2
-  smoothing: false
-  state_map:
-    - value: "off"
-      label: Clear
-    - value: "on"
-      label: Detected
-  hour24: true
-  
-- type: custom:mini-graph-card
-  name: Motion at home
-  entities:
-    - entity: group.motion_sensors
-      name: Home
-  hours_to_show: 1
-  points_per_hour: 60
-  update_interval: 30
-  aggregate_func: max
-  line_width: 2
-  smoothing: false
-  state_map:
-    - value: "off"
-      label: Clear
-    - value: "on"
-      label: Detected
-  hour24: true
+    - type: custom:mini-graph-card
+      name: Motion last hour
+      entities:
+        - entity: binary_sensor.living_room_motion_2
+          name: Living room
+        - entity: binary_sensor.corridor_motion_2
+          name: Corridor
+        - entity: binary_sensor.master_bedroom_motion
+          name: Master bed.
+          color: green
+        - entity: binary_sensor.bedroom_motion_2
+          name: Bedroom
+      hours_to_show: 1
+      points_per_hour: 60
+      update_interval: 30
+      aggregate_func: max
+      line_width: 2
+      smoothing: false
+      state_map:
+        - value: "off"
+          label: Clear
+        - value: "on"
+          label: Detected
+      hour24: true

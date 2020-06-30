@@ -57,6 +57,7 @@ motion_sensors_batteries:
   name: "Motion sensors"
   icon: mdi:run
   entities:
+    - sensor.living_room_motion_battery_level
     - sensor.bathroom_motion_battery_level
     - sensor.bedroom_motion_battery_level
     - sensor.master_bathroom_motion_battery_level
