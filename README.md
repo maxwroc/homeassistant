@@ -51,3 +51,11 @@
 ## Configuration
 
 ### ESPHome
+
+### Alexa
+
+* Used [Alexa](https://www.home-assistant.io/integrations/alexa/) integration for controlling indifvidual Echo devices.
+
+* Smart devices controlled via [Emulated Hue](https://www.home-assistant.io/integrations/emulated_hue/) integration. 
+
+* Tip: It is easier to manage smart devices via [alexa website](https://alexa.amazon.co.uk/spa/index.html#appliances).
