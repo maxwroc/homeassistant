@@ -7,7 +7,7 @@
 
 #### Hacs integrations
 * Sonoff LAN - for camera control
-* AccuWeather - since DarkSky is shutting down it's API
+* AccuWeather - since DarkSky is shutting down its API
 
 ## Devices
 
