@@ -3,8 +3,11 @@
 ![image](https://user-images.githubusercontent.com/8268674/86159451-47f83900-bb02-11ea-9b3f-6bb5451eee77.png)
 
 ## Add-ons
-* HACS
-* ESPHome
+![image](https://user-images.githubusercontent.com/8268674/86160003-12078480-bb03-11ea-88f3-d1482acd2406.png)
+
+#### Hacs integrations
+* Sonoff LAN - for camera control
+* AccuWeather - since DarkSky is shutting down it's API
 
 ## Devices
 
@@ -31,37 +34,15 @@
 |  | Aqara | QBKG02LM  | ![image](https://user-images.githubusercontent.com/8268674/86059062-eb414380-ba59-11ea-8871-f4d97840d5b9.png) | Smart wall switch (2 gang) battery powered
 |  | Aqara | MCCGQ11LM | ![image](https://user-images.githubusercontent.com/8268674/86059453-aff34480-ba5a-11ea-84e9-6eceee5e0c45.png) | Door sensor
 
-* WiFi
-  * Sonoff S20
-  * Sonoff Touch
-  * Shelly 1
-  * Tp-Link HS110
-  * Broadlink RM mini 3 (not configured yet)
-  * Sonoff GK-200MP2-B IP camera
-  * D-Link DCS-932L IP Camera
-* RF433
-  * RfxTrxE
-  * OWL Energy
-  * Cotech doorbell
-  * Nexa LWST-605 - wall switch
-* ZigBee
-  * ConBee II
-  * Aqara motion sensor
-  * Aqara temperature and humidity sensor
-  * Aqara smart wall switch (double, mains powered)
-  * Aqara smart wall switch (battery powered)
-  * Aqara door sensors
 
-Used in the past
-* RF433
-  * Telldus TellstickNet
-  * Cotech motion sensor
-  * Nexa wall button
-  * Nexa remote control
-  * Nexa motion sensor
-* WiFi
-  * Tp-Link HS100
-  
+#### Devices used in the past
+
+| Connection | Name | Notes |
+|:----|:----|:----|
+| Wifi | Tp-Link HS100 | Used in the past mainly with Domoticz and I switched to Sonoff S20 in the same time when I've migrated to HA
+| RF433 | Telldus TellstickNet | Both mainly for connecting with Nexa devices. It was working but just partially - RfxTrxE works much better with Nexa and other RF devices.
+| RF433 | CoTech motion sensor | Battery lasts for 2-3 months. Not convenient to use as different ID sent when motion is detected and different when there is no move any more
+| RF433 | Nexa (random devices) | Smart sockets, motion detectors, wall switches, remote controls, etc. Replaced all with ZigBee devices. The main drawbak of RF is that you never know if the signal reached the device or not.
   
 ## Configuration
 
