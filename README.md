@@ -1,5 +1,7 @@
 # Home Assistant configuration
 
+![image](https://user-images.githubusercontent.com/8268674/86159451-47f83900-bb02-11ea-9b3f-6bb5451eee77.png)
+
 ## Add-ons
 * HACS
 * ESPHome
