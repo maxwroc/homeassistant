@@ -16,13 +16,16 @@
     - condition: state
       entity_id: group.motion_sensors
       state: "off"
+    - condition: state
+      entity_id: group.family
+      state: "away"
     - condition: template
       value_template: >
         {{ as_timestamp(now()) - as_timestamp(states.group.motion_sensors.last_changed) > 7 * 60 }}
   action:
     - service: notify.pushover
       data:
-        message: "Arming home alarm; time diff: {{ as_timestamp(now()) - as_timestamp(states.group.motion_sensors.last_changed) }}"
+        message: "Arming home alarm; time diff: {{ as_timestamp(now()) - as_timestamp(states.group.motion_sensors.last_changed) }}; Family: {{ states('group.family') }}"
         title: "Test"
 
 - alias: "Alarm auto-arm 3333"
