@@ -59,6 +59,8 @@ Tips for beginners:
 #### ESP32-Wroom-32D
 ![image](https://user-images.githubusercontent.com/8268674/86531689-48eee900-bebb-11ea-95f9-babc1612454f.png)
 ![image](https://user-images.githubusercontent.com/8268674/86531667-2066ef00-bebb-11ea-9c6a-ddc3bf11aff0.png)
+![image](https://user-images.githubusercontent.com/8268674/86545761-d87eb100-bf28-11ea-8344-4ae8879f527b.png)
+
 
 
 ### Alexa
