@@ -52,10 +52,21 @@
 
 ### ESPHome
 
+Tips for beginners:
+
+* After adding new deive in ESPHome Dashboard refresh the page
+
+#### ESP32-Wroom-32D
+![image](https://user-images.githubusercontent.com/8268674/86531689-48eee900-bebb-11ea-95f9-babc1612454f.png)
+![image](https://user-images.githubusercontent.com/8268674/86531667-2066ef00-bebb-11ea-9c6a-ddc3bf11aff0.png)
+![image](https://user-images.githubusercontent.com/8268674/86545761-d87eb100-bf28-11ea-8344-4ae8879f527b.png)
+
+
+
 ### Alexa
 
 * Used [Alexa integration](https://www.home-assistant.io/integrations/alexa/) for controlling Echo devices.
 
 * Home assistant lights and switches exposed via [Emulated Hue integration](https://www.home-assistant.io/integrations/emulated_hue/). 
 
-* Tip: It is easier to manage smart devices via [alexa website](https://alexa.amazon.co.uk/spa/index.html#appliances).
+* Tip: It is easier to manage smart devices via [alexa website](https://alexa.amazon.co.uk/spa/index.html#appliances) than the mobile app.
