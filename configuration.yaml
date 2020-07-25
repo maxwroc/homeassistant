@@ -97,8 +97,8 @@ weather:
   - platform: openweathermap
     api_key: !secret openweathermap_key
     mode: freedaily
-    latitude: location_lat
-    longitude: location_long
+    latitude: !secret location_lat
+    longitude: !secret location_long
 
 hacs:
   token: !secret hacs_token
@@ -156,6 +156,39 @@ tplink:
 
 rfxtrx:
   device: /dev/ttyUSB0
+  automatic_add: false
+  devices:
+    # OWL
+    115a02108982000000043600007d87521279:
+
+    # T/H sensor outside
+    #0850060e010100c779:
+    0a5208af010100c03f0169:
+
+    # Doorbell
+    #0b11002f00efde0201040f70:
+    0b1100de00efde0201040f70:
+      fire_event: true
+
+    # Nexa lr right
+    #0b11001b012de8520b000070:
+    0b1100a8012de8520b000060:
+      fire_event: true
+
+    # Nexa lr left
+    0b1100ab012de8520c000060:
+    #0b110037012de8520c010f60:
+      fire_event: true
+
+    # Nexa mb left
+    #0b11001d00a0e54e0b000060:
+    0b11003600a0e54e0b010f60:
+      fire_event: true
+
+    # Nexa mb right
+    #0b11001800a0e54e0c010f70:
+    0b11002900a0e54e0c000060:
+      fire_event: true
 
 emulated_hue:
   listen_port: 80

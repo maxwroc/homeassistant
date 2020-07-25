@@ -141,8 +141,10 @@
         - light.black_night_light
         - sensor.bedroomtemp_2
         - sensor.bedroomtemp_3
-        - binary_sensor.bedroom_motion_2
-        - binary_sensor.bedroom_balcony
+        - entity: binary_sensor.bedroom_motion_2
+          secondary_info: last-changed
+        - entity: binary_sensor.bedroom_balcony
+          secondary_info: last-changed
 
     - type: history-graph
       title: 'Temperature'

@@ -1,0 +1,97 @@
+esphome:
+  name: esp32_wroom_32d
+  platform: ESP32
+  board: esp-wrover-kit
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_pass
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Esp32 Wroom 32D Fallback Hotspot"
+    password: "WvFT39YnIXDG"
+    
+  use_address: 192.168.4.227
+
+captive_portal:
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+  password: !secret esphome_pass
+
+ota:
+  password: !secret esphome_pass
+
+
+remote_receiver:
+  pin: 
+    number: 35
+    inverted: True
+  dump: all
+  on_samsung:
+    then:
+      - lambda: |-
+          id(ir_code).publish_state(x.data);
+
+
+sensor:
+  - platform: dht
+    pin: 15
+    model: DHT11
+    temperature:
+      name: "Test Temperature"
+      id: my_temp
+    humidity:
+      name: "Test Humidity"
+      id: humi
+    update_interval: 60s
+
+  - platform: template
+    name: "IR Received Code"
+    id: ir_code
+
+
+binary_sensor:
+  - platform: gpio
+    pin: 
+      number: 4
+      inverted: True
+    name: "Noise sensor"
+    id: noise
+    filters:
+      - delayed_off: 5s
+
+  - platform: gpio
+    pin: 
+      number: 2
+      #inverted: True
+    name: "Motion sensor"
+    id: motion
+    filters:
+      - delayed_off: 1s
+
+
+
+font:
+  - file: "OpenSans-Regular.ttf"
+    id: my_font
+    size: 10
+    
+i2c:
+  sda: 21
+  scl: 22
+
+display:
+  - platform: ssd1306_i2c
+    model: "SSD1306 128x64"
+    address: 0x3C
+    lambda: |-
+      it.printf(1, 4, id(my_font), "Temp: %.1f     Humi: %.0f%%", id(my_temp).state, id(humi).state);
+      it.printf(1, 14, id(my_font), "Noise: %s", id(noise).state ? "on" : "off");
+      it.printf(1, 24, id(my_font), "Motion: %s", id(motion).state ? "detected" : "clear");
+      it.printf(1, 34, id(my_font), "IR code HEX: 0x%08x", id(ir_code).state);
+      it.printf(1, 44, id(my_font), "IR code: %.0f", id(ir_code).state);
