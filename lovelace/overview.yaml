@@ -32,7 +32,7 @@
         - sensor.energy_daily
         - device_tracker.maks
         - device_tracker.magduska
-        - sensor.th_sensor_outside_temperature
+        - sensor.thermometer_outside_temperature
         - switch.pc
 
 - type: vertical-stack

@@ -41,6 +41,14 @@ zeroconf:
 stream:
 ########### End of integrations from default config ###########
 
+logger:
+  default: warning
+  logs:
+    homeassistant.components.rfxtrx: info
+    homeassistant.components.switch.rfxtrx: info
+    homeassistant.components.binary_sensor.rfxtrx: info
+    homeassistant.components.rfxtrx.switch: info
+
 # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
 # http:
 #   base_url: example.duckdns.org:8123
@@ -158,37 +166,98 @@ rfxtrx:
   device: /dev/ttyUSB0
   automatic_add: false
   devices:
-    # OWL
+    0b1100de00efde0201040f70:
+      #name: Doorbell
+      fire_event: true
+    0b11002f00efde0201040f70:
+      #name: Doorbell old
+      fire_event: true
+    0b11001b012de8520b000070:
+      #name: "Nexa lr right"
+      fire_event: true
+    0b110037012de8520c010f60:
+      #name: "Nexa lr left"
+      fire_event: true
+    0b11001d00a0e54e0b000060:
+      #name: "Nexa mb left"
+      fire_event: true
+    0b11001800a0e54e0c010f70:
+      #name: "Nexa mb right"
+      fire_event: true
     115a02108982000000043600007d87521279:
+      #name: OWL
+    0850060e010100c779:
+    0a5208af010100c03f0169:
+      #name: Temp outside
+
+
+  #   # OWL
+  #   "89":
+  #   #"89:82":
+
+  #   # TH outside
+  #   "01":
+  #   #"01:01":
+
+  #   # Nexa lr
+  #   12de852:
+  #     fire_event: true
+
+  #   # Nexa lr left
+  #   #"12de852:12":
+  #   #  fire_event: true
+
+  #   # Nexa lr right
+  #   #"12de852:11":
+  #   #  fire_event: true
+
+  #   # Nexa mb
+  #   "0a0e54e":
+  #     fire_event: true
+
+    # Nexa mb left
+    #"0a0e54e:11":
+    #  fire_event: true
+
+    # Nexa mb right
+    #"0a0e54e:12":
+    #  fire_event: true
+
+    # OWL
+    #115a02108982000000043600007d87521279:
 
     # T/H sensor outside
     #0850060e010100c779:
-    0a5208af010100c03f0169:
+    #0a5208af010100c03f0169:
 
     # Doorbell
     #0b11002f00efde0201040f70:
-    0b1100de00efde0201040f70:
-      fire_event: true
+    # 0b1100de00efde0201040f70:
+    #   fire_event: true
 
     # Nexa lr right
     #0b11001b012de8520b000070:
-    0b1100a8012de8520b000060:
-      fire_event: true
+    # 0b11004d012de8520b010f60:
+    #   fire_event: true
+    # 0b110051012de8520b000060:
+    #   fire_event: true
+    # 0b1100a8012de8520b000060:
+    #   fire_event: true
 
     # Nexa lr left
-    0b1100ab012de8520c000060:
-    #0b110037012de8520c010f60:
-      fire_event: true
+    # 0b1100ab012de8520c000060:
+    # #0b110037012de8520c010f60:
+    #   fire_event: true
 
-    # Nexa mb left
-    #0b11001d00a0e54e0b000060:
-    0b11003600a0e54e0b010f60:
-      fire_event: true
+    # # Nexa mb left
+    # #0b11001d00a0e54e0b000060:
+    # 0b11003600a0e54e0b010f60:
+    #   fire_event: true
 
-    # Nexa mb right
-    #0b11001800a0e54e0c010f70:
-    0b11002900a0e54e0c000060:
-      fire_event: true
+    # # Nexa mb right
+    # #0b11001800a0e54e0c010f70:
+    # 0b11002900a0e54e0c000060:
+    #   fire_event: true
 
 emulated_hue:
   listen_port: 80
