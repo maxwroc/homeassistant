@@ -186,7 +186,7 @@ rfxtrx:
       fire_event: true
     115a02108982000000043600007d87521279:
       #name: OWL
-    0850060e010100c779:
+    #0850060e010100c779:
     0a5208af010100c03f0169:
       #name: Temp outside
 

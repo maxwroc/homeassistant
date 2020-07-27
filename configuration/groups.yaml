@@ -79,6 +79,7 @@ temp_sensors_batteries:
     - sensor.bedroomtemp_battery_level
     - sensor.masterbedtemp_battery_level
     - sensor.livingroomtemp_battery_level
+    - sensor.thermometer_outside_battery
 
 switches_batteries:
   name: "Switches"

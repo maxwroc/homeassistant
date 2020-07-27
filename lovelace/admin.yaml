@@ -125,14 +125,11 @@
   bulk_rename:
     - from: "Battery Level"
       to: "sensor"
+    - from: " battery"
     - from: "switch sensor"
       to: "switch"
     - from: "temperature"
       to: " temp. "
-  entities:
-    - entity: sensor.temp_outside_battery_numeric
-      multiplier: 10
-      name: "Outside temp. sensor"
   collapse:
     - group_id: group.motion_sensors_batteries
       min: 99
