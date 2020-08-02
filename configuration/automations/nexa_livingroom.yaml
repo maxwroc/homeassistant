@@ -2,14 +2,15 @@
 # Controling Spotify via RF switches
 #########################################################################
 
-- alias: "Livingroom Nexa switch - Left ON"
+- alias: "Livingroom Nexa switch - Left OFF"
   description: "Spotify vol up"
   trigger:
     platform: event
-    event_type: button_pressed
+    event_type: rfxtrx_event
     event_data:
-      entity_id: switch.nexa_lr_left
-      state: "on"
+      id_string: "12de852:11"
+      values:
+        Command: "Off"
   condition: []
   action:
     - service: media_player.volume_set
@@ -18,14 +19,15 @@
         volume_level: >
           {{ (state_attr("media_player.spotify", "volume_level") | float + 0.1) | round(1) | float }}
 
-- alias: "Livingroom Nexa switch - Left OFF"
+- alias: "Livingroom Nexa switch - Left ON"
   description: "Spotify vol down"
   trigger:
     platform: event
-    event_type: button_pressed
+    event_type: rfxtrx_event
     event_data:
-      entity_id: switch.nexa_lr_left
-      state: "off"
+      id_string: "12de852:11"
+      values:
+        Command: "On"
   condition: []
   action:
     - service: media_player.volume_set
@@ -35,28 +37,30 @@
         volume_level: >
           {{ (state_attr("media_player.spotify", "volume_level") | float - 0.1) | round(1) | float }}
 
-- alias: "Livingroom Nexa switch - Right ON"
+- alias: "Livingroom Nexa switch - Right OFF"
   description: "Spotify button - next track"
   trigger:
     platform: event
-    event_type: button_pressed
+    event_type: rfxtrx_event
     event_data:
-      entity_id: switch.nexa_lr_right
-      state: "on"
+      id_string: "12de852:12"
+      values:
+        Command: "Off"
   condition: []
   action:
     - service: media_player.media_next_track
       data:
         entity_id: media_player.spotify
 
-- alias: "Livingroom Nexa switch - Right OFF"
+- alias: "Livingroom Nexa switch - Right ON"
   description: "Spotify button - previous track"
   trigger:
     platform: event
-    event_type: button_pressed
+    event_type: rfxtrx_event
     event_data:
-      entity_id: switch.nexa_lr_right
-      state: "off"
+      id_string: "12de852:12"
+      values:
+        Command: "On"
   condition: []
   action:
     - service: media_player.media_previous_track

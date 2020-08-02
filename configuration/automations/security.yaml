@@ -6,17 +6,24 @@
   description: "Pushover notification"
   trigger:
     platform: event
-    event_type: button_pressed
+    event_type: rfxtrx_event
     event_data:
-      entity_id: switch.doorbell
+      packet_type: 17
+      sub_type: 0
+      id_string: "0efde02:1"
   condition: []
+  mode: single # do not start a new one in case of multiple events
   action:
     - service: notify.pushover
       data:
         message: "Expecting delivery?"
         title: "Doorbell"
         data:
-          priority: -1
+          priority: 0
+          # -2 to generate no notification/alert
+          # -1 to always send as a quiet notification
+          #  1 to display as high-priority and bypass the user's quiet hours
+          #  2 to also require confirmation from the user
 
 #########################################################################
 # Home Alarm - motion detected
@@ -41,6 +48,10 @@
         title: "Home alarm"
         data:
           priority: 1
+          # -2 to generate no notification/alert
+          # -1 to always send as a quiet notification
+          #  1 to display as high-priority and bypass the user's quiet hours
+          #  2 to also require confirmation from the user
     - service: script.audio_notify
       data_template:
         message: "Alarm triggered"

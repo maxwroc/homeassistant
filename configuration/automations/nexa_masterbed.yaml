@@ -1,0 +1,79 @@
+#########################################################################
+# Controling Spotify via RF switches
+#########################################################################
+
+- alias: "Master Bed Nexa switch - Left OFF"
+  description: "Toggle PC"
+  trigger:
+    platform: event
+    event_type: rfxtrx_event
+    event_data:
+      id_string: "0a0e54e:11"
+      values:
+        Command: "Off"
+  condition: []
+  action:
+    - service: switch.toggle
+      data_template:
+        entity_id: switch.pc
+
+# - alias: "Master Bed Nexa switch - Left ON"
+#   description: "Spotify vol down"
+#   trigger:
+#     platform: event
+#     event_type: rfxtrx_event
+#     event_data:
+#       id_string: "0a0e54e:11"
+#       values:
+#         Command: "On"
+#   condition: []
+#   action:
+#     - service: media_player.volume_set
+#       data_template:
+#         entity_id: media_player.spotify
+#         #volume_level: 0.4
+#         volume_level: >
+#           {{ (state_attr("media_player.spotify", "volume_level") | float - 0.1) | round(1) | float }}
+
+- alias: "Master Bed Nexa switch - Right OFF"
+  description: "Turn off all lights in master bed"
+  trigger:
+    platform: event
+    event_type: rfxtrx_event
+    event_data:
+      packet_type: 17
+      sub_type: 0
+      id_string: "0a0e54e:12"
+      values:
+        Command: "Off"
+  condition: []
+  action:
+    - service: light.turn_off
+      data:
+        entity_id: light.desk_light
+    - service: switch.turn_off
+      data:
+        entity_id: switch.master_bed_wall_switch_main
+    - service: light.turn_off
+      data:
+        entity_id: light.master_bedroom_night_light
+
+- alias: "Master Bed Nexa switch - Right ON"
+  description: "Turn on night lights in master bed"
+  trigger:
+    platform: event
+    event_type: rfxtrx_event
+    event_data:
+      packet_type: 17
+      sub_type: 0
+      id_string: "0a0e54e:12"
+      values:
+        Command: "On"
+  condition: []
+  action:
+    - service: light.turn_on
+      data:
+        entity_id: light.desk_light
+    - service: light.turn_on
+      data:
+        entity_id: light.master_bedroom_night_light
