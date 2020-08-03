@@ -9,19 +9,18 @@
 
     - type: "custom:atomic-calendar-revive"
       name: "Calendar"
-      defaultMode: 2
+      defaultMode: Calendar
       enableModeChange: true
-      CalEventIcon2Color: #e19cff
       entities:
       - entity: calendar.wydazenia
         color: red
-        type: holiday
+        icon: "mdi:star"
       - entity: calendar.school
         color: purple
-        type: icon2
+        icon: "mdi:star"
       - entity: calendar.urodziny_i_imieniny
         color: green
-        type: icon3
+        icon: "mdi:star"
       showColors: true
       maxDaysToShow: 14
       showLastCalendarWeek: false
