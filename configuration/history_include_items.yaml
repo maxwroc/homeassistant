@@ -10,7 +10,7 @@ entities:
   - sensor.disk_use_percent
   - sensor.home_assistant_v2_db
   - sensor.pc
-  - sensor.temp_outside_temperature
+  - sensor.thermometer_outside_temperature
   - sensor.livingroomtemp
   - sensor.livingroomtemp_2
   - sensor.livingroomtemp_3
