@@ -9,7 +9,7 @@
       symbol: CDR.WA
       
 - platform: github
-  access_token: a78af1bd2cdb02f3fced691f04ffa52f932c17e9
+  access_token: !secret github_access_token
   repositories:
       - path: 'maxwroc/battery-state-card'
       - path: 'maxwroc/hideseek-mod'

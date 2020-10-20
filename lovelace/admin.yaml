@@ -171,6 +171,11 @@
     - sensor.hideseek_mod
     - sensor.urleditorpro
 
+
+- type: custom:boilerplate-card
+  name: "Card name"
+  entity: sensor.battery_state_card
+
 #- type: iframe
 #  #url: http://192.168.2.104:8085/sources/0/dashboards/1?lower=now%28%29%20-%2024h&present=true
 #  url: http://192.168.2.104:8123/api/hassio_ingress/J469DFzDQ4mVGagrfD7Q3MLGSCpwcfVxqhhOO2PY4kI/sources/0/dashboards/1?lower=now%28%29%20-%2024h&present=true
