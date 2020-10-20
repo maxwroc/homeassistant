@@ -97,6 +97,7 @@ sensor: !include_dir_merge_list configuration/sensors
 # Enables the frontend
 frontend:
   themes: !include_dir_merge_named themes/
+  javascript_version: auto
 
 lovelace:
   mode: yaml
