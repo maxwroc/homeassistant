@@ -167,14 +167,11 @@
     - name: open_pull_requests
   entities:
     - sensor.battery_state_card
-    - sensor.github_flexi_card
     - sensor.hideseek_mod
+    - sensor.github_flexi_card
     - sensor.urleditorpro
-
-
-- type: custom:boilerplate-card
-  name: "Card name"
-  entity: sensor.battery_state_card
+    - entity: sensor.home_assistant_config
+      secondary_info: null
 
 #- type: iframe
 #  #url: http://192.168.2.104:8085/sources/0/dashboards/1?lower=now%28%29%20-%2024h&present=true
