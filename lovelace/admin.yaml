@@ -165,10 +165,13 @@
     - name: stargazers
     - name: open_issues
     - name: open_pull_requests
+  sort:
+    - stargazers
+    - views_unique
   entities:
     - sensor.battery_state_card
-    - sensor.hideseek_mod
     - sensor.github_flexi_card
+    - sensor.hideseek_mod
     - sensor.urleditorpro
     - entity: sensor.home_assistant_config
       secondary_info: null

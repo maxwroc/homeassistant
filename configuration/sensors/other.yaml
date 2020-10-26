@@ -17,3 +17,5 @@
       - path: 'maxwroc/github-flexi-card'
       - path: 'maxwroc/homeassistant'
         name: "Home assistant config"
+      - path: "hacs/default"
+        name: "hacs/default"

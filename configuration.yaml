@@ -340,3 +340,10 @@ shell_command:
   commit_config_files: cd /config && git pull && git add -A && git commit -m "`date`" && git push -u origin master
   store_creds: !secret github_store_creds_cmd # git config --global user.name "USERNAME" && git config --global user.email "USER@EMAIL" && git config --global credential.helper store && echo "https://USERNAME:GITTOKEN@github.com" > ~/.git-credentials
 
+input_number:
+  test:
+    name: Slider
+    initial: 30
+    min: 0
+    max: 100
+    step: 10
