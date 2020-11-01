@@ -21,6 +21,7 @@
         - device_tracker.magduska
         - sensor.thermometer_outside_temperature
         - switch.pc
+        - switch.docking_station
 
 - type: vertical-stack
   cards:

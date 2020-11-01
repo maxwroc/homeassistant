@@ -34,6 +34,9 @@ sensor.energy_daily:
 switch.pc:
   icon: mdi:desktop-tower-monitor
 
+switch.docking_station:
+  icon: mdi:laptop-windows
+
 switch.master_bed_wall_switch_main:
   icon: mdi:lightbulb
   friendly_name: "Master bedroom lights"
