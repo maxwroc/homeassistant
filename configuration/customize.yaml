@@ -3,16 +3,16 @@ sensor.livingroomtemp:
 
 sensor.livingroomtemp_3:
   friendly_name: "Living room humidity"
-  
+
 sensor.bedroomtemp_2:
   friendly_name: "Bedroom temperature"
-  
+
 sensor.bedroomtemp_3:
   friendly_name: "Bedroom humidity"
-  
+
 sensor.masterbedtemp_3:
   friendly_name: "Master bedroom temperature"
-  
+
 sensor.masterbedtemp:
   friendly_name: "Master bedroom humidity"
 

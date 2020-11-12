@@ -17,23 +17,20 @@
       data_template:
         entity_id: switch.pc
 
-# - alias: "Master Bed Nexa switch - Left ON"
-#   description: "Spotify vol down"
-#   trigger:
-#     platform: event
-#     event_type: rfxtrx_event
-#     event_data:
-#       id_string: "0a0e54e:11"
-#       values:
-#         Command: "On"
-#   condition: []
-#   action:
-#     - service: media_player.volume_set
-#       data_template:
-#         entity_id: media_player.spotify
-#         #volume_level: 0.4
-#         volume_level: >
-#           {{ (state_attr("media_player.spotify", "volume_level") | float - 0.1) | round(1) | float }}
+- alias: "Master Bed Nexa switch - Left ON"
+  description: "Toggle docking station"
+  trigger:
+    platform: event
+    event_type: rfxtrx_event
+    event_data:
+      id_string: "0a0e54e:11"
+      values:
+        Command: "On"
+  condition: []
+  action:
+    - service: switch.toggle
+      data_template:
+        entity_id: switch.docking_station
 
 - alias: "Master Bed Nexa switch - Right OFF"
   description: "Turn off all lights in master bed"

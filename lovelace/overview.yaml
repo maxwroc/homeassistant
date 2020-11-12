@@ -14,6 +14,7 @@
         - calendar.urodziny_i_imieniny
 
     - type: entities
+      show_header_toggle: false
       entities:
         - sensor.energy_usage
         - sensor.energy_daily
