@@ -61,7 +61,7 @@
 - alias: "Aqara master bed. wall switch - right button"
   description: "Toggle night light"
   trigger:
-  - entity_id: switch.master_bedroom_main_lights
+  - entity_id: switch.master_bedroom_wall_second
     platform: state
   condition: []
   action:

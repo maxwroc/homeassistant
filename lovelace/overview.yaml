@@ -121,6 +121,7 @@
       entities:
         - light.bedroom_lights
         - light.black_night_light
+        - switch.kids_christmass_lights
         - sensor.bedroomtemp_2
         - sensor.bedroomtemp_3
         - binary_sensor.bedroom_motion_2

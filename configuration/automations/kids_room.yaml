@@ -42,7 +42,7 @@
         media_content_id: "spotify:user:spotify:playlist:37i9dQZF1DX0jgyAiPl8Af" # "spotify:user:spotify:playlist:37i9dQZF1DX3iWJN79KKoY" Chillout covers
 
 - alias: "Aqara kids wall switch - right button"
-  description: "Kids room main lights toggle"
+  description: "Kids room Christmas lights toggle"
   trigger:
   - device_id: 10dce240078240d1a16ef59c19e9aab8
     domain: deconz
@@ -51,8 +51,8 @@
     type: remote_button_short_press
   condition: []
   action:
-  - entity_id: light.bedroom_lights
-    service: light.toggle
+  - service: switch.toggle
+    entity_id: switch.kids_christmass_lights
 
 - alias: "Aqara kids wall switch - right button (long press)"
   description: "Kids favorite song at the time"
