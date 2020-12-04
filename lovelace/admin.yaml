@@ -174,7 +174,7 @@
     - sensor.hideseek_mod
     - sensor.urleditorpro
     - entity: sensor.home_assistant_config
-      secondary_info: null
+      secondary_info: "{latest_commit_message}"
 
 #- type: iframe
 #  #url: http://192.168.2.104:8085/sources/0/dashboards/1?lower=now%28%29%20-%2024h&present=true
