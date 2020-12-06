@@ -104,16 +104,16 @@
       url: http://192.168.2.104:3000/d/R1BSsRkgk/scarbrook?orgId=1
       icon: mdi:gauge
     - type: weblink
-      name: "BTSync"
-      url: http://192.168.2.103:45454
+      name: "Syncthing"
+      url: http://192.168.2.103:8384
       icon: mdi:sync
     - type: weblink
-      name: "BTSync - RaspWroc"
-      url: http://raspwroc:45454
+      name: "Syncthing - RaspWroc"
+      url: http://raspwroc:8384
       icon: mdi:sync
     - type: weblink
-      name: "Deluge"
-      url: http://192.168.2.103:8112
+      name: "Transmission"
+      url: http://192.168.2.103:9091
       icon: mdi:cloud-download
 
 
