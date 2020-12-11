@@ -11,6 +11,8 @@ resources:
     type: module
   - url: /hacsfiles/lovelace-multiple-entity-row/multiple-entity-row.js
     type: module
+  - url: /hacsfiles/transmission-card/transmission-card.js
+    type: module
 # Dev
 #  - url: /local/dev/my-custom-card.js?z=v1
 #    type: module

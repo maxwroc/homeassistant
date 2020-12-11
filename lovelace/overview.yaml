@@ -20,7 +20,15 @@
         - sensor.energy_daily
         - device_tracker.maks
         - device_tracker.magduska
-        - sensor.thermometer_outside_temperature
+        - type: custom:multiple-entity-row
+          entity: sensor.thermometer_outside_temperature
+          entities:
+            - entity: sensor.outside_temp_stats
+              attribute: min_value
+              name: min
+            - entity: sensor.outside_temp_stats
+              attribute: max_value
+              name: max
         - switch.pc
         - switch.docking_station
 
@@ -122,7 +130,15 @@
         - light.bedroom_lights
         - light.black_night_light
         - switch.kids_christmass_lights
-        - sensor.bedroomtemp_2
+        - type: custom:multiple-entity-row
+          entity: sensor.bedroomtemp_2
+          entities:
+            - entity: sensor.kids_temp_stats
+              attribute: min_value
+              name: min
+            - entity: sensor.kids_temp_stats
+              attribute: max_value
+              name: max
         - sensor.bedroomtemp_3
         - binary_sensor.bedroom_motion_2
 
@@ -133,6 +149,7 @@
         - switch.master_bed_wall_switch_main
         - light.master_bedroom_night_light
         - light.desk_light
+        - light.mbedroom_led_stripe
         - sensor.masterbedtemp_3
         - sensor.masterbedtemp
         - binary_sensor.master_bedroom_motion

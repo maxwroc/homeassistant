@@ -1,0 +1,15 @@
+- platform: statistics
+  name: Outside temp stats
+  entity_id: sensor.thermometer_outside_temperature
+  sampling_size: 1440
+  max_age:
+    days: 1
+    
+- platform: statistics
+  name: Kids temp stats
+  entity_id: sensor.bedroomtemp_2
+  sampling_size: 1440
+  max_age:
+    days: 1
+    
+    
