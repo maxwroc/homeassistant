@@ -7,7 +7,7 @@
 
     - type: horizontal-stack
       cards:
-        - type: entity-button
+        - type: button
           name: Left
           icon: mdi:arrow-left-bold
           show_icon: true
@@ -19,7 +19,7 @@
             service_data:
               device: !secret ewelink_camera_id
               cmd: left
-        - type: entity-button
+        - type: button
           name: Up
           icon: mdi:arrow-up-bold
           show_icon: true
@@ -31,7 +31,7 @@
             service_data:
               device: !secret ewelink_camera_id
               cmd: up
-        - type: entity-button
+        - type: button
           name: Down
           icon: mdi:arrow-down-bold
           show_icon: true
@@ -43,7 +43,7 @@
             service_data:
               device: !secret ewelink_camera_id
               cmd: down
-        - type: entity-button
+        - type: button
           name: Right
           icon: mdi:arrow-right-bold
           show_icon: true
@@ -80,7 +80,7 @@
 
     - type: horizontal-stack
       cards:
-        - type: entity-button
+        - type: button
           name: "Kids Alexa"
           show_icon: false
           show_name: true
@@ -90,7 +90,7 @@
             service_data:
               entity_id: media_player.spotify
               source: "Kids dot"
-        - type: entity-button
+        - type: button
           name: "Vol 1"
           show_icon: false
           show_name: true
@@ -100,7 +100,7 @@
             service_data:
               entity_id: media_player.bedroom_dot_2
               volume_level: 0.1
-        - type: entity-button
+        - type: button
           name: "Vol 3"
           show_icon: false
           show_name: true
