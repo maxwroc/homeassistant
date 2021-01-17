@@ -27,7 +27,7 @@
 
     - type: horizontal-stack
       cards:
-        - type: entity-button
+        - type: button
           name: Home
           show_icon: false
           show_name: true
@@ -37,7 +37,7 @@
             service_data:
               entity_id: media_player.spotify
               source: "Home"
-        - type: entity-button
+        - type: button
           name: Kids
           show_icon: false
           show_name: true
@@ -47,7 +47,7 @@
             service_data:
               entity_id: media_player.spotify
               source: "Kids dot"
-        - type: entity-button
+        - type: button
           name: Bedroom
           show_icon: false
           show_name: true
@@ -57,7 +57,7 @@
             service_data:
               entity_id: media_player.spotify
               source: "Bedroom dot"
-        - type: entity-button
+        - type: button
           name: Kitchen
           show_icon: false
           show_name: true
