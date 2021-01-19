@@ -1,0 +1,63 @@
+sensor:
+  - platform: github
+    access_token: !secret github_access_token
+    repositories:
+        - path: 'maxwroc/battery-state-card'
+        - path: 'maxwroc/hideseek-mod'
+        - path: 'maxwroc/urleditorpro'
+        - path: 'maxwroc/github-flexi-card'
+        - path: 'maxwroc/homeassistant'
+          name: "Home assistant config"
+
+automation:
+  - alias: "Notify when Github star is received"
+    trigger:
+      platform: state
+      entity_id:
+        - sensor.battery_state_card
+        - sensor.github_flexi_card
+        - sensor.urleditorpro
+        - sensor.hideseek_mod
+        - sensor.homeassistant
+      attribute: stargazers
+      # entity_id: sensor.nexa_mb_right_rssi # for testing
+      # attribute: event # for testing
+    condition: []
+    mode: restart # start a new run after stopping previous run
+    action:
+      - service: notify.pushover_git
+        data:
+          message: "Star for '{{ trigger.to_state.attributes.friendly_name }}': {{ trigger.from_state.attributes.stargazers }} => {{ trigger.to_state.attributes.stargazers }}"
+          title: "Github"
+          data:
+            priority: -1
+            # -2 to generate no notification/alert
+            # -1 to always send as a quiet notification
+            #  1 to display as high-priority and bypass the user's quiet hours
+            #  2 to also require confirmation from the user
+
+  - alias: "Notify when Github issue is created"
+    trigger:
+      platform: state
+      entity_id:
+        - sensor.battery_state_card
+        - sensor.github_flexi_card
+        - sensor.urleditorpro
+        - sensor.hideseek_mod
+        - sensor.homeassistant
+      attribute: open_issues
+      # entity_id: sensor.nexa_mb_right_rssi # for testing
+      # attribute: event # for testing
+    condition: []
+    mode: restart # start a new run after stopping previous run
+    action:
+      - service: notify.pushover_git
+        data:
+          message: "Issue for '{{ trigger.to_state.attributes.friendly_name }}': {{ trigger.from_state.attributes.open_issues }} => {{ trigger.to_state.attributes.open_issues }}"
+          title: "Github"
+          data:
+            priority: -1
+            # -2 to generate no notification/alert
+            # -1 to always send as a quiet notification
+            #  1 to display as high-priority and bypass the user's quiet hours
+            #  2 to also require confirmation from the user

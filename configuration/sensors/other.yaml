@@ -7,15 +7,3 @@
     - name: CD Projekt
       currency: PLN
       symbol: CDR.WA
-
-- platform: github
-  access_token: !secret github_access_token
-  repositories:
-      - path: 'maxwroc/battery-state-card'
-      - path: 'maxwroc/hideseek-mod'
-      - path: 'maxwroc/urleditorpro'
-      - path: 'maxwroc/github-flexi-card'
-      - path: 'maxwroc/homeassistant'
-        name: "Home assistant config"
-      - path: "hacs/default"
-        name: "hacs/default"

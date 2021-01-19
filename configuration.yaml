@@ -9,6 +9,7 @@ homeassistant:
     - /config
   latitude: !secret location_lat
   longitude: !secret location_long
+  packages: !include_dir_named configuration/packages
 
 
 # Configure a default setup of Home Assistant (frontend, api, etc)
@@ -316,6 +317,10 @@ notify:
   - name: Pushover
     platform: pushover
     api_key: !secret pushover_appkey
+    user_key: !secret pushover_userkey
+  - name: Pushover Git
+    platform: pushover
+    api_key: !secret pushover_git_appkey
     user_key: !secret pushover_userkey
 
 
