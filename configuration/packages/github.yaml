@@ -27,7 +27,7 @@ automation:
     action:
       - service: notify.pushover_git
         data:
-          message: "Star for '{{ trigger.to_state.attributes.friendly_name }}': {{ trigger.from_state.attributes.stargazers }} => {{ trigger.to_state.attributes.stargazers }}"
+          message: "Stars changed for '{{ trigger.to_state.attributes.friendly_name }}': {{ trigger.from_state.attributes.stargazers }} => {{ trigger.to_state.attributes.stargazers }}"
           title: "Github"
           data:
             priority: -1
@@ -53,7 +53,7 @@ automation:
     action:
       - service: notify.pushover_git
         data:
-          message: "Issue for '{{ trigger.to_state.attributes.friendly_name }}': {{ trigger.from_state.attributes.open_issues }} => {{ trigger.to_state.attributes.open_issues }}"
+          message: "Issues changed for '{{ trigger.to_state.attributes.friendly_name }}': {{ trigger.from_state.attributes.open_issues }} => {{ trigger.to_state.attributes.open_issues }}"
           title: "Github"
           data:
             priority: -1
