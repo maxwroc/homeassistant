@@ -73,7 +73,7 @@
   title: Amazon Echo
   entities:
     - type: custom:mini-media-player
-      entity: media_player.kitchen_2
+      entity: media_player.kitchen
       group: true
       replace_mute: stop
       hide:
@@ -92,7 +92,7 @@
         info: true
         mute: true
     - type: custom:mini-media-player
-      entity: media_player.bedroom_dot_2
+      entity: media_player.bedroom_dot
       group: true
       replace_mute: stop
       hide:

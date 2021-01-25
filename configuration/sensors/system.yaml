@@ -44,3 +44,5 @@
     - type: memory_free
     - type: processor_use
     - type: last_boot
+
+- platform: version

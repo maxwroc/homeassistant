@@ -4,6 +4,6 @@
     - name: Microsoft
       currency: USD
       symbol: MSFT
-    - name: CD Projekt
-      currency: PLN
-      symbol: CDR.WA
+    # - name: CD Projekt
+    #   currency: PLN
+    #   symbol: CDR.WA
