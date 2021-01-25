@@ -119,6 +119,15 @@
         - light.living_room_lamp
         - light.tv_light
 #        - light.christmas_tree
+        - type: custom:multiple-entity-row
+          entity: sensor.livingroomtemp
+          entities:
+            - entity: sensor.living_room_temp_stats
+              attribute: min_value
+              name: min
+            - entity: sensor.living_room_temp_stats
+              attribute: max_value
+              name: max
         - sensor.livingroomtemp
         - sensor.livingroomtemp_3
         - binary_sensor.living_room_motion_2
@@ -150,6 +159,15 @@
         - light.master_bedroom_night_light
         - light.desk_light
         - light.mbedroom_led_stripe
+        - type: custom:multiple-entity-row
+          entity: sensor.masterbedtemp_3
+          entities:
+            - entity: sensor.master_bedroom_temp_stats
+              attribute: min_value
+              name: min
+            - entity: sensor.master_bedroom_temp_stats
+              attribute: max_value
+              name: max
         - sensor.masterbedtemp_3
         - sensor.masterbedtemp
         - binary_sensor.master_bedroom_motion

@@ -65,6 +65,18 @@
         - sensor.home_assistant_v2_db
         - sensor.hassio_online
         - sensor.last_boot
+        - type: custom:multiple-entity-row
+          entity: sensor.samba_backup
+          name: "Backups"
+          icon: mdi:content-save-move
+          attribute: last_backup
+          entities:
+            - entity: sensor.samba_backup
+              attribute: backups_local
+              name: local
+            - entity: sensor.samba_backup
+              attribute: backups_remote
+              name: remote
         - entity: sensor.files_on_raspwroc
           name: "RaspWroc - files"
           secondary_info: last-changed

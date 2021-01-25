@@ -4,12 +4,24 @@
   sampling_size: 1440
   max_age:
     days: 1
-    
+
 - platform: statistics
   name: Kids temp stats
   entity_id: sensor.bedroomtemp_2
   sampling_size: 1440
   max_age:
     days: 1
-    
-    
+
+- platform: statistics
+  name: Master bedroom temp stats
+  entity_id: sensor.masterbedtemp_3
+  sampling_size: 1440
+  max_age:
+    days: 1
+
+- platform: statistics
+  name: Living room temp stats
+  entity_id: sensor.livingroomtemp
+  sampling_size: 1440
+  max_age:
+    days: 1
