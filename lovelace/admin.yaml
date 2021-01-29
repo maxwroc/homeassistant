@@ -66,10 +66,7 @@
         - sensor.hassio_online
         - sensor.last_boot
         - type: custom:multiple-entity-row
-          entity: sensor.samba_backup
-          name: "Backups"
-          icon: mdi:content-save-move
-          attribute: last_backup
+          entity: sensor.last_backup
           entities:
             - entity: sensor.samba_backup
               attribute: backups_local

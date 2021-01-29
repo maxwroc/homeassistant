@@ -17,18 +17,3 @@
       data_template:
         message: "Number of files changed: {{ trigger.event.data.new_state.state | int - trigger.event.data.old_state.state | int }} ({{ trigger.event.data.old_state.state }}/{{ trigger.event.data.new_state.state }})"
         title: "Raspwroc"
-
-#########################################################################
-# Notify when state changes reporting diff and old/new state
-#########################################################################
-
-- alias: "Restore Samba Backup sensor on startup"
-  trigger:
-  - event: start
-    platform: homeassistant
-  action:
-  - service: hassio.addon_stdin
-    data:
-      addon: 15d21743_samba_backup
-      input: restore-sensor
-  mode: single

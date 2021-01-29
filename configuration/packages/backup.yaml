@@ -1,0 +1,45 @@
+sensor:
+  - platform: template
+    sensors:
+      last_backup:
+        friendly_name: "Last backup"
+        value_template: "{{ relative_time(strptime(state_attr('sensor.samba_backup', 'last_backup'), '%Y-%m-%d %H:%M')) }} ago"
+        #icon_template: "mdi:content-save-move"
+
+
+
+
+automation:
+
+  #########################################################################
+  # Triggers last backup entity update
+  #
+  # It is required as the template sensor updates only when the source
+  # entity is updated. But in case of that sensor we use the relative_time
+  # so we want to refresh it regurarly
+  #########################################################################
+
+  - alias: "Update last backup sensor"
+    trigger:
+      - platform: time_pattern
+        hours: "*" # every hour
+    action:
+      - service: homeassistant.update_entity
+        entity_id: sensor.last_backup
+
+  #########################################################################
+  # Restores samba backuo sensor
+  #
+  # Samba backup sensor does not appear automatically after HA restart
+  #########################################################################
+
+  - alias: "Restore Samba Backup sensor on startup"
+    trigger:
+    - event: start
+      platform: homeassistant
+    action:
+    - service: hassio.addon_stdin
+      data:
+        addon: 15d21743_samba_backup
+        input: restore-sensor
+    mode: single
