@@ -126,19 +126,43 @@
   cards:
     - type: entities
       show_header_toggle: false
-      title: Google Home
+      title: Other
       entities:
-        - type: custom:mini-media-player
-          entity: media_player.home_mini
-          group: true
-          hide:
-            controls: true
-            power: true
-            source: true
-        - type: custom:mini-media-player
-          entity: media_player.living_room_tv
-          group: true
-          hide:
-            controls: false
-            power: true
-            source: true
+        # - type: custom:mini-media-player
+        #   entity: media_player.home_mini
+        #   group: true
+        #   hide:
+        #     controls: true
+        #     power: true
+        #     source: true
+        - entity: media_player.samsung_tv
+    - type: custom:mini-media-player
+      entity: media_player.living_room_television
+      info: scroll
+      artwork: cover
+      group: false
+      hide:
+        controls: false
+        mute: true
+        icon: false
+        power: false
+        power_state: false
+        source: true
+        progress: false
+        volume: false
+        shuffle: false
+    - type: custom:mini-media-player
+      entity: media_player.bedroom_tv
+      info: scroll
+      artwork: cover
+      group: false
+      hide:
+        controls: false
+        mute: true
+        icon: false
+        power: false
+        power_state: false
+        source: true
+        progress: false
+        volume: false
+        shuffle: false
