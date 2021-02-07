@@ -27,10 +27,6 @@ sensor.config_last_backup:
   icon: mdi:cloud-upload
   friendly_name: "Config last backup"
 
-sensor.energy_daily:
-  friendly_name: "Energy daily"
-  unit_of_measurement: kWh
-
 switch.pc:
   icon: mdi:desktop-tower-monitor
 

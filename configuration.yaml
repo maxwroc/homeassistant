@@ -343,24 +343,6 @@ notify:
     api_key: !secret pushover_git_appkey
     user_key: !secret pushover_userkey
 
-
-utility_meter:
-  energy_daily:
-    source: sensor.energy_total
-    cycle: daily
-  energy_monthly:
-    source: sensor.energy_total
-    cycle: monthly
-  energy_yearly:
-    source: sensor.energy_total
-    cycle: yearly
-  energy_rpi_daily:
-    source: sensor.energy_total_rpi
-    cycle: daily
-  energy_rpi_monthly:
-    source: sensor.energy_total_rpi
-    cycle: monthly
-
 shell_command:
   commit_config_files: cd /config && git pull && git add -A && git commit -m "`date`" && git push -u origin master
   store_creds: !secret github_store_creds_cmd # git config --global user.name "USERNAME" && git config --global user.email "USER@EMAIL" && git config --global credential.helper store && echo "https://USERNAME:GITTOKEN@github.com" > ~/.git-credentials

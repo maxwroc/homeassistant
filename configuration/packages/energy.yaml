@@ -1,0 +1,49 @@
+
+
+homeassistant:
+  customize:
+    sensor.energy_daily:
+      friendly_name: "Energy daily"
+      unit_of_measurement: kWh
+
+sensor:
+  - platform: template
+    sensors:
+
+      energy_usage:
+        friendly_name: "Power"
+        unit_of_measurement: W
+        value_template: "{{ states('sensor.owl_energy_usage') | int }}"
+
+      energy_total:
+        friendly_name: "Energy total"
+        unit_of_measurement: kWh
+        value_template: >
+          {% if states('sensor.owl_energy_total') | float == 0 %}
+           {{ states('sensor.energy_total') }}
+          {% else %}
+           {{ states('sensor.owl_energy_total') | float | multiply(0.001) | round(1) }}
+          {% endif %}
+
+      energy_total_rpi:
+        friendly_name: "RPi total energy"
+        unit_of_measurement: Wh
+        value_template: "{{ state_attr('switch.raspberrypi4', 'total_energy_kwh') | float | multiply(1000) | round(0) }}"
+
+
+utility_meter:
+  energy_daily:
+    source: sensor.energy_total
+    cycle: daily
+  energy_monthly:
+    source: sensor.energy_total
+    cycle: monthly
+  energy_yearly:
+    source: sensor.energy_total
+    cycle: yearly
+  energy_rpi_daily:
+    source: sensor.energy_total_rpi
+    cycle: daily
+  energy_rpi_monthly:
+    source: sensor.energy_total_rpi
+    cycle: monthly
