@@ -40,6 +40,7 @@ system_health:
 updater:
 zeroconf:
 stream:
+input_select:
 ########### End of integrations from default config ###########
 
 logger:

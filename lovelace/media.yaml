@@ -166,3 +166,14 @@
         progress: false
         volume: false
         shuffle: false
+
+
+- type: entities
+  entities:
+    - input_select.alexa_device
+    - input_text.alexa_tts_text
+    - type: call-service
+      name: ' '
+      icon: 'mdi:voice'
+      action_name: Announce It...
+      service: script.audio_notify

@@ -1,0 +1,69 @@
+
+
+input_select:
+
+  alexa_device:
+    name: Alexa device
+    options:
+      - Home
+      - Kids dot
+      - Bedroom dot
+      - Living room
+    initial: Home
+    icon: mdi:amazon-alexa
+
+
+input_text:
+  alexa_tts_text:
+    name: "Text to announce"
+    initial: hello
+
+
+script:
+  audio_notify:
+    sequence:
+
+      - variables:
+          nameIdMap:
+            Home: media_player.home_2
+            Kids dot: media_player.kids_dot
+            Bedroom dot: media_player.bedroom_dot
+            Living room: media_player.living_room_echo
+          device: >
+            {% if device == "" or not device %}
+              {{ nameIdMap[states('input_select.alexa_device')] }}
+            {% elif device in nameIdMap %}
+              {{ nameIdMap[device] }}
+            {% else %}
+              {{ device }}
+            {% endif %}
+          message: >
+            {% if message == "" or not message %}
+              {{ states('input_text.alexa_tts_text') }}
+            {% else %}
+              {{ message }}
+            {% endif %}
+
+      - choose:
+          - conditions:
+              - condition: template
+                value_template: "{{ states(device) != 'unknown' }}"
+            sequence:
+              # - service: persistent_notification.create
+              #   data:
+              #     message: "hello {{ device }}:\n {{ message }} {{ states('input_text.zzz') }}"
+              - service: notify.alexa_media
+                data_template:
+                  target: "{{ device }}"
+                  data:
+                    type: announce
+                  message: "{{ message }}"
+          - conditions:
+              - condition: template
+                value_template: "{{ states(device) == 'unknown' }}"
+            sequence:
+              - service: persistent_notification.create
+                data:
+                  message: "Error announcing message:\n'{{ device }}' device not found!"
+
+
