@@ -13,8 +13,6 @@ sensor.bedroomtemp_3:
 sensor.masterbedtemp_3:
   friendly_name: "Master bedroom temperature"
 
-sensor.masterbedtemp:
-  friendly_name: "Master bedroom humidity"
 
 sensor.energy_rpi_monthly:
   friendly_name: RPi energy monthly
@@ -46,5 +44,3 @@ binary_sensor.living_room_balcony:
 binary_sensor.bedroom_balcony:
   device_class: door
 
-sensor.temp_outside_temperature:
-  friendly_name: Outside temp

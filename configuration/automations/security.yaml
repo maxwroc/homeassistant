@@ -55,3 +55,4 @@
     - service: script.audio_notify
       data_template:
         message: "Alarm triggered"
+        device: Home

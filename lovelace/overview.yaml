@@ -21,7 +21,7 @@
         - device_tracker.maks
         - device_tracker.magduska
         - type: custom:multiple-entity-row
-          entity: sensor.thermometer_outside_temperature
+          entity: sensor.thermometer_outside_temp_fixed
           entities:
             - entity: sensor.outside_temp_stats
               attribute: min_value
@@ -118,7 +118,6 @@
         - light.kitchen_worktop_lights
         - light.living_room_lamp
         - light.tv_light
-#        - light.christmas_tree
         - type: custom:multiple-entity-row
           entity: sensor.livingroomtemp
           entities:
@@ -158,6 +157,7 @@
         - switch.master_bed_wall_switch_main
         - light.master_bedroom_night_light
         - light.desk_light
+        - light.christmas_tree
         - light.mbedroom_led_stripe
         - type: custom:multiple-entity-row
           entity: sensor.masterbedtemp_3

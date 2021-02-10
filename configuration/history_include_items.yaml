@@ -11,6 +11,7 @@ entities:
   - sensor.home_assistant_v2_db
   - sensor.pc
   - sensor.thermometer_outside_temperature
+  - sensor.thermometer_outside_temp_fixed
   - sensor.livingroomtemp
   - sensor.livingroomtemp_2
   - sensor.livingroomtemp_3

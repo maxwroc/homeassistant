@@ -20,6 +20,10 @@ input_text:
 
 
 script:
+
+  ########################################################################
+  # Script for sending audio notifications to Alexas
+  #########################################################################
   audio_notify:
     sequence:
 
@@ -45,23 +49,29 @@ script:
             {% endif %}
 
       - choose:
+          # if device exists
           - conditions:
               - condition: template
                 value_template: "{{ states(device) != 'unknown' }}"
             sequence:
-              # - service: persistent_notification.create
-              #   data:
-              #     message: "hello {{ device }}:\n {{ message }} {{ states('input_text.zzz') }}"
+              # send announcement to Alexa
               - service: notify.alexa_media
                 data_template:
                   target: "{{ device }}"
                   data:
                     type: announce
                   message: "{{ message }}"
+              # clear the text input field for the message
+              - service: input_text.set_value
+                data:
+                  entity_id: input_text.alexa_tts_text
+                  value: ""
+          # if device doesn't exist
           - conditions:
               - condition: template
                 value_template: "{{ states(device) == 'unknown' }}"
             sequence:
+              # notify user that something went wrong
               - service: persistent_notification.create
                 data:
                   message: "Error announcing message:\n'{{ device }}' device not found!"
