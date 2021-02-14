@@ -157,7 +157,7 @@
         - switch.master_bed_wall_switch_main
         - light.master_bedroom_night_light
         - light.desk_light
-        - light.christmas_tree
+        - switch.led_stripe_power
         - light.mbedroom_led_stripe
         - type: custom:multiple-entity-row
           entity: sensor.masterbedtemp_3

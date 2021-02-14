@@ -151,14 +151,14 @@
       to: " temp. "
   collapse:
     - group_id: group.motion_sensors_batteries
-      min: 99
+      min: 80
     - group_id: group.switches_batteries
-      min: 99
+      min: 80
     - group_id: group.door_sensors_batteries
-      min: 99
+      min: 80
     - group_id: group.temp_sensors_batteries
       icon: 'mdi:thermometer'
-      min: 99
+      min: 80
   filter:
     include:
       - name: entity_id
@@ -189,6 +189,22 @@
     - sensor.urleditorpro
     - entity: sensor.home_assistant_config
       secondary_info: "{latest_commit_message}"
+
+- type: entities
+  title: AdGuard
+  entities:
+    - switch.adguard_protection
+    - type: custom:multiple-entity-row
+      entity: sensor.adguard_dns_queries_blocked_ratio
+      entities:
+        - entity: sensor.adguard_dns_queries
+          name: queries
+          unit: false
+    - sensor.adguard_average_processing_speed
+    - type: weblink
+      name: "AdGuard Dashboard"
+      url: /hassio/ingress/a0d7b954_adguard
+      icon: "mdi:web"
 
 #- type: iframe
 #  #url: http://192.168.2.104:8085/sources/0/dashboards/1?lower=now%28%29%20-%2024h&present=true

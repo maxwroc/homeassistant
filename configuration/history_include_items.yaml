@@ -4,6 +4,8 @@ domains:
   - light
 entities:
   - alarm_control_panel.home_alarm
+  - sensor.adguard_average_processing_speed
+  - sensor.adguard_dns_queries_blocked_ratio
   - sensor.cpu_temperature
   - sensor.processor_use
   - sensor.memory_use_percent
