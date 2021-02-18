@@ -128,6 +128,8 @@ lovelace:
     type: module
 #  - url: /local/dev/sublime-floorplan-card/dist/sublime-floorplan-card.js
 #    type: module
+  - url: /local/dev/alarm-panel-card.js
+    type: module
 
 weather:
 

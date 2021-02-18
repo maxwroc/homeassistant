@@ -9,11 +9,16 @@ homeassistant:
 sensor:
   - platform: template
     sensors:
-
+    
       energy_usage:
         friendly_name: "Power"
         unit_of_measurement: W
-        value_template: "{{ states('sensor.owl_energy_usage') | int }}"
+        value_template: >
+          {% if states('sensor.owl_energy_usage') | int > 20000 %}
+           {{ states('sensor.energy_usage') }}
+          {% else %}
+           {{ states('sensor.owl_energy_usage') | int }}
+          {% endif %}
 
       energy_total:
         friendly_name: "Energy total"
