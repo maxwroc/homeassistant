@@ -157,8 +157,13 @@
         - switch.master_bed_wall_switch_main
         - light.master_bedroom_night_light
         - light.desk_light
-        - switch.led_stripe_power
-        - light.mbedroom_led_stripe
+        - type: custom:multiple-entity-row
+          entity: light.mbedroom_led_stripe
+          toggle: true
+          entities:
+            - entity: switch.led_stripe_power
+              toggle: true
+              name: false
         - type: custom:multiple-entity-row
           entity: sensor.masterbedtemp_3
           entities:
