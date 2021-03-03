@@ -9,11 +9,6 @@ sensor:
         - path: 'maxwroc/homeassistant'
           name: "Home assistant config"
 
-  - platform: gitcustom
-    access_token: !secret github_access_token
-    repositories:
-        - path: 'maxwroc/battery-state-card'
-
   - platform: template
     sensors:
       battery_state_card_issues:
