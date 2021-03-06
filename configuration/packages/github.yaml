@@ -9,23 +9,6 @@ sensor:
         - path: 'maxwroc/homeassistant'
           name: "Home assistant config"
 
-  - platform: template
-    sensors:
-      battery_state_card_issues:
-        friendly_name: "battery-state-card"
-        icon_template: "mdi:github"
-        value_template: "{{ state_attr('sensor.battery_state_card', 'open_issues') - state_attr('sensor.battery_state_card', 'open_pull_requests') }}"
-        attribute_templates:
-          # just for automation (to not duplicate automation entry)
-          open_issues: "{{ state_attr('sensor.battery_state_card', 'open_issues') - state_attr('sensor.battery_state_card', 'open_pull_requests') }}"
-      github_flexi_card_issues:
-        friendly_name: "github_flexi_card"
-        icon_template: "mdi:github"
-        value_template: "{{ state_attr('sensor.github_flexi_card', 'open_issues') - state_attr('sensor.github_flexi_card', 'open_pull_requests') }}"
-        attribute_templates:
-          # just for automation (to not duplicate automation entry)
-          open_issues: "{{ state_attr('sensor.battery_state_card', 'open_issues') - state_attr('sensor.battery_state_card', 'open_pull_requests') }}"
-
 automation:
   - alias: "Notify when Github star is received"
     trigger:
@@ -55,16 +38,12 @@ automation:
     trigger:
       - platform: state
         entity_id:
-          # - sensor.battery_state_card
-          # - sensor.github_flexi_card
+          - sensor.battery_state_card
+          - sensor.github_flexi_card
           - sensor.urleditorpro
           - sensor.hideseek_mod
           - sensor.homeassistant
         attribute: open_issues
-      - platform: state
-        entity_id:
-          - sensor.battery_state_card_issues
-          - sensor.github_flexi_card_issues
     condition: []
     mode: restart # start a new run after stopping previous run
     action:

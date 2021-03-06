@@ -42,7 +42,8 @@ zeroconf:
 stream:
 input_select:
 ########### End of integrations from default config ###########
-
+logger:
+  logs:
 logger:
   default: warning
   logs:
@@ -50,6 +51,7 @@ logger:
     homeassistant.components.switch.rfxtrx: info
     homeassistant.components.binary_sensor.rfxtrx: info
     homeassistant.components.rfxtrx.switch: info
+    # RFXtrx: debug
 
 # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
 # http:
