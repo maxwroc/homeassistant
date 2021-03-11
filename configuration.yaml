@@ -43,8 +43,6 @@ stream:
 input_select:
 ########### End of integrations from default config ###########
 logger:
-  logs:
-logger:
   default: warning
   logs:
     homeassistant.components.rfxtrx: info
@@ -109,8 +107,8 @@ lovelace:
     type: module
   - url: /hacsfiles/mini-media-player/mini-media-player-bundle.js
     type: module
-  # - url: /hacsfiles/battery-state-card/battery-state-card.js
-  #   type: module
+  - url: /hacsfiles/battery-state-card/battery-state-card.js
+    type: module
   - url: /hacsfiles/github-flexi-card/github-flexi-card.js
     type: module
   - url: /hacsfiles/weather-card/weather-card.js
@@ -126,8 +124,10 @@ lovelace:
 #    type: module
 #  - url: /local/dev/mini-graph-card/dist/mini-graph-card-bundle.js?v=0.8.8
 #    type: module
-  - url: /local/dev/battery-state-card/dist/battery-state-card.js?z=v1
-    type: module
+#  - url: /local/dev/battery-state-card/dist/battery-state-card.js?z=v1
+#    type: module
+#  - url: http://127.0.0.1:5500/dist/battery-state-card.js
+#    type: module
 #  - url: /local/dev/sublime-floorplan-card/dist/sublime-floorplan-card.js
 #    type: module
   - url: /local/dev/alarm-panel-card.js
