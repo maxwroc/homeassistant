@@ -8,7 +8,7 @@
         mute: true
         icon: true
         power: true
-        source: true
+        source: false
         progress: false
         volume: false
         shuffle: false
