@@ -167,6 +167,7 @@ device_tracker:
       maks: 192.168.2.126
       magduska: 192.168.2.247
       pc: 192.168.2.102
+      laptop_surface: 192.168.2.120
 
 camera:
   - platform: generic

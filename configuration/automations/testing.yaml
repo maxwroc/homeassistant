@@ -1,7 +1,8 @@
 
 
 
-- alias: "Alarm auto-arm"
+- id: home_alarm_auto_arm
+  alias: "Alarm auto-arm"
 #  initial_state: false
   trigger:
     platform: state
@@ -27,33 +28,7 @@
       data:
         message: "Arming home alarm; time diff: {{ as_timestamp(now()) - as_timestamp(states.group.motion_sensors.last_changed) }}; Family: {{ states('group.family') }}"
         title: "Test"
-        
-- alias: "Alarm auto-arm - failed"
-#  initial_state: false
-  trigger:
-    platform: state
-    entity_id: binary_sensor.main_door
-    from: "on"
-    to: "off"
-    for:
-      hours: 1
-      minutes: 0
-      seconds: 0
-  condition:
-    - condition: state
-      entity_id: group.motion_sensors
-      state: "off"
-    - condition: state
-      entity_id: group.family
-      state: "not_home"
-    - condition: template
-      value_template: >
-        {{ as_timestamp(now()) - as_timestamp(states.group.motion_sensors.last_changed) > 30 * 60 }}
-  action:
-    - service: notify.pushover
-      data:
-        message: "Arming home alarm; time diff: {{ as_timestamp(now()) - as_timestamp(states.group.motion_sensors.last_changed) }} > 1800; Family: {{ states('group.family') }}"
-        title: "Test"
+
 
 - alias: "Alarm auto-arm 3333"
   initial_state: false

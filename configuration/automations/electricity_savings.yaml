@@ -83,33 +83,23 @@
         title: "Electricity savings"
         data:
           priority: 1
-          
+
 #########################################################################
 # Turn off docking station to prevent from monitor to wake up constantly (Surface Doc + LG monitor)
 #########################################################################
 
-- alias: "Docking station auto turn off"
+- id: electricity_savings_docking_station
+  alias: "Docking station auto turn off"
   trigger:
     platform: state
     entity_id: device_tracker.laptop_surface
     from: "home"
-    to: "away"
-    for:
-      hours: 0
-      minutes: 20
-      seconds: 0
-  condition:
-    - condition: state
-      entity_id: light.master_bathroom_lights
-      state: "on"
-    - condition: state
-      entity_id: binary_sensor.master_bathroom_motion
-      state: "off"
+    to: "not_home"
+    # for:
+    #   hours: 0
+    #   minutes: 20
+    #   seconds: 0
   action:
-    - service: light.turn_off
+    - service: switch.turn_off
       data:
-        entity_id: light.master_bathroom_lights
-    - service: notify.pushover
-      data:
-        message: "Turned off master bathroom lights"
-        title: "Electricity savings"
+        entity_id: switch.docking_station

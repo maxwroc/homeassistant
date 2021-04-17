@@ -31,7 +31,8 @@
 # * Sound warrning via Alexa announce on all devices
 # * Pushover notification with highest priority
 #########################################################################
-- alias: "Home alarm - motion detected"
+- id: home_alarm_motion_detected
+  alias: "Home alarm - motion detected"
   description: "Triggers alarm when person is detected at home"
   trigger:
     - platform: state

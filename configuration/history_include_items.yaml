@@ -1,8 +1,10 @@
 domains:
   - binary_sensor
-  - device_tracker
   - light
 entities:
+  - device_tracker.pc
+  - device_tracker.maks
+  - device_tracker.magduska
   - alarm_control_panel.home_alarm
   - sensor.adguard_average_processing_speed
   - sensor.adguard_dns_queries_blocked_ratio
