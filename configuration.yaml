@@ -188,7 +188,8 @@ camera:
 tplink:
   discovery: false
   switch:
-    - host: 192.168.4.235
+    - host: 192.168.4.235 #hs110-rasp
+    - host: 192.168.4.228 #kp115-1
 
 rfxtrx:
   device: /dev/ttyUSB0
