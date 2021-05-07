@@ -12,6 +12,7 @@
         - calendar.wydazenia
         - calendar.school
         - calendar.urodziny_i_imieniny
+        - calendar.contacts
 
     - type: entities
       show_header_toggle: false

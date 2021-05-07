@@ -85,21 +85,19 @@
           priority: 1
 
 #########################################################################
-# Turn off docking station to prevent from monitor to wake up constantly (Surface Doc + LG monitor)
+# Turn off docking station to prevent from monitor to keep waking up (Surface Doc + LG/Samsung monitor)
 #########################################################################
 
 - id: electricity_savings_docking_station
   alias: "Docking station auto turn off"
   trigger:
-    platform: state
-    entity_id: device_tracker.laptop_surface
-    from: "home"
-    to: "not_home"
-    # for:
-    #   hours: 0
-    #   minutes: 20
-    #   seconds: 0
+    platform: webhook
+    webhook_id: device_lock
+  condition:
+    - condition: template
+      value_template: "{{ trigger.json.device == 'MAKSYMC-LAP' and trigger.json.action == 'locked' }}"
   action:
     - service: switch.turn_off
       data:
         entity_id: switch.docking_station
+

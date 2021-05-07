@@ -84,3 +84,27 @@
 #     - service: script.audio_notify
 #       data_template:
 #         tts_msg: "Welcome Home Andrew"
+
+
+- id: testing_webhook
+  alias: "Testing webhook"
+  trigger:
+    platform: webhook
+    webhook_id: device_lock
+    # - platform: state
+    #   entity_id: device_tracker.laptop_surface
+    #   from: "home"
+    #   to: "not_home"
+    #   # for:
+    #   #   hours: 0
+    #   #   minutes: 20
+    #   #   seconds: 0
+  condition: []
+  action:
+    # - service: switch.turn_off
+    #   data:
+    #     entity_id: switch.docking_station
+    - service: persistent_notification.create
+      data_template:
+        title: "Lock event"
+        message: "Device: ({{ trigger.json.device }}) \n action: {{ trigger.json.action }}"

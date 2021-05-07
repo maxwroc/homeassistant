@@ -31,7 +31,8 @@ config:
 #history: # enabled later
 logbook:
 #map:
-#mobile_app:
+mobile_app:
+#webhook: # enabled via mobile_app
 #person
 #script: # enabled later
 ssdp:
@@ -42,6 +43,7 @@ zeroconf:
 stream:
 input_select:
 ########### End of integrations from default config ###########
+
 logger:
   default: warning
   logs:
@@ -63,7 +65,6 @@ wake_on_lan:
 
 recorder:
   purge_keep_days: 14
-  purge_interval: 1
   include: !include configuration/history_include_items.yaml
   exclude:
     entities:

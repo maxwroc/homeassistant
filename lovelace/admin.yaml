@@ -159,6 +159,17 @@
     - group_id: group.temp_sensors_batteries
       icon: 'mdi:thermometer'
       min: 80
+  entities:
+    - entity: sensor.oneplus_3_battery_level
+      name: "Oneplus 3"
+      charging_state: # uses other entity state value
+        entity_id: sensor.oneplus_3_battery_state
+        state: "charging"
+    - entity: sensor.huawei_p20_pro_battery_level
+      name: Huawei P20 Pro
+      charging_state:
+        entity_id: sensor.huawei_p20_pro_battery_state
+        state: "charging"
   filter:
     include:
       - name: entity_id

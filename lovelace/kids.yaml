@@ -98,8 +98,8 @@
             action: call-service
             service: media_player.volume_set
             service_data:
-              entity_id: media_player.bedroom_dot_2
-              volume_level: 0.1
+              entity_id: media_player.kids_dot
+              volume_level: 0.03
         - type: button
           name: "Vol 3"
           show_icon: false
@@ -108,8 +108,8 @@
             action: call-service
             service: media_player.volume_set
             service_data:
-              entity_id: media_player.bedroom_dot_2
-              volume_level: 0.3
+              entity_id: media_player.kids_dot
+              volume_level: 0.1
 
 #- type: vertical-stack
 #  cards:

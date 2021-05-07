@@ -1,0 +1,52 @@
+- id: '1619970101077'
+  alias: Test UI automation
+  description: ''
+  trigger:
+  - platform: webhook
+    webhook_id: zonk
+  condition: []
+  action:
+  - service: persistent_notification.create
+    data:
+      message: hello
+      title: sadfdsaf
+  mode: single
+- id: '1619970261165'
+  alias: Test UI auto
+  description: sdafasdfafdsasd
+  trigger:
+  - platform: webhook
+    webhook_id: zonk
+  condition: []
+  action:
+  - service: persistent_notification.create
+    data:
+      title: hello
+      message: zsdadsa asdasd a
+  mode: single
+- id: '1619970449241'
+  alias: zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz sdfdsafdsa
+  description: sdaf s dfs sd adsdfda
+  trigger:
+  - platform: webhook
+    webhook_id: zonki
+  condition: []
+  action:
+  - service: persistent_notification.create
+    data:
+      title: zonk
+      message: zasdasdas
+  mode: single
+- id: '1619994059726'
+  alias: kkkkkkkkkkkkkkkkkkkkkkkkk
+  description: ''
+  trigger:
+  - platform: sun
+    event: sunrise
+  condition: []
+  action:
+  - service: persistent_notification.create
+    data:
+      title: hello
+      message: kuku
+  mode: single
