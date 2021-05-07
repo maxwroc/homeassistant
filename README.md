@@ -13,6 +13,14 @@
 * Sonoff LAN - for camera control
 * AccuWeather - since DarkSky is shutting down its API
 
+## Automations
+
+* Turn something on or off when you lock/unlock your Windows workstation
+
+  In my case I'm turning off Surface docking station because it constantly turns off and on my monitor(s) when Windows is locked. Real example from my configuration is [here](https://github.com/maxwroc/homeassistant/blob/master/configuration/automations/electricity_savings.yaml).
+  
+  On the windows box I use tiny script which sets up everything for you: [Invoke-WebhookOnLock](https://github.com/maxwroc/Invoke-WebhookOnLock).
+
 ## Devices
 
 | Connection | Brand | Model | Photo | Notes |
