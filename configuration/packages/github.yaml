@@ -20,7 +20,9 @@ automation:
           - sensor.hideseek_mod
           - sensor.homeassistant
         attribute: stargazers
-    condition: []
+    condition:
+      - condition: template  # 'night' condition: from dusk to dawn, in typical locations
+        value_template: "{{ trigger.to_state.state != 'unavailable' }}"
     mode: restart # start a new run after stopping previous run
     action:
       - service: notify.pushover_git
@@ -44,7 +46,9 @@ automation:
           - sensor.hideseek_mod
           - sensor.homeassistant
         attribute: open_issues
-    condition: []
+    condition:
+      - condition: template  # 'night' condition: from dusk to dawn, in typical locations
+        value_template: "{{ trigger.to_state.state != 'unavailable' }}"
     mode: restart # start a new run after stopping previous run
     action:
       - service: notify.pushover_git
