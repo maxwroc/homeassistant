@@ -31,6 +31,7 @@ automation:
           title: "Github"
           data:
             priority: -1
+            url: "https://github.com/maxwroc/{{ trigger.to_state.attributes.friendly_name }}/stargazers"
             # -2 to generate no notification/alert
             # -1 to always send as a quiet notification
             #  1 to display as high-priority and bypass the user's quiet hours
@@ -57,6 +58,7 @@ automation:
           title: "Github"
           data:
             priority: -1
+            url: "https://github.com/maxwroc/{{ trigger.to_state.attributes.friendly_name }}/issues"
             # -2 to generate no notification/alert
             # -1 to always send as a quiet notification
             #  1 to display as high-priority and bypass the user's quiet hours
