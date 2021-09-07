@@ -6,6 +6,7 @@ sensor:
         - path: 'maxwroc/hideseek-mod'
         - path: 'maxwroc/urleditorpro'
         - path: 'maxwroc/github-flexi-card'
+        - path: 'maxwroc/sonj-review'
         - path: 'maxwroc/homeassistant'
           name: "Home assistant config"
 

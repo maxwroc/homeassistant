@@ -10,6 +10,7 @@ homeassistant:
   latitude: !secret location_lat
   longitude: !secret location_long
   packages: !include_dir_named configuration/packages
+  currency: GBP
 
 
 # Configure a default setup of Home Assistant (frontend, api, etc)
@@ -25,24 +26,54 @@ homeassistant:
 #      entity: zonk
 
 ########## Start of integrations from default_config ##########
+# Default config integrations: https://www.home-assistant.io/integrations/default_config/
+# Select all, copy to Notepad++, ctrl+h, Replace string: ^.*\((.*?)\), Replace with: $1:
+automation: !include_dir_merge_list configuration/automations
 #cloud:
 config:
-#frontend: # enabled later
-#history: # enabled later
+counter:
+dhcp:
+energy:
+frontend:
+  themes: !include_dir_merge_named themes/
+history:
+  include: !include configuration/history_include_items.yaml
+  exclude:
+    entities:
+      - binary_sensor.updater
+#image:
+input_boolean:
+input_datetime:
+input_number:
+input_select:
+input_text:
 logbook:
 #map:
+#media_source:
 mobile_app:
-#webhook: # enabled via mobile_app
-#person
-#script: # enabled later
+my:
+person:
+#scene:
+script: !include_dir_merge_named configuration/scripts
 ssdp:
+stream:
 sun:
 system_health:
+#tag:
+timer:
 updater:
+usb:
+webhook:
 zeroconf:
-stream:
-input_select:
+#zone:
 ########### End of integrations from default config ###########
+
+
+group: !include configuration/groups.yaml
+light: !include configuration/lights.yaml
+sensor: !include_dir_merge_list configuration/sensors
+binary_sensor: !include configuration/binary_sensors.yaml
+
 
 logger:
   default: warning
@@ -70,11 +101,7 @@ recorder:
     entities:
       - binary_sensor.updater
 
-history:
-  include: !include configuration/history_include_items.yaml
-  exclude:
-    entities:
-      - binary_sensor.updater
+
 
 influxdb:
   host: a0d7b954-influxdb
@@ -89,17 +116,7 @@ influxdb:
     entities:
       - binary_sensor.updater
 
-group: !include configuration/groups.yaml
-automation: !include_dir_merge_list configuration/automations
-script: !include_dir_merge_named configuration/scripts
 
-light: !include configuration/lights.yaml
-sensor: !include_dir_merge_list configuration/sensors
-binary_sensor: !include configuration/binary_sensors.yaml
-
-# Enables the frontend
-frontend:
-  themes: !include_dir_merge_named themes/
 
 lovelace:
   mode: yaml

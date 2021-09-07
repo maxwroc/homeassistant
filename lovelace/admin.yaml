@@ -200,6 +200,7 @@
     - sensor.github_flexi_card
     - sensor.hideseek_mod
     - sensor.urleditorpro
+    - sensor.sonj_review
     - entity: sensor.home_assistant_config
       secondary_info: "{latest_commit_message}"
 
