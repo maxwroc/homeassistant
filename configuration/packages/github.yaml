@@ -20,6 +20,7 @@ automation:
           - sensor.urleditorpro
           - sensor.hideseek_mod
           - sensor.homeassistant
+          - sensor.sonj_review
         attribute: stargazers
     condition:
       - condition: template  # 'night' condition: from dusk to dawn, in typical locations
@@ -47,6 +48,7 @@ automation:
           - sensor.urleditorpro
           - sensor.hideseek_mod
           - sensor.homeassistant
+          - sensor.sonj_review
         attribute: open_issues
     condition:
       - condition: template  # 'night' condition: from dusk to dawn, in typical locations

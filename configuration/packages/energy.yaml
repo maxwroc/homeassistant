@@ -9,9 +9,10 @@ homeassistant:
 sensor:
   - platform: template
     sensors:
-    
+
       energy_usage:
         friendly_name: "Power"
+        device_class: energy
         unit_of_measurement: W
         value_template: >
           {% if states('sensor.owl_energy_usage') | int > 20000 %}
@@ -22,6 +23,7 @@ sensor:
 
       energy_total:
         friendly_name: "Energy total"
+        device_class: energy
         unit_of_measurement: kWh
         value_template: >
           {% if states('sensor.owl_energy_total') | float == 0 %}
@@ -32,8 +34,9 @@ sensor:
 
       energy_total_rpi:
         friendly_name: "RPi total energy"
+        device_class: energy
         unit_of_measurement: Wh
-        value_template: "{{ state_attr('switch.raspberrypi4', 'total_energy_kwh') | float | multiply(1000) | round(0) }}"
+        value_template: "{{ states('sensor.sensor.raspberrypi4_total_consumption') | float | multiply(1000) | round(0) }}"
 
 
 utility_meter:

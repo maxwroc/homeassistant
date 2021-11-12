@@ -2,67 +2,77 @@
 # Controling Spotify via RF switches
 #########################################################################
 
-- alias: "Livingroom Nexa switch - Left OFF"
+- id: tradfri_music_on_off
+  alias: "Tradfri music - On/Off"
+  description: "Spotify Play/Pause"
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      event: 1002
+      device_id: "3f4b172eae88410c44e32b1b1ad5310b"
+  condition: []
+  action:
+    - service: media_player.media_play_pause
+      data_template:
+        entity_id: media_player.spotify
+
+- id: tradfri_music_light_up
+  alias: "Tradfri music - Light up"
   description: "Spotify vol up"
   trigger:
     platform: event
-    event_type: rfxtrx_event
+    event_type: deconz_event
     event_data:
-      id_string: "12de852:11"
-      values:
-        Command: "Off"
+      event: 2002
+      device_id: "3f4b172eae88410c44e32b1b1ad5310b"
   condition: []
   action:
-    - service: media_player.volume_set
+    - service: media_player.volume_up
       data_template:
         entity_id: media_player.spotify
-        volume_level: >
-          {{ (state_attr("media_player.spotify", "volume_level") | float + 0.1) | round(1) | float }}
 
-- alias: "Livingroom Nexa switch - Left ON"
+- id: tradfri_music_light_down
+  alias: "Tradfri music - Light down"
   description: "Spotify vol down"
   trigger:
     platform: event
-    event_type: rfxtrx_event
+    event_type: deconz_event
     event_data:
-      id_string: "12de852:11"
-      values:
-        Command: "On"
+      event: 3002
+      device_id: "3f4b172eae88410c44e32b1b1ad5310b"
   condition: []
   action:
-    - service: media_player.volume_set
+    - service: media_player.volume_down
       data_template:
         entity_id: media_player.spotify
-        #volume_level: 0.4
-        volume_level: >
-          {{ (state_attr("media_player.spotify", "volume_level") | float - 0.1) | round(1) | float }}
 
-- alias: "Livingroom Nexa switch - Right OFF"
-  description: "Spotify button - next track"
-  trigger:
-    platform: event
-    event_type: rfxtrx_event
-    event_data:
-      id_string: "12de852:12"
-      values:
-        Command: "Off"
-  condition: []
-  action:
-    - service: media_player.media_next_track
-      data:
-        entity_id: media_player.spotify
-
-- alias: "Livingroom Nexa switch - Right ON"
+- id: tradfri_music_prev
+  alias: "Tradfri music - Prev"
   description: "Spotify button - previous track"
   trigger:
     platform: event
-    event_type: rfxtrx_event
+    event_type: deconz_event
     event_data:
-      id_string: "12de852:12"
-      values:
-        Command: "On"
+      event: 4002
+      device_id: "3f4b172eae88410c44e32b1b1ad5310b"
   condition: []
   action:
     - service: media_player.media_previous_track
+      data:
+        entity_id: media_player.spotify
+
+- id: tradfri_music_next
+  alias: "Tradfri music - Next"
+  description: "Spotify button - next track"
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      event: 5002
+      device_id: "3f4b172eae88410c44e32b1b1ad5310b"
+  condition: []
+  action:
+    - service: media_player.media_next_track
       data:
         entity_id: media_player.spotify
