@@ -1,6 +1,5 @@
 - type: vertical-stack
   cards:
-
     - type: horizontal-stack
       cards:
         - type: custom:mini-graph-card
@@ -25,7 +24,6 @@
           line_color: yellow
           points_per_hour: 2
 
-
     - type: vertical-stack
       cards:
         - type: entities
@@ -36,24 +34,24 @@
             - sensor.files_changed_locally
         - type: horizontal-stack
           cards:
-          - type: entity-button
-            entity: sensor.files_changed_locally
-            name: Store credentials
-            icon: mdi:file-upload-outline
-            show_icon: false
-            show_name: true
-            tap_action:
-              action: call-service
-              service: shell_command.store_creds
-          - type: entity-button
-            entity: sensor.files_changed_locally
-            name: Commit config changes
-            icon: mdi:file-upload-outline
-            show_icon: false
-            show_name: true
-            tap_action:
-              action: call-service
-              service: script.commit_configs
+            - type: button
+              entity: sensor.files_changed_locally
+              name: Store credentials
+              icon: mdi:file-upload-outline
+              show_icon: false
+              show_name: true
+              tap_action:
+                action: call-service
+                service: shell_command.store_creds
+            - type: button
+              entity: sensor.files_changed_locally
+              name: Commit config changes
+              icon: mdi:file-upload-outline
+              show_icon: false
+              show_name: true
+              tap_action:
+                action: call-service
+                service: script.commit_configs
 
 - type: vertical-stack
   cards:
@@ -106,8 +104,8 @@
   show_header_toggle: false
   entities:
     - type: weblink
-      name: "IDE"
-      url: http://192.168.2.104:8321/ide.html
+      name: "VS Code"
+      url: http://192.168.2.104:8123/hassio/ingress/a0d7b954_vscode
       icon: mdi:file-document-edit-outline
     - type: weblink
       name: "Router"
@@ -130,8 +128,7 @@
       url: http://192.168.2.103:9091
       icon: mdi:cloud-download
 
-
-- type: 'custom:battery-state-card'
+- type: "custom:battery-state-card"
   title: Battery levels
   sort_by_level: "asc"
   # secondary_info: last_changed
@@ -157,7 +154,7 @@
     - group_id: group.door_sensors_batteries
       min: 80
     - group_id: group.temp_sensors_batteries
-      icon: 'mdi:thermometer'
+      icon: "mdi:thermometer"
       min: 80
   entities:
     - entity: sensor.oneplus_3_battery_level
@@ -175,12 +172,11 @@
   filter:
     include:
       - name: entity_id
-        value: '*_battery_level'
+        value: "*_battery_level"
         operator: matches
       - name: attributes.device_class
         value: battery
         operator: "="
-
 
 - type: custom:github-flexi-card
   title: Github projects
@@ -219,10 +215,8 @@
       name: "AdGuard Dashboard"
       url: /hassio/ingress/a0d7b954_adguard
       icon: "mdi:web"
-
 #- type: iframe
 #  #url: http://192.168.2.104:8085/sources/0/dashboards/1?lower=now%28%29%20-%2024h&present=true
 #  url: http://192.168.2.104:8123/api/hassio_ingress/J469DFzDQ4mVGagrfD7Q3MLGSCpwcfVxqhhOO2PY4kI/sources/0/dashboards/1?lower=now%28%29%20-%2024h&present=true
 #  aspect_ratio: 136%
-
 

@@ -138,7 +138,7 @@
       entities:
         - light.bedroom_lights
         - light.black_night_light
-        - switch.kids_christmass_lights
+        - switch.tp_link_kp115_1
         - type: custom:multiple-entity-row
           entity: sensor.bedroomtemp_2
           entities:

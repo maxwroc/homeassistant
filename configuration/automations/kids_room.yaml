@@ -51,8 +51,8 @@
     type: remote_button_short_press
   condition: []
   action:
-  - service: switch.toggle
-    entity_id: switch.kids_christmass_lights
+    - entity_id: switch.tp_link_kp115_1 # christmass lights
+      service: switch.toggle
 
 - alias: "Aqara kids wall switch - right button (long press)"
   description: "Kids favorite song at the time"
@@ -64,18 +64,18 @@
     type: remote_button_long_press
   condition: []
   action:
+    - service: media_player.volume_set
+      data:
+        entity_id: media_player.kids_dot
+        volume_level: 0.4
+    - delay: 1
     - service: media_player.select_source
       data:
         entity_id: media_player.spotify
         source: "Kids dot"
     - delay: 1
-    - service: media_player.volume_set
-      data:
-        entity_id: media_player.spotify
-        volume_level: 0.5
-    - delay: 1
     - service: media_player.play_media
       data:
         entity_id: media_player.spotify
         media_content_type: "music"
-        media_content_id: "spotify:track:23OXdR7YuUBVWh5hSnYJau"
+        media_content_id: "spotify:track:65irrLqfCMRiO3p87P4C0D" # frosty the snowman

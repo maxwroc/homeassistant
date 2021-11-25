@@ -6,12 +6,11 @@ homeassistant:
   name: Scarbrook
   whitelist_external_dirs:
     # required to check db size via sensor
-    - /config
+    - "/config"
   latitude: !secret location_lat
   longitude: !secret location_long
   packages: !include_dir_named configuration/packages
   currency: GBP
-
 
 # Configure a default setup of Home Assistant (frontend, api, etc)
 # default_config:
@@ -68,12 +67,10 @@ zeroconf:
 #zone:
 ########### End of integrations from default config ###########
 
-
 group: !include configuration/groups.yaml
 light: !include configuration/lights.yaml
 sensor: !include_dir_merge_list configuration/sensors
 binary_sensor: !include configuration/binary_sensors.yaml
-
 
 logger:
   default: warning
@@ -101,8 +98,6 @@ recorder:
     entities:
       - binary_sensor.updater
 
-
-
 influxdb:
   host: a0d7b954-influxdb
   port: 8086
@@ -116,49 +111,44 @@ influxdb:
     entities:
       - binary_sensor.updater
 
-
-
 lovelace:
   mode: yaml
   resources:
-  - url: /hacsfiles/mini-graph-card/mini-graph-card-bundle.js
-    type: module
-  - url: /hacsfiles/mini-media-player/mini-media-player-bundle.js
-    type: module
-  - url: /hacsfiles/battery-state-card/battery-state-card.js
-    type: module
-  - url: /hacsfiles/github-flexi-card/github-flexi-card.js
-    type: module
-  - url: /hacsfiles/weather-card/weather-card.js
-    type: module
-  - url: /hacsfiles/lovelace-multiple-entity-row/multiple-entity-row.js
-    type: module
-  - url: /hacsfiles/transmission-card/transmission-card.js
-    type: module
-# Dev
-#  - url: /local/dev/my-custom-card.js?z=v1
-#    type: module
-#  - url: /local/dev/github-flexi-card.js?z=v1
-#    type: module
-#  - url: /local/dev/mini-graph-card/dist/mini-graph-card-bundle.js?v=0.8.8
-#    type: module
-#  - url: /local/dev/battery-state-card/dist/battery-state-card.js?z=v1
-#    type: module
-#  - url: /local/dev/github-flexi-card.js?z=v1
-#    type: module
-#  - url: http://127.0.0.1:5500/dist/battery-state-card.js
-#    type: module
-#  - url: /local/dev/sublime-floorplan-card/dist/sublime-floorplan-card.js
-#    type: module
-  - url: /local/dev/alarm-panel-card/dist/alarm-panel-card.js
-    type: module
-
-weather:
+    - url: /hacsfiles/mini-graph-card/mini-graph-card-bundle.js
+      type: module
+    - url: /hacsfiles/mini-media-player/mini-media-player-bundle.js
+      type: module
+    - url: /hacsfiles/battery-state-card/battery-state-card.js
+      type: module
+    - url: /hacsfiles/github-flexi-card/github-flexi-card.js
+      type: module
+    - url: /hacsfiles/weather-card/weather-card.js
+      type: module
+    - url: /hacsfiles/lovelace-multiple-entity-row/multiple-entity-row.js
+      type: module
+    - url: /hacsfiles/transmission-card/transmission-card.js
+      type: module
+    # Dev
+    #  - url: /local/dev/my-custom-card.js?z=v1
+    #    type: module
+    #  - url: /local/dev/github-flexi-card.js?z=v1
+    #    type: module
+    #  - url: /local/dev/mini-graph-card/dist/mini-graph-card-bundle.js?v=0.8.8
+    #    type: module
+    #  - url: /local/dev/battery-state-card/dist/battery-state-card.js?z=v1
+    #    type: module
+    #  - url: /local/dev/github-flexi-card.js?z=v1
+    #    type: module
+    #  - url: http://127.0.0.1:5500/dist/battery-state-card.js
+    #    type: module
+    #  - url: /local/dev/sublime-floorplan-card/dist/sublime-floorplan-card.js
+    #    type: module
+    - url: /local/dev/alarm-panel-card/dist/alarm-panel-card.js
+      type: module
 
 hacs:
   token: !secret hacs_token
   appdaemon: true
-  theme: true
 
 alexa_media:
   accounts:
@@ -179,7 +169,6 @@ alarm_control_panel:
     name: Home Alarm
     code: !secret alarm_code
     code_arm_required: false
-
 
 device_tracker:
   - platform: ping
@@ -239,7 +228,6 @@ rfxtrx:
     0a5208af010100c03f0169:
       #name: Temp outside
 
-
   #   # OWL
   #   "89":
   #   #"89:82":
@@ -264,49 +252,49 @@ rfxtrx:
   #   "0a0e54e":
   #     fire_event: true
 
-    # Nexa mb left
-    #"0a0e54e:11":
-    #  fire_event: true
+  # Nexa mb left
+  #"0a0e54e:11":
+  #  fire_event: true
 
-    # Nexa mb right
-    #"0a0e54e:12":
-    #  fire_event: true
+  # Nexa mb right
+  #"0a0e54e:12":
+  #  fire_event: true
 
-    # OWL
-    #115a02108982000000043600007d87521279:
+  # OWL
+  #115a02108982000000043600007d87521279:
 
-    # T/H sensor outside
-    #0850060e010100c779:
-    #0a5208af010100c03f0169:
+  # T/H sensor outside
+  #0850060e010100c779:
+  #0a5208af010100c03f0169:
 
-    # Doorbell
-    #0b11002f00efde0201040f70:
-    # 0b1100de00efde0201040f70:
-    #   fire_event: true
+  # Doorbell
+  #0b11002f00efde0201040f70:
+  # 0b1100de00efde0201040f70:
+  #   fire_event: true
 
-    # Nexa lr right
-    #0b11001b012de8520b000070:
-    # 0b11004d012de8520b010f60:
-    #   fire_event: true
-    # 0b110051012de8520b000060:
-    #   fire_event: true
-    # 0b1100a8012de8520b000060:
-    #   fire_event: true
+  # Nexa lr right
+  #0b11001b012de8520b000070:
+  # 0b11004d012de8520b010f60:
+  #   fire_event: true
+  # 0b110051012de8520b000060:
+  #   fire_event: true
+  # 0b1100a8012de8520b000060:
+  #   fire_event: true
 
-    # Nexa lr left
-    # 0b1100ab012de8520c000060:
-    # #0b110037012de8520c010f60:
-    #   fire_event: true
+  # Nexa lr left
+  # 0b1100ab012de8520c000060:
+  # #0b110037012de8520c010f60:
+  #   fire_event: true
 
-    # # Nexa mb left
-    # #0b11001d00a0e54e0b000060:
-    # 0b11003600a0e54e0b010f60:
-    #   fire_event: true
+  # # Nexa mb left
+  # #0b11001d00a0e54e0b000060:
+  # 0b11003600a0e54e0b010f60:
+  #   fire_event: true
 
-    # # Nexa mb right
-    # #0b11001800a0e54e0c010f70:
-    # 0b11002900a0e54e0c000060:
-    #   fire_event: true
+  # # Nexa mb right
+  # #0b11001800a0e54e0c010f70:
+  # 0b11002900a0e54e0c000060:
+  #   fire_event: true
 
 emulated_hue:
   listen_port: 80
