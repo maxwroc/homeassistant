@@ -36,20 +36,20 @@ automation:
     action:
       - service: script.github_pushover
         data:
-          type: "Stars"
+          type: "Issues"
           friendly_name: "{{ trigger.to_state.attributes.friendly_name }}"
           from: "{{ trigger.from_state.state }}"
           to: "{{ trigger.to_state.state }}"
 
 script:
   github_pushover:
+    alias: Github Pushover notifications
+    description: Sends Pushover notifications when called by automation
     sequence:
       - choose:
-          - conditions:
-              - condition: template
-                value_template: "{{ from != 'unavailable' }}"
-              - condition: template
-                value_template: "{{ to != 'unavailable' }}"
+          - conditions: >
+              {{ from != 'unavailable' and
+                 to != 'unavailable' }}
             sequence:
               - variables:
                   # removing the " Issues" part
