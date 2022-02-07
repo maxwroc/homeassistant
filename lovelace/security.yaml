@@ -1,7 +1,6 @@
 
 - type: picture-elements
   image: /local/scarbrook.png
-  id: "zonk"
   elements:
     - type: state-icon
       entity: binary_sensor.master_bathroom_motion

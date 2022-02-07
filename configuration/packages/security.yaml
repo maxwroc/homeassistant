@@ -1,0 +1,195 @@
+alarm_control_panel:
+  - platform: manual
+    name: Home Alarm
+    code: !secret alarm_code
+    code_arm_required: false
+
+automation:
+  #########################################################################
+  # Home Alarm - Alarm triggering
+  #########################################################################
+  - id: home_alarm_triggering
+    alias: "Home alarm - alarm triggering"
+    description: "Triggers alarm when person is detected at home or dorrs are opened"
+    trigger:
+      # - platform: state
+      #   entity_id: group.motion_sensors
+      #   to: "on"
+      
+      - platform: state
+        entity_id: binary_sensor.master_bathroom_motion
+        to: "on"
+      - platform: state
+        entity_id: binary_sensor.bathroom_motion_2
+        to: "on"
+      - platform: state
+        entity_id: binary_sensor.corridor_motion_2
+        to: "on"
+      # - platform: state
+      #   entity_id: binary_sensor.living_room_motion_2
+      #   to: "on"
+      - platform: state
+        entity_id: binary_sensor.bedroom_motion_2
+        to: "on"
+      - platform: state
+        entity_id: binary_sensor.master_bedroom_motion
+        to: "on"
+        
+      - platform: state
+        entity_id: group.door_sensors
+        to: "on"
+    condition:
+      - condition: state
+        entity_id: alarm_control_panel.home_alarm
+        state: "armed_away"
+    action:
+      service: alarm_control_panel.alarm_trigger
+      target:
+        entity_id: alarm_control_panel.home_alarm
+
+  #########################################################################
+  # Home Alarm - Alarm triggered notification
+  #
+  # * Sound warrning via Alexa announce on all devices
+  # * Pushover notification with highest priority
+  #########################################################################
+  - id: home_alarm_notification
+    alias: "Home alarm - notification"
+    description: "Notifies when alarm is triggered"
+    trigger:
+      - platform: state
+        entity_id: alarm_control_panel.home_alarm
+        to: "triggered"
+    action:
+      - service: notify.pushover
+        data:
+          message: "Presence detected or doors opened"
+          title: "Home alarm"
+          data:
+            priority: 1
+            # -2 to generate no notification/alert
+            # -1 to always send as a quiet notification
+            #  1 to display as high-priority and bypass the user's quiet hours
+            #  2 to also require confirmation from the user
+      #- service: script.audio_notify
+      #  data_template:
+      #    message: "Alarm triggered"
+      #    device: Home
+
+  #########################################################################
+  # Notify when lights are turned on when alarm is armed
+  #########################################################################
+  - alias: "Notify when lights are on when alarm is armed"
+    trigger:
+      - platform: state
+        entity_id: light.master_bedroom_night_light
+      - platform: state
+        entity_id: light.bathroom_lights
+      - platform: state
+        entity_id: light.bedroom_lights
+      - platform: state
+        entity_id: light.black_night_light
+      - platform: state
+        entity_id: light.desk_light
+      - platform: state
+        entity_id: light.kitchen_lights
+      - platform: state
+        entity_id: light.kitchen_worktop_lights
+      - platform: state
+        entity_id: light.living_room_lamp
+      - platform: state
+        entity_id: light.living_room_lights
+      - platform: state
+        entity_id: light.master_bathroom_lights
+      - platform: state
+        entity_id: light.master_bedroom_night_light
+      - platform: state
+        entity_id: light.tv_light
+      # just to make sure we haven't skipped anything
+      - platform: state
+        entity_id: group.lights
+    condition:
+      - condition: state
+        entity_id: alarm_control_panel.home_alarm
+        state: "armed_away"
+    action:
+      - service: notify.pushover
+        data_template:
+          message: "Light '{{ trigger.to_state.attributes.friendly_name }}' is {{ trigger.to_state.state }}"
+          title: "Electricity savings"
+          data:
+            priority: 1
+
+  #########################################################################
+  # Home Alarm - Motion and door notifications
+  #
+  # Once in the blue some sensors go off, we want to know which exactly
+  #########################################################################
+  - id: home_alarm_motion_detected
+    alias: "Home alarm - motion detected or doors opened"
+    description: "Notifies when motion is detected or doors opened when alarm is armed"
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.master_bathroom_motion
+        to: "on"
+      - platform: state
+        entity_id: binary_sensor.bathroom_motion_2
+        to: "on"
+      - platform: state
+        entity_id: binary_sensor.corridor_motion_2
+        to: "on"
+      # - platform: state
+      #   entity_id: binary_sensor.living_room_motion_2
+      #   to: "on"
+      - platform: state
+        entity_id: binary_sensor.bedroom_motion_2
+        to: "on"
+      - platform: state
+        entity_id: binary_sensor.master_bedroom_motion
+        to: "on"
+      - platform: state
+        entity_id: binary_sensor.main_door
+        to: "on"
+      - platform: state
+        entity_id: binary_sensor.bedroom_balcony
+        to: "on"
+      - platform: state
+        entity_id: binary_sensor.living_room_balcony
+        to: "on"
+    condition:
+      - condition: state
+        entity_id: alarm_control_panel.home_alarm
+        state: "armed_away"
+    action:
+      - service: notify.pushover
+        data_template:
+          message: "'{{ trigger.to_state.attributes.friendly_name }}' is {{ trigger.to_state.state }}"
+          title: "Home alarm"
+          data:
+            priority: 1
+
+  #########################################################################
+  # Doorbell pushover notification
+  #########################################################################
+  - alias: "Doorbell notification"
+    description: "Pushover notification"
+    trigger:
+      platform: event
+      event_type: rfxtrx_event
+      event_data:
+        packet_type: 17
+        sub_type: 0
+        id_string: "0efde02:1"
+    condition: []
+    mode: single # do not start a new one in case of multiple events
+    action:
+      - service: notify.pushover
+        data:
+          message: "Expecting delivery?"
+          title: "Doorbell"
+          data:
+            priority: 0
+            # -2 to generate no notification/alert
+            # -1 to always send as a quiet notification
+            #  1 to display as high-priority and bypass the user's quiet hours
+            #  2 to also require confirmation from the user

@@ -1,9 +1,23 @@
-
 - type: vertical-stack
   cards:
-    - type: iframe
-      url: http://192.168.2.104:34333/picture/1/frame/ #url: http://192.168.2.104:8123/api/hassio_ingress/_VH6BAiwGN6yFerwg2M5Pmxxu31fJIEPnFoHmgKAcaQ/picture/1/frame/
-      aspect_ratio: 60%
+    - type: custom:webrtc-camera
+      url: !secret kidscam_stream_sd
+      ui: true
+      ptz:
+        opacity: 0.4
+        service: sonoff.send_command
+        data_left:
+          device: !secret ewelink_camera_id
+          cmd: left
+        data_right:
+          device: !secret ewelink_camera_id
+          cmd: right
+        data_up:
+          device: !secret ewelink_camera_id
+          cmd: up
+        data_down:
+          device: !secret ewelink_camera_id
+          cmd: down
 
     - type: horizontal-stack
       cards:
@@ -113,14 +127,14 @@
 
 #- type: vertical-stack
 #  cards:
-    # - type: picture-entity
-    #   title: Bedroom
-    #   entity: camera.kids_sd
-    #   camera_image: camera.kids_sd
-    #   show_info: true
-    #   show_state: false
-    #   tap_action:
-    #     action: more-info
+# - type: picture-entity
+#   title: Bedroom
+#   entity: camera.kids_sd
+#   camera_image: camera.kids_sd
+#   show_info: true
+#   show_state: false
+#   tap_action:
+#     action: more-info
 #        - type: picture-entity
 #          title: Bedroom
 #          entity: camera.kids_room_hd
@@ -132,7 +146,6 @@
 
 - type: vertical-stack
   cards:
-
     - type: entities
       title: Kids room
       show_header_toggle: true
@@ -148,7 +161,7 @@
           secondary_info: last-changed
 
     - type: history-graph
-      title: 'Temperature'
+      title: "Temperature"
       refresh_interval: 30
       entities:
         - sensor.bedroomtemp_2

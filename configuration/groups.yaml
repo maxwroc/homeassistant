@@ -31,7 +31,6 @@ lights:
     - light.bathroom_lights
     - light.bedroom_lights
     - light.black_night_light
-    - light.christmas_tree
     - light.desk_light
     - light.kitchen_lights
     - light.kitchen_worktop_lights

@@ -4,7 +4,7 @@ homeassistant:
   time_zone: Europe/London
   # Name of the location where Home Assistant is running
   name: Scarbrook
-  whitelist_external_dirs:
+  allowlist_external_dirs:
     # required to check db size via sensor
     - "/config"
   latitude: !secret location_lat
@@ -137,24 +137,20 @@ lovelace:
     #    type: module
     #  - url: /local/dev/battery-state-card/dist/battery-state-card.js?z=v1
     #    type: module
-    #  - url: /local/dev/github-flexi-card.js?z=v1
-    #    type: module
-    #  - url: http://127.0.0.1:5500/dist/battery-state-card.js
-    #    type: module
+    # - url: http://127.0.0.1:5501/dist/github-flexi-card.js?z=v1
+    #   type: module
+    # - url: http://127.0.0.1:5501/dist/battery-state-card.js
+    #   type: module
     #  - url: /local/dev/sublime-floorplan-card/dist/sublime-floorplan-card.js
     #    type: module
+    # - url: http://127.0.0.1:5500/dist/my-custom-card.js
+    #   type: module
     - url: /local/dev/alarm-panel-card/dist/alarm-panel-card.js
       type: module
 
 hacs:
   token: !secret hacs_token
   appdaemon: true
-
-alexa_media:
-  accounts:
-    - email: !secret amazon_user
-      password: !secret amazon_password
-      url: amazon.co.uk
 
 spotify:
   client_id: !secret spotify_client_id
@@ -163,12 +159,6 @@ spotify:
 google:
   client_id: !secret google_calendar_api_clientid
   client_secret: !secret gogole_calendar_api_secret
-
-alarm_control_panel:
-  - platform: manual
-    name: Home Alarm
-    code: !secret alarm_code
-    code_arm_required: false
 
 device_tracker:
   - platform: ping

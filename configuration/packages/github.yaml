@@ -1,68 +1,68 @@
-sensor:
-  - platform: github
-    access_token: !secret github_access_token
-    repositories:
-        - path: 'maxwroc/battery-state-card'
-        - path: 'maxwroc/hideseek-mod'
-        - path: 'maxwroc/urleditorpro'
-        - path: 'maxwroc/github-flexi-card'
-        - path: 'maxwroc/sonj-review'
-        - path: 'maxwroc/homeassistant'
-          name: "Home assistant config"
-
 automation:
-  - alias: "Notify when Github star is received"
+  - id: "Github stars"
+    alias: "Notify when Github star is received"
     trigger:
       - platform: state
         entity_id:
-          - sensor.battery_state_card
-          - sensor.github_flexi_card
-          - sensor.urleditorpro
-          - sensor.hideseek_mod
-          - sensor.homeassistant
-          - sensor.sonj_review
-        attribute: stargazers
-    condition:
-      - condition: template  # 'night' condition: from dusk to dawn, in typical locations
-        value_template: "{{ trigger.to_state.state != 'unavailable' }}"
+          - sensor.maxwroc_battery_state_card_stars
+          - sensor.maxwroc_github_flexi_card_stars
+          - sensor.maxwroc_urleditorpro_stars
+          - sensor.maxwroc_hideseek_mod_stars
+          - sensor.maxwroc_homeassistant_stars
+          - sensor.maxwroc_sonj_review_stars
+          - sensor.maxwroc_vanilla_pattern_lock_stars
     mode: restart # start a new run after stopping previous run
     action:
-      - service: notify.pushover_git
+      - service: script.github_pushover
         data:
-          message: "Stars changed for '{{ trigger.to_state.attributes.friendly_name }}': {{ trigger.from_state.attributes.stargazers }} => {{ trigger.to_state.attributes.stargazers }}"
-          title: "Github"
-          data:
-            priority: -1
-            url: "https://github.com/maxwroc/{{ trigger.to_state.attributes.friendly_name }}/stargazers"
-            # -2 to generate no notification/alert
-            # -1 to always send as a quiet notification
-            #  1 to display as high-priority and bypass the user's quiet hours
-            #  2 to also require confirmation from the user
+          type: "Stars"
+          friendly_name: "{{ trigger.to_state.attributes.friendly_name }}"
+          from: "{{ trigger.from_state.state }}"
+          to: "{{ trigger.to_state.state }}"
 
-  - alias: "Notify when Github issue is created"
+  - id: "Github issues"
+    alias: "Notify when Github issue is created"
     trigger:
       - platform: state
         entity_id:
-          - sensor.battery_state_card
-          - sensor.github_flexi_card
-          - sensor.urleditorpro
-          - sensor.hideseek_mod
-          - sensor.homeassistant
-          - sensor.sonj_review
-        attribute: open_issues
-    condition:
-      - condition: template  # 'night' condition: from dusk to dawn, in typical locations
-        value_template: "{{ trigger.to_state.state != 'unavailable' }}"
+          - sensor.maxwroc_battery_state_card_issues
+          - sensor.maxwroc_github_flexi_card_issues
+          - sensor.maxwroc_urleditorpro_issues
+          - sensor.maxwroc_hideseek_mod_issues
+          - sensor.maxwroc_homeassistant_issues
+          - sensor.maxwroc_sonj_review_issues
+          - sensor.maxwroc_vanilla_pattern_lock_issues
     mode: restart # start a new run after stopping previous run
     action:
-      - service: notify.pushover_git
+      - service: script.github_pushover
         data:
-          message: "Issues changed for '{{ trigger.to_state.attributes.friendly_name }}': {{ trigger.from_state.attributes.open_issues }} => {{ trigger.to_state.attributes.open_issues }}"
-          title: "Github"
-          data:
-            priority: -1
-            url: "https://github.com/maxwroc/{{ trigger.to_state.attributes.friendly_name }}/issues"
-            # -2 to generate no notification/alert
-            # -1 to always send as a quiet notification
-            #  1 to display as high-priority and bypass the user's quiet hours
-            #  2 to also require confirmation from the user
+          type: "Stars"
+          friendly_name: "{{ trigger.to_state.attributes.friendly_name }}"
+          from: "{{ trigger.from_state.state }}"
+          to: "{{ trigger.to_state.state }}"
+
+script:
+  github_pushover:
+    sequence:
+      - choose:
+          - conditions:
+              - condition: template
+                value_template: "{{ from != 'unavailable' }}"
+              - condition: template
+                value_template: "{{ to != 'unavailable' }}"
+            sequence:
+              - variables:
+                  # removing the " Issues" part
+                  repo_path: "{{ friendly_name | regex_replace(find=' .*', replace='', ignorecase=False) }}"
+                  repo_name: "{{ repo_path | regex_replace(find='maxwroc/', replace='', ignorecase=False) }}"
+              - service: notify.pushover_git
+                data:
+                  message: "{{ type }} changed for {{ repo_name }}: {{ from }} => {{ to }}"
+                  title: "Github"
+                  data:
+                    priority: -1
+                    url: "https://github.com/{{ repo_path }}/issues"
+                    # -2 to generate no notification/alert
+                    # -1 to always send as a quiet notification
+                    #  1 to display as high-priority and bypass the user's quiet hours
+                    #  2 to also require confirmation from the user

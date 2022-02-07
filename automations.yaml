@@ -50,3 +50,19 @@
       title: hello
       message: kuku
   mode: single
+- id: '1641159435594'
+  alias: Low battery level detection & notification for all battery sensors
+  description: ''
+  use_blueprint:
+    path: sbyx/low-battery-level-detection-notification-for-all-battery-sensors.yaml
+    input:
+      actions:
+      - service: notify.pushover
+        data:
+          message: Device battery low
+          title: Battery checker
+      day: 6
+      exclude:
+        entity_id:
+        - sensor.huawei_p20_pro_battery_level
+        - sensor.oneplus_3_battery_level

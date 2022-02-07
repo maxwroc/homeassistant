@@ -1,42 +1,75 @@
-
 homeassistant:
   customize:
     sensor.masterbedtemp:
       friendly_name: "Master bedroom humidity"
 
-
 sensor:
   - platform: statistics
-    name: Outside temp stats
+    name: Outside temp max
     entity_id: sensor.thermometer_outside_temp_fixed
+    state_characteristic: value_max
     sampling_size: 1440
     max_age:
       days: 1
 
   - platform: statistics
-    name: Kids temp stats
+    name: Outside temp min
+    entity_id: sensor.thermometer_outside_temp_fixed
+    state_characteristic: value_min
+    sampling_size: 1440
+    max_age:
+      days: 1
+
+  - platform: statistics
+    name: Kids temp max
     entity_id: sensor.bedroomtemp_2
+    state_characteristic: value_max
     sampling_size: 1440
     max_age:
       days: 1
 
   - platform: statistics
-    name: Master bedroom temp stats
+    name: Kids temp min
+    entity_id: sensor.bedroomtemp_2
+    state_characteristic: value_min
+    sampling_size: 1440
+    max_age:
+      days: 1
+
+  - platform: statistics
+    name: Master bedroom temp max
     entity_id: sensor.masterbedtemp_3
+    state_characteristic: value_max
     sampling_size: 1440
     max_age:
       days: 1
 
   - platform: statistics
-    name: Living room temp stats
+    name: Master bedroom temp min
+    entity_id: sensor.masterbedtemp_3
+    state_characteristic: value_min
+    sampling_size: 1440
+    max_age:
+      days: 1
+
+  - platform: statistics
+    name: Living room temp max
     entity_id: sensor.livingroomtemp
+    state_characteristic: value_max
+    sampling_size: 1440
+    max_age:
+      days: 1
+
+  - platform: statistics
+    name: Living room temp min
+    entity_id: sensor.livingroomtemp
+    state_characteristic: value_min
     sampling_size: 1440
     max_age:
       days: 1
 
   - platform: template
     sensors:
-
       # This is to fix thermometer or RF transmission bugs resulting in short spikes
       thermometer_outside_temp_fixed:
         friendly_name: "Temperature outside"

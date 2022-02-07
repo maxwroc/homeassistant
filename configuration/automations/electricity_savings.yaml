@@ -1,4 +1,3 @@
-
 #########################################################################
 # Automatic light switch off
 #
@@ -62,28 +61,6 @@
         message: "Turned off master bathroom lights"
         title: "Electricity savings"
 
-
-#########################################################################
-# Notify when lights are turned on when alarm is armed
-#########################################################################
-
-- alias: "Notify when lights are on when alarm is armed"
-  trigger:
-    platform: state
-    entity_id: group.lights
-  condition:
-    - condition: state
-      entity_id: alarm_control_panel.home_alarm
-      state: "armed_away"
-  action:
-    - service: notify.pushover
-      data_template:
-        #message: "Light {{ trigger.to_state.attributes.friendly_name }} is {{ trigger.to_state.state }}"
-        message: "Lights state changed to '{{ trigger.to_state.state }}'"
-        title: "Electricity savings"
-        data:
-          priority: 1
-
 #########################################################################
 # Turn off docking station to prevent from monitor to keep waking up (Surface Doc + LG/Samsung monitor)
 #########################################################################
@@ -100,4 +77,3 @@
     - service: switch.turn_off
       data:
         entity_id: switch.docking_station
-

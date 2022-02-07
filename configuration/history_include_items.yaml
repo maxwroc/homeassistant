@@ -30,6 +30,7 @@ entities:
   - sensor.energy_usage
   - sensor.energy_total
   - sensor.energy_daily
+  - sensor.energy_daily_cost
   - sensor.energy_monthly
   - sensor.energy_yearly
   - sensor.energy_rpi_daily

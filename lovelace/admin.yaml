@@ -180,25 +180,11 @@
 
 - type: custom:github-flexi-card
   title: Github projects
-  secondary_info: "{latest_release_tag}"
-  url: true
-  attribute_urls: true
-  attributes:
-    - name: views_unique
-    - name: stargazers
-    - name: open_issues
-    - name: open_pull_requests
-  sort:
-    - stargazers
-    - views_unique
+  name: "{repo}"
   entities:
-    - sensor.battery_state_card
-    - sensor.github_flexi_card
-    - sensor.hideseek_mod
-    - sensor.urleditorpro
-    - sensor.sonj_review
-    - entity: sensor.home_assistant_config
-      secondary_info: "{latest_commit_message}"
+    - entity: sensor.maxwroc_homeassistant_latest_release
+      name: home-assistant-config
+      secondary_info: "{latest_commit}"
 
 - type: entities
   title: AdGuard

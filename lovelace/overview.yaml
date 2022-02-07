@@ -1,6 +1,5 @@
 - type: vertical-stack
   cards:
-
     - type: custom:weather-card
       entity: weather.accuweather
       current: true
@@ -24,26 +23,23 @@
         - type: custom:multiple-entity-row
           entity: sensor.thermometer_outside_temp_fixed
           entities:
-            - entity: sensor.outside_temp_stats
-              attribute: min_value
+            - entity: sensor.outside_temp_min
               name: min
-            - entity: sensor.outside_temp_stats
-              attribute: max_value
+            - entity: sensor.outside_temp_max
               name: max
         - switch.pc
         - switch.docking_station
 
 - type: vertical-stack
   cards:
-
-#    - type: history-graph
-#      title: 'Temperature'
-#      refresh_interval: 30
-#      entities:
-#        - sensor.livingroomtemp
-#        - sensor.bedroomtemp_2
-#        - sensor.masterbedtemp_3
-#        - sensor.outside_temp
+    #    - type: history-graph
+    #      title: 'Temperature'
+    #      refresh_interval: 30
+    #      entities:
+    #        - sensor.livingroomtemp
+    #        - sensor.bedroomtemp_2
+    #        - sensor.masterbedtemp_3
+    #        - sensor.outside_temp
 
     - type: custom:mini-graph-card
       entities:
@@ -80,11 +76,11 @@
         state: true
         labels: true
 
-#    - type: history-graph
-#      title: 'Power'
-#      refresh_interval: 30
-#      entities:
-#        - sensor.energy_usage
+    #    - type: history-graph
+    #      title: 'Power'
+    #      refresh_interval: 30
+    #      entities:
+    #        - sensor.energy_usage
 
     - type: custom:mini-graph-card
       entities:
@@ -99,9 +95,6 @@
       show:
         graph: bar
 
-
-
-
 #    - type: iframe
 #      #url: http://192.168.2.104:8085/sources/0/dashboards/2?lower=now%28%29%20-%2015m&present=true
 #      url: http://192.168.2.104:8123/api/hassio_ingress/J469DFzDQ4mVGagrfD7Q3MLGSCpwcfVxqhhOO2PY4kI/sources/0/dashboards/2?lower=now%28%29%20-%2015m&present=true
@@ -109,7 +102,6 @@
 
 - type: vertical-stack
   cards:
-
     - type: entities
       title: Living room
       show_header_toggle: true
@@ -122,11 +114,9 @@
         - type: custom:multiple-entity-row
           entity: sensor.livingroomtemp
           entities:
-            - entity: sensor.living_room_temp_stats
-              attribute: min_value
+            - entity: sensor.living_room_temp_min
               name: min
-            - entity: sensor.living_room_temp_stats
-              attribute: max_value
+            - entity: sensor.living_room_temp_max
               name: max
         - sensor.livingroomtemp
         - sensor.livingroomtemp_3
@@ -142,11 +132,9 @@
         - type: custom:multiple-entity-row
           entity: sensor.bedroomtemp_2
           entities:
-            - entity: sensor.kids_temp_stats
-              attribute: min_value
+            - entity: sensor.kids_temp_min
               name: min
-            - entity: sensor.kids_temp_stats
-              attribute: max_value
+            - entity: sensor.kids_temp_max
               name: max
         - sensor.bedroomtemp_3
         - binary_sensor.bedroom_motion_2
@@ -168,11 +156,9 @@
         - type: custom:multiple-entity-row
           entity: sensor.masterbedtemp_3
           entities:
-            - entity: sensor.master_bedroom_temp_stats
-              attribute: min_value
+            - entity: sensor.master_bedroom_temp_min
               name: min
-            - entity: sensor.master_bedroom_temp_stats
-              attribute: max_value
+            - entity: sensor.master_bedroom_temp_max
               name: max
         - sensor.masterbedtemp_3
         - sensor.masterbedtemp
@@ -191,9 +177,6 @@
       entities:
         - light.bathroom_lights
         - binary_sensor.bathroom_motion_2
-
-
-
 
 - type: entities
   title: Corridor
