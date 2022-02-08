@@ -1,7 +1,4 @@
-
-
 input_select:
-
   alexa_device:
     name: Alexa device
     options:
@@ -12,21 +9,17 @@ input_select:
     initial: Home
     icon: mdi:amazon-alexa
 
-
 input_text:
   alexa_tts_text:
     name: "Text to announce"
     initial: hello
 
-
 script:
-
   ########################################################################
   # Script for sending audio notifications to Alexas
   #########################################################################
   audio_notify:
     sequence:
-
       - variables:
           nameIdMap:
             Home: media_player.home_2
@@ -75,5 +68,3 @@ script:
               - service: persistent_notification.create
                 data:
                   message: "Error announcing message:\n'{{ device }}' device not found!"
-
-
