@@ -21,6 +21,37 @@
   
   On the windows box I use tiny script which sets up everything for you: [Invoke-WebhookOnLock](https://github.com/maxwroc/Invoke-WebhookOnLock).
 
+## Automatic backups on USB drive
+
+I was using [Samba Backup](https://github.com/thomasmauerer/hassio-addons/tree/master/samba-backup) add-on for a long time to automate backups and put the backup files on a different device. Once the device failed I was looking for the solution to put backups on USB stick. It turned out that HA doesn't support mouting USB devices by default. So here is the final solution I have found and which works:
+
+1. Mounting USB 
+  
+    You can manually mount USB if you have enabled HA SSH access (not via the add-on! you can read more [here](https://developers.home-assistant.io/docs/operating-system/debugging/)). 
+    
+    The alternative is to use the solution presented in the gist [here](https://gist.github.com/eklex/c5fac345de5be9d9bc420510617c86b5). Nice thing about it is that it will automatically mount any USB you stick into the port and it will make it available for docker containers.
+    
+    * Format USB stick (FAT/EXT4) and label the drive "CONFIG"
+    * Create udev folder
+    * Download the [gist](https://gist.github.com/eklex/c5fac345de5be9d9bc420510617c86b5) file and put it inside created folder
+    * Insert USB to the port on your HA device
+    * Go to `Configuration > Addons, Backup, Supervisor > System > Host`, click on the dots button and chose `Import from USB`
+    * Remove the USB stick
+    * If you want to use the same USB stick you need to rename it (drives with "CONFIG" label won't be mouted). Ofcourse you can remove the `udev` folder now.
+
+    Note: Now if you plugin your USB the drive will be mouted in `/mnt/data/supervisor/media/XXX`. Where XXX is the drive label name.
+  
+3. Exposing share - use "Samba Share" add-on
+4. Automatic backups - use "Samba Backup" add-on
+
+    This add-on has to be installed manually. More info [here](https://github.com/thomasmauerer/hassio-addons/tree/master/samba-backup).
+    
+    E.g. I have formatted USB stick and I labelled the drive "BACKUPS". So add-on configuration looks as follows
+    ![image](https://user-images.githubusercontent.com/8268674/167505802-7852e467-ff4d-448d-8424-ce4f51780be0.png)
+
+
+
+
 ## Devices
 
 | Connection | Brand | Model | Photo | Notes |
