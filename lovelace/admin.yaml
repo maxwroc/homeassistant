@@ -60,7 +60,7 @@
       show_header_toggle: false
       entities:
         - sensor.energy_rpi_monthly
-        - sensor.home_assistant_v2_db
+        - sensor.home_assistant_v2_db_size
         - sensor.hassio_online
         - sensor.last_boot
         - type: custom:multiple-entity-row

@@ -53,7 +53,8 @@ script:
             sequence:
               - variables:
                   # removing the " Issues" part
-                  repo_path: "{{ friendly_name | regex_replace(find=' .*', replace='', ignorecase=False) }}"
+                  repo_path_first: "{{ friendly_name | regex_replace(find=' .*', replace='', ignorecase=False) }}"
+                  repo_path_second: "{{ type | regex_replace(find='Stars', replace='stargazers', ignorecase=False) | lower }}"
                   repo_name: "{{ repo_path | regex_replace(find='maxwroc/', replace='', ignorecase=False) }}"
               - service: notify.pushover_git
                 data:
@@ -61,7 +62,7 @@ script:
                   title: "Github"
                   data:
                     priority: -1
-                    url: "https://github.com/{{ repo_path }}/issues"
+                    url: "https://github.com/{{ repo_path_first }}/{{repo_path_second}}"
                     # -2 to generate no notification/alert
                     # -1 to always send as a quiet notification
                     #  1 to display as high-priority and bypass the user's quiet hours
