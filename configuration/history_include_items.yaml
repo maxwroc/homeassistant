@@ -19,6 +19,7 @@ entities:
   - sensor.livingroomtemp
   - sensor.livingroomtemp_2
   - sensor.livingroomtemp_3
+  - sensor.living_room_temp_fixed
   - sensor.bedroomtemp
   - sensor.bedroomtemp_2
   - sensor.bedroomtemp_3
