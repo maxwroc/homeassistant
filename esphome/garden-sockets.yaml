@@ -81,7 +81,7 @@ binary_sensor:
       number: GPIO16 # button 1
       mode:
         input: true
-        pullup: false
+        pullup: false # GPIO16 doesn't have a pullup resistor
       inverted: false
     on_press:
       - light.toggle: garden_socket
@@ -100,5 +100,5 @@ binary_sensor:
 # https://esphome.io/components/sensor/hlw8012.html
 
 # When flashing from Tasmota > 8: SetOption78 1
-# New Tasmota takes so much space that the upload of the new bin fails via OTA. Try gzipping it!
+# New Tasmota takes so much space that the upload of the new bin fails via OTA. Try gzipping it!!!
 # Tasmota v12 introduced safeboot partition - will it be a problem?
