@@ -101,8 +101,23 @@ binary_sensor:
     on_press:
       - light.toggle: garden_lights
 
+# Energy monitoring
 # https://esphome.io/components/sensor/hlw8012.html
+sensor:
+  - platform: hlw8012
+    model: BL0937
+    sel_pin:
+      number: GPIO12
+      inverted: true
+    cf_pin: GPIO5
+    cf1_pin: GPIO14
+    current:
+      name: "Garden sockets current"
+    voltage:
+      name: "Garden sockets voltage"
+    power:
+      name: "Garden sockets power"
+    update_interval: 15s
 
 # When flashing from Tasmota > 8: SetOption78 1
 # New Tasmota takes so much space that the upload of the new bin fails via OTA. Try gzipping it!!!
-# Tasmota v12 introduced safeboot partition - will it be a problem?
