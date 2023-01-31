@@ -1,0 +1,104 @@
+esphome:
+  name: garden-sockets
+
+esp8266:
+  # No idea what kind of board is it so using a generic one
+  board: esp01_1m
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+  encryption:
+    # This can be anything - you are asked about it when you add the device to HA
+    key: !secret api_encryption_key
+
+ota:
+  password: !secret ota_pass
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_pass
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Garden-Sockets Fallback Hotspot"
+    password: !secret fallback_wifi_pass
+
+  use_address: 192.168.4.254
+
+captive_portal:
+
+output:
+  - platform: gpio
+    id: relay_1
+    pin: GPIO15 # relay 1
+  - platform: gpio
+    id: relay_2
+    pin: GPIO4 # relay 2
+  - platform: gpio
+    id: led_1
+    pin: 
+      number: GPIO2 # led 1
+      inverted: true
+  - platform: gpio
+    id: led_2
+    pin: 
+      number: GPIO0 # led 2
+      inverted: true
+
+# Exposing HA entities
+
+light:
+  # Exposing garden light entity
+  - platform: binary
+    name: "Garden lights"
+    id: garden_lights
+    output: relay_2
+    icon: mdi:outdoor-lamp
+    on_turn_on:
+      - output.turn_on: led_2
+    on_turn_off:
+      - output.turn_off: led_2
+
+switch:
+  # Exposing switch entity
+  - platform: output
+    output: relay_1
+    name: "Garden socket"
+    id: garden_socket
+    icon: mdi:power-socket-uk
+
+# Button control
+# Not adding button "name" properties to avoid exposing them to HA
+
+binary_sensor:
+
+  - platform: gpio
+    id: button_1
+    pin:
+      number: GPIO16 # button 1
+      mode:
+        input: true
+        pullup: false
+      inverted: false
+    on_press:
+      - light.toggle: garden_socket
+
+  - platform: gpio
+    id: button_2
+    pin:
+      number: GPIO13 # button 2
+      mode:
+        input: true
+        pullup: true
+      inverted: false
+    on_press:
+      - light.toggle: garden_lights
+
+# https://esphome.io/components/sensor/hlw8012.html
+
+# When flashing from Tasmota > 8: SetOption78 1
+# New Tasmota takes so much space that the upload of the new bin fails via OTA. Try gzipping it!
+# Tasmota v12 introduced safeboot partition - will it be a problem?

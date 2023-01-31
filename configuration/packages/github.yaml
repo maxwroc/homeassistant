@@ -55,7 +55,7 @@ script:
                   # removing the " Issues" part
                   repo_path_first: "{{ friendly_name | regex_replace(find=' .*', replace='', ignorecase=False) }}"
                   repo_path_second: "{{ type | regex_replace(find='Stars', replace='stargazers', ignorecase=False) | lower }}"
-                  repo_name: "{{ repo_path | regex_replace(find='maxwroc/', replace='', ignorecase=False) }}"
+                  repo_name: "{{ repo_path_first | regex_replace(find='maxwroc/', replace='', ignorecase=False) }}"
               - service: notify.pushover_git
                 data:
                   message: "{{ type }} changed for {{ repo_name }}: {{ from }} => {{ to }}"

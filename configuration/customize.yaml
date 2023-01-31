@@ -1,39 +1,3 @@
-sensor.livingroomtemp:
-  friendly_name: "Living room temperature"
-
-sensor.livingroomtemp_3:
-  friendly_name: "Living room humidity"
-
-sensor.bedroomtemp_2:
-  friendly_name: "Bedroom temperature"
-
-sensor.bedroomtemp_3:
-  friendly_name: "Bedroom humidity"
-
-sensor.masterbedtemp_3:
-  friendly_name: "Master bedroom temperature"
-
-sensor.energy_rpi_monthly:
-  friendly_name: RPi energy monthly
-
-sensor.files_changed_locally:
-  icon: mdi:file-star
-  friendly_name: "Files changed locally"
-
-sensor.config_last_backup:
-  icon: mdi:cloud-upload
-  friendly_name: "Config last backup"
-
-switch.pc:
-  icon: mdi:desktop-tower-monitor
-
-switch.docking_station:
-  icon: mdi:laptop
-
-switch.master_bed_wall_switch_main:
-  icon: mdi:lightbulb
-  friendly_name: "Master bedroom lights"
-
 binary_sensor.main_door:
   device_class: door
 

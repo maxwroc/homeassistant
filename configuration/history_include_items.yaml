@@ -1,41 +1,26 @@
 domains:
   - binary_sensor
+  - climate
   - light
 entities:
-  - device_tracker.pc
-  - device_tracker.maks
-  - device_tracker.magduska
-  - alarm_control_panel.home_alarm
-  - sensor.adguard_average_processing_speed
-  - sensor.adguard_dns_queries_blocked_ratio
+  # System
   - sensor.cpu_temperature
-  - sensor.processor_use
-  - sensor.memory_use_percent
   - sensor.disk_use_percent
-  - sensor.home_assistant_v2_db
-  - sensor.pc
-  - sensor.thermometer_outside_temperature
-  - sensor.thermometer_outside_temp_fixed
-  - sensor.livingroomtemp
-  - sensor.livingroomtemp_2
-  - sensor.livingroomtemp_3
-  - sensor.living_room_temp_fixed
-  - sensor.bedroomtemp
-  - sensor.bedroomtemp_2
-  - sensor.bedroomtemp_3
-  - sensor.masterbedtemp
-  - sensor.masterbedtemp_2
-  - sensor.masterbedtemp_3
-  - sensor.owl_energy_usage
-  - sensor.owl_energy_total
-  - sensor.energy_usage
-  - sensor.energy_total
+  - sensor.memory_use_percent
+  - sensor.processor_use
+
+  - sensor.christmas_house_lights_current
+  - sensor.christmas_house_lights_total
+  - sensor.kitchen_temperature
   - sensor.energy_daily
   - sensor.energy_daily_cost
-  - sensor.energy_monthly
-  - sensor.energy_yearly
-  - sensor.energy_rpi_daily
-  - sensor.energy_rpi_monthly
-  - group.family
-  - group.motion_sensors
-  - group.door_sensors
+  - sensor.energy_usage
+  - sensor.energy_total
+  - sensor.ground_floor_thermostat_current_temperature
+  - sensor.ground_floor_thermostat_current_humidity
+  - switch.garage_desk_light
+  - switch.garden_lights
+  - sensor.master_bedroom_thermostat_current_temperature
+  - sensor.master_bedroom_thermostat_current_humidity
+  - sensor.outside_temperature_fixed
+  - sensor.outside_temperature_real

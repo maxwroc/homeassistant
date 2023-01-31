@@ -1,0 +1,239 @@
+#########################################################################
+# Office light control
+#########################################################################
+
+- id: "office_light_control_toggle"
+  alias: "Office light toggle (Tradfri)"
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      unique_id: "0c:43:14:ff:fe:1c:32:0e"
+      event: 1002
+  action:
+    - service: light.toggle
+      data:
+        entity_id: light.office_light
+
+- id: "office_light_control_brightness_up"
+  alias: "Office light brightness up"
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      unique_id: "0c:43:14:ff:fe:1c:32:0e"
+      event: 2002
+  action:
+    - service: light.turn_on
+      data:
+        entity_id: light.office_light
+        brightness_step_pct: 10
+
+- id: "office_light_control_brightness_down"
+  alias: "Office light brightness down"
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      unique_id: "0c:43:14:ff:fe:1c:32:0e"
+      event: 3002
+  action:
+    - service: light.turn_on
+      data:
+        entity_id: light.office_light
+        brightness_step_pct: -10
+
+- id: "office_aqara_left"
+  alias: "Office light toggle"
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      unique_id: "00:15:8d:00:03:3e:0f:11"
+      event: 1002
+  action:
+    - service: light.toggle
+      data:
+        entity_id: light.office_light
+
+- id: "office_aqara_right"
+  alias: "Office desk light toggle"
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      unique_id: "00:15:8d:00:03:3e:0f:11"
+      event: 2002
+  action:
+    - service: light.toggle
+      data:
+        entity_id: light.office_desk_lamp
+
+#########################################################################
+# Garage lights
+#########################################################################
+
+- id: garage_light_on
+  alias: "Garage lights on"
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.garage_motion
+      from: "off"
+      to: "on"
+  condition:
+    condition: state
+    entity_id: sensor.daylight
+    attribute: daylight
+    state: false
+  action:
+    service: switch.turn_on
+    data:
+      entity_id: switch.garage_desk_light
+
+- id: garage_light_off
+  alias: "Garage lights off"
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.garage_motion
+      from: "on"
+      to: "off"
+  action:
+    service: switch.turn_off
+    data:
+      entity_id: switch.garage_desk_light
+
+#########################################################################
+# Garden lights
+#########################################################################
+
+- id: garden_lights_on
+  alias: "Garden lights on"
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.driveway_front_motion
+      from: "off"
+      to: "on"
+    - platform: state
+      entity_id: binary_sensor.driveway_motion
+      from: "off"
+      to: "on"
+    - platform: state
+      entity_id: binary_sensor.patio_motion
+      from: "off"
+      to: "on"
+    - platform: state
+      entity_id: binary_sensor.kitchen_door
+      from: "off"
+      to: "on"
+  condition:
+    # condition: state
+    # entity_id: sensor.driveway_motion
+    # attribute: dark
+    # state: true
+    condition: state
+    entity_id: sensor.daylight
+    attribute: daylight
+    state: false
+  action:
+    service: light.turn_on
+    data:
+      entity_id: light.garden_lights
+
+- id: garden_lights_off
+  alias: "Garden lights off"
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.driveway_front_motion
+      from: "on"
+      to: "off"
+    - platform: state
+      entity_id: binary_sensor.driveway_motion
+      from: "on"
+      to: "off"
+    - platform: state
+      entity_id: binary_sensor.patio_motion
+      from: "on"
+      to: "off"
+    - platform: state
+      entity_id: binary_sensor.kitchen_door
+      from: "on"
+      to: "off"
+      for:
+        seconds: 30
+  condition:
+    - condition: state
+      entity_id: binary_sensor.driveway_front_motion
+      state: "off"
+    - condition: state
+      entity_id: binary_sensor.driveway_motion
+      state: "off"
+    - condition: state
+      entity_id: binary_sensor.patio_motion
+      state: "off"
+    - condition: state
+      entity_id: binary_sensor.kitchen_door
+      state: "off"
+  action:
+    service: light.turn_off
+    data:
+      entity_id: light.garden_lights
+
+#########################################################################
+# Living room lights
+#########################################################################
+
+- id: "living_room_switch_left"
+  alias: "Living room switch (left)"
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      unique_id: "00:15:8d:00:03:97:45:04"
+      event: 1002
+  action:
+    - service: light.toggle
+      data:
+        entity_id: light.living_room_lamp
+
+- id: "living_room_switch_right"
+  alias: "Living room switch (right)"
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      unique_id: "00:15:8d:00:03:97:45:04"
+      event: 2002
+  action:
+    - service: light.toggle
+      data:
+        entity_id: light.christmas_house_lights
+
+#########################################################################
+# Christmas lights
+#########################################################################
+
+- id: "christmas_lights_on"
+  alias: "Christmas lights (on)"
+  trigger:
+    platform: time
+    at: "16:00:00"
+  action:
+    - service: light.turn_on
+      entity_id: light.christmas_house_lights
+    - service: light.turn_on
+      entity_id: light.living_room_lamp
+    - service: switch.turn_on
+      entity_id: switch.washing_machine
+
+- id: "christmas_lights_off"
+  alias: "Christmas lights (off)"
+  trigger:
+    platform: time
+    at: "23:59:00"
+  action:
+    - service: light.turn_off
+      entity_id: light.christmas_house_lights
+    - service: light.turn_off
+      entity_id: light.living_room_lamp
+    - service: switch.turn_off
+      entity_id: switch.washing_machine

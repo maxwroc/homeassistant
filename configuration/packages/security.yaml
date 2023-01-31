@@ -15,7 +15,7 @@ automation:
       # - platform: state
       #   entity_id: group.motion_sensors
       #   to: "on"
-      
+
       - platform: state
         entity_id: binary_sensor.master_bathroom_motion
         to: "on"
@@ -34,7 +34,7 @@ automation:
       - platform: state
         entity_id: binary_sensor.master_bedroom_motion
         to: "on"
-        
+
       - platform: state
         entity_id: group.door_sensors
         to: "on"
@@ -83,10 +83,13 @@ automation:
     trigger:
       - platform: state
         entity_id: light.master_bedroom_night_light
+        to: "on"
       - platform: state
         entity_id: light.bathroom_lights
+        to: "on"
       - platform: state
         entity_id: light.bedroom_lights
+        to: "on"
       - platform: state
         entity_id: light.black_night_light
       - platform: state
@@ -138,15 +141,15 @@ automation:
       - platform: state
         entity_id: binary_sensor.corridor_motion_2
         to: "on"
-      # - platform: state
-      #   entity_id: binary_sensor.living_room_motion_2
-      #   to: "on"
+      - platform: state
+        entity_id: binary_sensor.living_room_motion_2
+        to: "on"
       - platform: state
         entity_id: binary_sensor.bedroom_motion_2
         to: "on"
-      - platform: state
-        entity_id: binary_sensor.master_bedroom_motion
-        to: "on"
+      #- platform: state
+      #  entity_id: binary_sensor.master_bedroom_motion
+      #  to: "on"
       - platform: state
         entity_id: binary_sensor.main_door
         to: "on"
@@ -183,13 +186,98 @@ automation:
     condition: []
     mode: single # do not start a new one in case of multiple events
     action:
+      - service: camera.snapshot
+        entity_id: camera.frontright
+        data:
+          filename: "/config/www/tmp/snapshot_front_right.jpg"
       - service: notify.pushover
         data:
-          message: "Expecting delivery?"
+          message: "Is there anyone at home?"
           title: "Doorbell"
           data:
-            priority: 0
+            sound: echo
+            attachment: "/config/www/tmp/snapshot_front_right.jpg"
+            priority: 1
             # -2 to generate no notification/alert
             # -1 to always send as a quiet notification
             #  1 to display as high-priority and bypass the user's quiet hours
             #  2 to also require confirmation from the user
+      - delay:
+          seconds: 30
+
+  #########################################################################
+  # Sweet bank
+  #########################################################################
+  - alias: "Sweet bank notification"
+    description: "Pushover notification"
+    trigger:
+      platform: state
+      entity_id: binary_sensor.sweet_bank
+      to: "on"
+    condition: []
+    mode: single # do not start a new one in case of multiple events
+    action:
+      - service: notify.pushover
+        data:
+          message: "Someone is stilling cookie!"
+          title: "Sweet bank"
+          data:
+            priority: 0
+            sound: gamelan
+            # -2 to generate no notification/alert
+            # -1 to always send as a quiet notification
+            #  1 to display as high-priority and bypass the user's quiet hours
+            #  2 to also require confirmation from the user
+
+binary_sensor:
+  - platform: rest
+    resource: http://192.168.1.80/api.cgi?cmd=GetAiState&channel=1&user=admin&password=856243
+    name: Bin collection point camera (people)
+    scan_interval: 2
+    value_template: "{{ value_json[0].value.people.alarm_state }}"
+    device_class: motion
+  - platform: rest
+    resource: http://192.168.1.80/api.cgi?cmd=GetAiState&channel=1&user=admin&password=856243
+    name: Bin collection point camera (vehicle)
+    scan_interval: 2
+    value_template: "{{ value_json[0].value.vehicle.alarm_state }}"
+    device_class: motion
+
+  - platform: rest
+    resource: http://192.168.1.80/api.cgi?cmd=GetAiState&channel=2&user=admin&password=856243
+    name: Garden camera (people)
+    scan_interval: 2
+    value_template: "{{ value_json[0].value.people.alarm_state }}"
+    device_class: motion
+  - platform: rest
+    resource: http://192.168.1.80/api.cgi?cmd=GetAiState&channel=2&user=admin&password=856243
+    name: Garden camera (vehicle)
+    scan_interval: 2
+    value_template: "{{ value_json[0].value.vehicle.alarm_state }}"
+    device_class: motion
+
+  - platform: rest
+    resource: http://192.168.1.80/api.cgi?cmd=GetAiState&channel=3&user=admin&password=856243
+    name: Front left camera (people)
+    scan_interval: 2
+    value_template: "{{ value_json[0].value.people.alarm_state }}"
+    device_class: motion
+  - platform: rest
+    resource: http://192.168.1.80/api.cgi?cmd=GetAiState&channel=3&user=admin&password=856243
+    name: Front left camera (vehicle)
+    scan_interval: 2
+    value_template: "{{ value_json[0].value.vehicle.alarm_state }}"
+    device_class: motion
+
+  - platform: rest
+    resource: http://192.168.1.80/api.cgi?cmd=GetAiState&channel=4&user=admin&password=856243
+    name: Front right camera (people)
+    scan_interval: 2
+    value_template: "{{ value_json[0].value.people.alarm_state }}"
+    device_class: motion
+  - platform: rest
+    resource: http://192.168.1.80/api.cgi?cmd=GetAiState&channel=4&user=admin&password=856243
+    name: Front right camera (vehicle)
+    scan_interval: 2
+    value_template: "{{ value_json[0].value.vehicle.alarm_state }}"
+    device_class: motion

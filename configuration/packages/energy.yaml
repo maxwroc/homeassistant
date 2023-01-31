@@ -1,5 +1,3 @@
-
-
 homeassistant:
   customize:
     sensor.energy_daily:
@@ -9,7 +7,6 @@ homeassistant:
 sensor:
   - platform: template
     sensors:
-
       energy_usage:
         friendly_name: "Power"
         device_class: energy
@@ -36,8 +33,7 @@ sensor:
         friendly_name: "RPi total energy"
         device_class: energy
         unit_of_measurement: Wh
-        value_template: "{{ states('sensor.sensor.raspberrypi4_total_consumption') | float | multiply(1000) | round(0) }}"
-
+        value_template: "{{ states('sensor.raspberrypi4_total_consumption') | float | multiply(1000) | round(0) }}"
 
 utility_meter:
   energy_daily:

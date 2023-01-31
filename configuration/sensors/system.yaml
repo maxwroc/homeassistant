@@ -2,9 +2,6 @@
   file_paths:
     - /config/home-assistant_v2.db
 
-- platform: uptime
-  name: Hassio online
-
 - platform: command_line
   name: "Config last backup"
   command: cd /config && git --no-pager log -n 1 --pretty=%cd --date=local origin/master
@@ -19,11 +16,11 @@
   name: CPU temperature
   command: "cat /sys/class/thermal/thermal_zone0/temp"
   unit_of_measurement: "°C"
-  value_template: '{{ value | multiply(0.001) | round(1) }}'
+  value_template: "{{ value | multiply(0.001) | round(1) }}"
 
 - platform: command_line
   name: "Files on RaspWroc"
-  command: !secret raspwroc_files_count_cmd  # "ssh -i /config/rsa_keys/id_rsa -o StrictHostKeyChecking=no -p XXXX USER@HOST 'find PATH -type f | wc -l'"
+  command: !secret raspwroc_files_count_cmd # "ssh -i /config/rsa_keys/id_rsa -o StrictHostKeyChecking=no -p XXXX USER@HOST 'find PATH -type f | wc -l'"
   scan_interval: 60 # 300 # 5min
 
 - platform: command_line

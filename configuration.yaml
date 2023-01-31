@@ -11,6 +11,7 @@ homeassistant:
   longitude: !secret location_long
   packages: !include_dir_named configuration/packages
   currency: GBP
+  country: GB
 
 # Configure a default setup of Home Assistant (frontend, api, etc)
 # default_config:
@@ -125,8 +126,6 @@ lovelace:
       type: module
     - url: /hacsfiles/lovelace-multiple-entity-row/multiple-entity-row.js
       type: module
-    - url: /hacsfiles/transmission-card/transmission-card.js
-      type: module
     - url: /hacsfiles/bar-card/bar-card.js
       type: module
     # Dev
@@ -148,18 +147,14 @@ lovelace:
     #   type: module
     - url: /local/dev/alarm-panel-card/dist/alarm-panel-card.js
       type: module
+    - url: /hacsfiles/weather-chart-card/weather-chart-card.js
+      type: module
+    - url: /hacsfiles/ha-floorplan/floorplan.js
+      type: module
 
 hacs:
   token: !secret hacs_token
   appdaemon: true
-
-spotify:
-  client_id: !secret spotify_client_id
-  client_secret: !secret spotify_client_secret
-
-google:
-  client_id: !secret google_calendar_api_clientid
-  client_secret: !secret gogole_calendar_api_secret
 
 device_tracker:
   - platform: ping
@@ -190,102 +185,6 @@ tplink:
   switch:
     - host: 192.168.4.235 #hs110-rasp
     - host: 192.168.4.228 #kp115-1
-
-rfxtrx:
-  device: /dev/ttyUSB0
-  automatic_add: false
-  devices:
-    0b1100de00efde0201040f70:
-      #name: Doorbell
-      fire_event: true
-    0b11002f00efde0201040f70:
-      #name: Doorbell old
-      fire_event: true
-    0b11001b012de8520b000070:
-      #name: "Nexa lr right"
-      fire_event: true
-    0b110037012de8520c010f60:
-      #name: "Nexa lr left"
-      fire_event: true
-    0b11001d00a0e54e0b000060:
-      #name: "Nexa mb left"
-      fire_event: true
-    0b11001800a0e54e0c010f70:
-      #name: "Nexa mb right"
-      fire_event: true
-    115a02108982000000043600007d87521279:
-      #name: OWL
-    #0850060e010100c779:
-    0a5208af010100c03f0169:
-      #name: Temp outside
-
-  #   # OWL
-  #   "89":
-  #   #"89:82":
-
-  #   # TH outside
-  #   "01":
-  #   #"01:01":
-
-  #   # Nexa lr
-  #   12de852:
-  #     fire_event: true
-
-  #   # Nexa lr left
-  #   #"12de852:12":
-  #   #  fire_event: true
-
-  #   # Nexa lr right
-  #   #"12de852:11":
-  #   #  fire_event: true
-
-  #   # Nexa mb
-  #   "0a0e54e":
-  #     fire_event: true
-
-  # Nexa mb left
-  #"0a0e54e:11":
-  #  fire_event: true
-
-  # Nexa mb right
-  #"0a0e54e:12":
-  #  fire_event: true
-
-  # OWL
-  #115a02108982000000043600007d87521279:
-
-  # T/H sensor outside
-  #0850060e010100c779:
-  #0a5208af010100c03f0169:
-
-  # Doorbell
-  #0b11002f00efde0201040f70:
-  # 0b1100de00efde0201040f70:
-  #   fire_event: true
-
-  # Nexa lr right
-  #0b11001b012de8520b000070:
-  # 0b11004d012de8520b010f60:
-  #   fire_event: true
-  # 0b110051012de8520b000060:
-  #   fire_event: true
-  # 0b1100a8012de8520b000060:
-  #   fire_event: true
-
-  # Nexa lr left
-  # 0b1100ab012de8520c000060:
-  # #0b110037012de8520c010f60:
-  #   fire_event: true
-
-  # # Nexa mb left
-  # #0b11001d00a0e54e0b000060:
-  # 0b11003600a0e54e0b010f60:
-  #   fire_event: true
-
-  # # Nexa mb right
-  # #0b11001800a0e54e0c010f70:
-  # 0b11002900a0e54e0c000060:
-  #   fire_event: true
 
 emulated_hue:
   listen_port: 80
@@ -331,6 +230,39 @@ emulated_hue:
       name: "PC"
       hidden: false
 
+# docker_monitor:
+#   containers:
+#     - homeassistant
+#     - deconz
+#     - glances
+#     - influxdb
+#   monitored_conditions:
+#     - docker_version
+#     - container_status
+#     - container_memory_usage
+#     - container_memory_percentage_usage
+#     - container_cpu_percentage_usage
+
+monitor_docker:
+  - name: Docker
+    containers:
+      - appdaemon
+      - db-hass
+      - deconz
+      - hass
+      - influxdb
+    monitored_conditions:
+      - version
+      - containers_running
+      - containers_total
+      - containers_cpu_percentage
+      - containers_memory
+      - containers_memory_percentage
+      - state
+      - status
+      - memory
+      - memory_percentage
+
 sonoff:
   username: !secret ewelink_user
   password: !secret ewelink_pass
@@ -338,16 +270,6 @@ sonoff:
 #  reload: always  # update device list every time HA starts
 
 switch: !include configuration/switches.yaml
-
-notify:
-  - name: Pushover
-    platform: pushover
-    api_key: !secret pushover_appkey
-    user_key: !secret pushover_userkey
-  - name: Pushover Git
-    platform: pushover
-    api_key: !secret pushover_git_appkey
-    user_key: !secret pushover_userkey
 
 shell_command:
   commit_config_files: cd /config && git pull && git add -A && git commit -m "`date`" && git push -u origin master
