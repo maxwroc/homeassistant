@@ -1,5 +1,5 @@
 homeassistant:
-  customize: !include configuration/customize.yaml
+  #customize: !include configuration/customize.yaml
   unit_system: metric
   time_zone: Europe/London
   # Name of the location where Home Assistant is running
@@ -68,9 +68,9 @@ zeroconf:
 ########### End of integrations from default config ###########
 
 group: !include configuration/groups.yaml
-light: !include configuration/lights.yaml
+#light: !include configuration/lights.yaml
 sensor: !include_dir_merge_list configuration/sensors
-binary_sensor: !include configuration/binary_sensors.yaml
+#binary_sensor: !include configuration/binary_sensors.yaml
 
 logger:
   default: warning
@@ -263,9 +263,9 @@ monitor_docker:
       - memory
       - memory_percentage
 
-sonoff:
-  username: !secret ewelink_user
-  password: !secret ewelink_pass
+# sonoff:
+#   username: !secret ewelink_user
+#   password: !secret ewelink_pass
 #  mode: local
 #  reload: always  # update device list every time HA starts
 

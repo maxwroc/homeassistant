@@ -1,66 +1,59 @@
+# - id: home_alarm_auto_arm
+#   alias: "Alarm auto-arm"
+# #  initial_state: false
+#   trigger:
+#     platform: state
+#     entity_id: binary_sensor.main_door
+#     from: "on"
+#     to: "off"
+#     for:
+#       hours: 1
+#       minutes: 0
+#       seconds: 0
+#   condition:
+#     - condition: state
+#       entity_id: group.motion_sensors
+#       state: "off"
+#     - condition: state
+#       entity_id: group.family
+#       state: "not_home"
+#     - condition: template
+#       value_template: >
+#         {{ as_timestamp(now()) - as_timestamp(states.group.motion_sensors.last_changed) > 50 * 60 }}
+#   action:
+#     - service: notify.pushover
+#       data:
+#         message: "Arming home alarm; time diff: {{ as_timestamp(now()) - as_timestamp(states.group.motion_sensors.last_changed) }}; Family: {{ states('group.family') }}"
+#         title: "Test"
 
+# - alias: "Alarm auto-arm 3333"
+#   initial_state: false
+#   trigger:
+#     platform: state
+#     entity_id: light.master_bedroom_night_light
+#   condition: []
+#   action:
+#     - service: notify.pushover
+#       data:
+#         message: "Test {{ state_attr('group.motion_sensors', 'last_changed')  }}"
+#         title: "Test"
 
-
-- id: home_alarm_auto_arm
-  alias: "Alarm auto-arm"
-#  initial_state: false
-  trigger:
-    platform: state
-    entity_id: binary_sensor.main_door
-    from: "on"
-    to: "off"
-    for:
-      hours: 1
-      minutes: 0
-      seconds: 0
-  condition:
-    - condition: state
-      entity_id: group.motion_sensors
-      state: "off"
-    - condition: state
-      entity_id: group.family
-      state: "not_home"
-    - condition: template
-      value_template: >
-        {{ as_timestamp(now()) - as_timestamp(states.group.motion_sensors.last_changed) > 50 * 60 }}
-  action:
-    - service: notify.pushover
-      data:
-        message: "Arming home alarm; time diff: {{ as_timestamp(now()) - as_timestamp(states.group.motion_sensors.last_changed) }}; Family: {{ states('group.family') }}"
-        title: "Test"
-
-
-- alias: "Alarm auto-arm 3333"
-  initial_state: false
-  trigger:
-    platform: state
-    entity_id: light.master_bedroom_night_light
-  condition: []
-  action:
-    - service: notify.pushover
-      data:
-        message: "Test {{ state_attr('group.motion_sensors', 'last_changed')  }}"
-        title: "Test"
-
-    # - service: media_player.select_source
-    #   data:
-    #     entity_id: media_player.spotify
-    #     source: "Bedroom dot"
-    # - service: media_player.play_media
-    #   data:
-    #     entity_id: media_player.spotify
-    #     media_content_id: 'spotify:user:spotify:playlist:6UFW0S4ENOBkQQFhLzn0Dq'
-    #     media_content_type: playlist
-
+# - service: media_player.select_source
+#   data:
+#     entity_id: media_player.spotify
+#     source: "Bedroom dot"
+# - service: media_player.play_media
+#   data:
+#     entity_id: media_player.spotify
+#     media_content_id: 'spotify:user:spotify:playlist:6UFW0S4ENOBkQQFhLzn0Dq'
+#     media_content_type: playlist
 
 # Playing ring tone on speakers
-    # - service: media_player.play_media
-    #   data:
-    #     entity_id: media_player.spotify
-    #     media_content_type: "music"
-    #     media_content_id: "spotify:track:6jjDlCd8d5qBWTFU6t11g2"
-
-
+# - service: media_player.play_media
+#   data:
+#     entity_id: media_player.spotify
+#     media_content_type: "music"
+#     media_content_id: "spotify:track:6jjDlCd8d5qBWTFU6t11g2"
 
 # - alias: 'Andrews Home notification'
 #   initial_state: false
@@ -84,7 +77,6 @@
 #     - service: script.audio_notify
 #       data_template:
 #         tts_msg: "Welcome Home Andrew"
-
 
 - id: testing_webhook
   alias: "Testing webhook"

@@ -69,6 +69,10 @@ switch:
     name: "Garden socket"
     id: garden_socket
     icon: mdi:power-socket-uk
+    on_turn_on:
+      - output.turn_on: led_1
+    on_turn_off:
+      - output.turn_off: led_1
 
 # Button control
 # Not adding button "name" properties to avoid exposing them to HA
@@ -84,7 +88,7 @@ binary_sensor:
         pullup: false # GPIO16 doesn't have a pullup resistor
       inverted: false
     on_press:
-      - light.toggle: garden_socket
+      - switch.toggle: garden_socket
 
   - platform: gpio
     id: button_2

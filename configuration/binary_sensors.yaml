@@ -1,5 +1,0 @@
-# - platform: snmp
-#   host: 192.168.2.103
-#   baseoid: 1.3.6.1.4.1.2021.2.1.100.1
-#   name: Bananapi samba
-#   device_class: problem

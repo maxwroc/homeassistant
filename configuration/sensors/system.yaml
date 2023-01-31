@@ -18,15 +18,15 @@
   unit_of_measurement: "°C"
   value_template: "{{ value | multiply(0.001) | round(1) }}"
 
-- platform: command_line
-  name: "Files on RaspWroc"
-  command: !secret raspwroc_files_count_cmd # "ssh -i /config/rsa_keys/id_rsa -o StrictHostKeyChecking=no -p XXXX USER@HOST 'find PATH -type f | wc -l'"
-  scan_interval: 60 # 300 # 5min
+# - platform: command_line
+#   name: "Files on RaspWroc"
+#   command: !secret raspwroc_files_count_cmd # "ssh -i /config/rsa_keys/id_rsa -o StrictHostKeyChecking=no -p XXXX USER@HOST 'find PATH -type f | wc -l'"
+#   scan_interval: 60 # 300 # 5min
 
-- platform: command_line
-  name: "Remaining space on RaspWroc"
-  command: !secret raspwroc_remaining_space_cmd # "ssh -i /config/rsa_keys/id_rsa -o StrictHostKeyChecking=no -p XXXX USER@HOST 'df -h / | sed -n \"2p\" | awk \"{print \\$4}\"'"
-  scan_interval: 60 # 300 # 5min
+# - platform: command_line
+#   name: "Remaining space on RaspWroc"
+#   command: !secret raspwroc_remaining_space_cmd # "ssh -i /config/rsa_keys/id_rsa -o StrictHostKeyChecking=no -p XXXX USER@HOST 'df -h / | sed -n \"2p\" | awk \"{print \\$4}\"'"
+#   scan_interval: 60 # 300 # 5min
 
 - platform: systemmonitor
   resources:
