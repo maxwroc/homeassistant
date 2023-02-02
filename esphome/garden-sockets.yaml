@@ -1,3 +1,7 @@
+#################################
+# Knightsbridge OP9KW
+#################################
+
 esphome:
   name: garden-sockets
 
@@ -111,13 +115,24 @@ sensor:
       inverted: true
     cf_pin: GPIO5
     cf1_pin: GPIO14
-    current:
-      name: "Garden sockets current"
-    voltage:
-      name: "Garden sockets voltage"
+    # current:
+    #   name: "Garden sockets current"
+    # voltage:
+    #   name: "Garden sockets voltage"
     power:
       name: "Garden sockets power"
+      id: power_monitor
     update_interval: 15s
 
-# When flashing from Tasmota > 8: SetOption78 1
+  - platform: total_daily_energy
+    name: "Garden sockets power total"
+    power_id: power_monitor
+    device_class: energy
+
+# Enable time component to reset energy at midnight
+time:
+  - platform: sntp
+    id: my_time
+
+# When flashing from Tasmota v8+ execute the following command: SetOption78 1
 # New Tasmota takes so much space that the upload of the new bin fails via OTA. Try gzipping it!!!

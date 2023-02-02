@@ -1,0 +1,63 @@
+#################################
+# Sonoff S20
+#################################
+
+esphome:
+  name: kitchen-floor-lights
+
+esp8266:
+  board: esp01_1m
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+  encryption:
+    key: !secret api_encryption_key
+
+ota:
+  password: !secret ota_pass
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_pass
+
+  use_address: 192.168.4.251
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Kitchen-Floor-Lights"
+    password: !secret fallback_wifi_pass
+
+captive_portal:
+  
+binary_sensor:
+# We are not setting the "name" to not expose this to HA
+- platform: gpio
+  id: button
+  pin:
+    number: GPIO0
+    mode:
+      input: true
+      pullup: true
+    inverted: true
+  on_press:
+    - light.toggle: light_entity
+
+# Entity exposed to HA
+light:
+- platform: binary
+  id: "light_entity"
+  name: "Kitchen floor lights"
+  output: relay
+
+output:
+# - platform: esp8266_pwm
+#   id: s20_green_led
+#   pin: GPIO13
+#   inverted: true
+- platform: gpio
+  pin: GPIO12
+  id: relay
+
