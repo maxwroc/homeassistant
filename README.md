@@ -6,6 +6,10 @@
 
 ![admin](https://user-images.githubusercontent.com/8268674/86176680-34a69700-bb1d-11ea-850e-d82b3694eb56.png)
 
+## How to pages
+
+* [Turning on/off a network device](https://github.com/maxwroc/homeassistant/blob/master/docs/device_on_off_switch.md)
+
 ## Add-ons
 ![image](https://user-images.githubusercontent.com/8268674/86160003-12078480-bb03-11ea-88f3-d1482acd2406.png)
 
